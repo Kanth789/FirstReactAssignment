@@ -1,5 +1,19 @@
+html{
+  height: 100vh;
+}
 .App {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+  .notifi{
+    padding: 40px;
+  border-radius: 20px;
+  box-shadow: #282c34;
+  border: 2px solid gray;
+  margin-top: 10%;
 }
 
 .App-logo {
@@ -35,4 +49,45 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.Heading{
+  font-size: 32px;
+  text-align: center;
+}
+
+.Para-div{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  
+  
+  
+}
+.Para-div img{
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+.Infromation-class{
+  background-color:  #0b69ff;
+  padding: 20px 50px 20px 50px;
+  border-radius: 10px;
+}
+.Success-class{
+  background-color: #2dca73;
+  padding: 20px 65px 20px;;
+  border-radius: 10px;
+}
+.Warning-class{
+  background-color: #ffb800;
+  padding:20px 65px 20px;;
+  border-radius: 10px;
+}
+.Danger-class{
+  background-color: #ff0b37;
+  padding: 20px 65px 20px;;
+  display: inline;
+  border-radius: 10px;
 }
