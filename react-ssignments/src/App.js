@@ -3,23 +3,14 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className ="main-conatiner">
+    <div className ="main-heading"><h2 className='heading'>Super Over League</h2></div>
+    <div className='image-box'>
+     <div className='img1'><img src="https://assets.ccbp.in/frontend/react-js/rcb-img.png"/></div>
+     <div className='img2'><img src="https://assets.ccbp.in/frontend/react-js/csk-img.png"/></div>
     </div>
-  );
+   </div>
+ );
 }
 
 export default App;
