@@ -26,6 +26,7 @@
 
 .App-link {
   color: #61dafb;
+
 }
 
 @keyframes App-logo-spin {
@@ -34,5 +35,39 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+body{
+  background-image: url('https://assets.ccbp.in/frontend/react-js/congrats-card-bg.png');
+  font-family: Roboto;
+}
+.App{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 6%;
+}
+.Head-conatiner{
+  font-size: 32px;
+  
+  
+}
+.Second-conatiner{
+  background-color:#cffafe ;
+  padding: 40px 100px 40px 100px;
+  border-radius: 15px;
+}
+.name-of-person{
+  font-size: 30px;
+}
+.name-of-college{
+  font-size: 24px;
+}
+@media screen and (max-width:512px) {
+  .Second-conatiner{
+    background-color:#cffafe ;
+    padding: 20px;
   }
 }
