@@ -1,3 +1,7 @@
+body{
+  background-color: #f4faff;
+  font-family: Roboto;
+}
 .App {
   text-align: center;
 }
@@ -35,4 +39,71 @@
   to {
     transform: rotate(360deg);
   }
+}
+.main-div{
+  max-width: 1200px;
+  margin: auto;
+  height: 100%;
+}
+.box{
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  
+}
+.Three{
+ float: right;
+}
+.Red,.Blue,.Yellow,.Green{
+  padding: 40px;
+  
+}
+.Red{
+  border-top: 8px solid  #ff4f64;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  background-color: white;
+  border-radius: 20px;
+}
+.Blue{
+  border-top: 8px solid #00a8e7;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  background-color: white;
+  border-radius: 20px;
+}
+.Yellow{
+  border-top: 8px solid #fcc200;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  background-color: white;
+  border-radius: 20px;
+}
+.Green{
+  border-top: 8px solid #44c4a1;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  background-color: white;
+  border-radius: 20px;
+}
+.header{
+  
+  text-align: center;
+}
+.heading{
+  font-size: 42px;
+  color: #171f46;
+}
+.para{
+  font-size: 20px;
+  color: #64748b;
+}
+.one{
+  font-size: 26px;
+  color: #171f46;
+}
+.tow{
+  font-size: 17px;
+  color: #64748b;
 }
