@@ -36,3 +36,36 @@
     transform: rotate(360deg);
   }
 }
+.main-conatiner{
+  display: flex;
+  flex-direction:column ;
+  align-items: center;
+  justify-content: center;
+}
+.dark-main{
+  background-color: black;
+  width: 200px;
+  padding: 20px;
+  margin-top: 20%;
+}
+.dark-heading{
+  color: white;
+  text-align: center;
+}
+.main{
+  background-color: white;
+  width: 200px;
+  border: 1px solid black;
+  margin-top: 20%;
+  padding: 20px;
+  
+}
+.heading{
+  color: black;
+  text-align: center;
+}
+button{
+  display: block;
+  margin: auto;
+}
+
