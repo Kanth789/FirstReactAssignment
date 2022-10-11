@@ -10,6 +10,10 @@ const BannerProfile = (props) =>{
             <div className="SecondPart">
                 <img src={bannerDetails.imgUrl}></img>
             </div>
+            {bannerDetails.imgUrl2?
+            <div className="ThirdPart">
+                <img src ={bannerDetails.imgUrl2}></img>
+            </div>:null}
         </div>
     )
 }

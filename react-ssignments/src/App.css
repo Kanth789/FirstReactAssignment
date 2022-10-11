@@ -1,3 +1,6 @@
+*{
+  font-family: Roboto;
+}
 .App {
   text-align: center;
 }
@@ -35,4 +38,53 @@
   to {
     transform: rotate(360deg);
   }
+}
+.main-conatiner{
+  max-width: 1200px;
+  margin: auto;
+  margin-top: 50px;
+  height: 100%;
+}
+.banner-main{
+  padding: 0px 100px;
+}
+.Firstdiv , .Seconddiv,.Thirddiv{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  border: 1px solid grey;
+  border-radius: 12px;
+
+}
+.firstPart{
+  padding: 20px;
+}
+.SecondPart{
+  border-radius: 12px;
+  
+}
+.Seconddiv .firstPart{
+  order: 1;
+}
+.Thirddiv .firstPart{
+  order: 1;
+}
+html{
+  height: 100vh;
+}
+.first-heading{
+  color: #326a9d;
+  font-size: 30px;
+  font-weight: 600;
+}
+.first-button{
+  padding: 10px 12px;
+  border: 2px solid #326a9d;
+  color: #326a9d;
+  font-size: 14px;
+  border-radius: 7px;
+  background-color: transparent;
+}
+.ThirdPart{
+  order: 2;
 }
