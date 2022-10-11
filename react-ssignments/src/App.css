@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+.main-conatiner{
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.main{
+  width: 200px;
+  border: 1px solid black;
+  text-align: center;
+  margin-top: 15%;
+  padding: 40px 40px;
+  background-color:#4d54a570;
+  border-radius: 20px;
+}
+button{
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: none;
+}
