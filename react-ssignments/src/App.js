@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import UserProfile from './components/UserProfile/index';
+import UserProfile from './components/UserProfile';
 function App() {
   
    const userDetailsList = [
