@@ -36,3 +36,32 @@
     transform: rotate(360deg);
   }
 }
+
+.imgUrl{
+ width: 250px;
+ border-radius: 15px;
+ 
+}
+.main{
+  display: grid;
+  grid-template-columns: auto auto;
+  margin-top: 50px;
+}
+.main-conatiner{
+  max-width: 1200px;
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
+input{
+  width: 40%;
+  padding: 8px 10px;
+}
+.heading{
+  font-size: 36px;
+  font-weight: 600;
+}
+body{
+  font-family: Open Sans;
+}
