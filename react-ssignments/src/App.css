@@ -36,3 +36,41 @@
     transform: rotate(360deg);
   }
 }
+body{
+  background-image: url('https://assets.ccbp.in/frontend/react-js/random-no-generator-bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+.main-conatiner{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15%;
+  text-align: center;
+}
+.main{
+  
+  padding: 30px;
+  background-color: #ffffff;
+  box-shadow: 5px 5px 10px 5px grey;
+}
+.header{
+  font-size: 20px;
+  color: #0b69ff;
+}
+button{
+  background-color: #0b69ff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 15px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+}
+.randomnumber{
+  color: #0b69ff;
+  font-size: 20px;
+  font-weight: 600;
+}

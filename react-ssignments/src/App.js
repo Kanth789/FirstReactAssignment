@@ -1,11 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
-
+import Random from './components/Random/Random';
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <Random/>
   );
 }
 
