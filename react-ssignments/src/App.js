@@ -50,7 +50,7 @@ import Destination from './components/Destination/Destination';
     }
     render(){
         const {searchInput} = this.state
-        const searchResults = placeDeatils.filter((eachUser)=> eachUser.placeName.includes(searchInput),)
+        const searchResults = placeDeatils.filter((eachUser)=> eachUser.placeName.toLowerCase().includes(searchInput.toLowerCase()),)
         return(
             <div className='main-conatiner'>
             <div className="header">
