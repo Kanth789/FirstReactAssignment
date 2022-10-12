@@ -38,11 +38,12 @@
 }
 
 .main-conatiner{
-  max-width: 1200px;
+
  display: flex;
  flex-direction: column;
  align-items: center;
  justify-content: center;
+ height: 100vh;
 }
 .image {
   width: 500px;
@@ -53,7 +54,7 @@
 .div1{
   display: flex;
   flex-direction: row;
-  justify-content:space-around;
+  justify-content:space-between;
   align-items: center;
 }
 .div1 img{
@@ -62,7 +63,26 @@
   margin-left: 30px;
 }
 input{
-  width: 100%;
-  margin-top: 30px;
-  padding: 6px 16px;
+  width: 450%;
+    padding: 12px 76px;
+    margin-left: -50px;
+   border: none;
+}
+.main-box{
+  padding: 0px 60px 0px 60px;
+  margin-top: 20px;
+  box-shadow: 6px 6px 6px 6px rgb(180, 174, 174);
+  border-radius: 15px;
+}
+.searchInput{
+   display: flex;
+   position: relative;
+}
+.searchInput img{
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  margin-top: 12px;
+  margin-right: 20px;
+  padding-right: 20px;
 }
