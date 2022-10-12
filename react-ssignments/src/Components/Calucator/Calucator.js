@@ -1,17 +1,18 @@
 import { Component } from "react";
 
 class Calcualte extends Component{
-    state = {searchInput:'',number:0}
+    state = {searchInput:''}
     ChangeNumber = (event) =>{
 
         this.setState({searchInput: event.target.value});
-        this.setState((prevState)=>({number:prevState.number + 1}));
+        // this.setState((prevState)=>({number:prevState.number + 1}));
         
     }
     render(){
-        const {number} = this.state
+        const {searchInput} = this.state
         return(
             <div className="main-conatiner">
+                <div className="box">
             <div className='left-conatiner'>
               <div className='heading'>
                 <h3 className='header'>Calcualte the Letters you Enter</h3>
@@ -21,10 +22,13 @@ class Calcualte extends Component{
                 <input type="text"placeholder="enter the phrase" onChange={this.ChangeNumber}></input>
               </div>
               <div className='button-div'>
-                <button >No of Letters:{number}</button>
+                <button >No of Letters:{searchInput.length}</button>
               </div>
             </div>
-            <div className='right-conatiner'></div>
+            <div className='right-conatiner'>
+                <img src="https://assets.ccbp.in/frontend/react-js/stop-watch-with-calculator-img.png"></img>
+            </div>
+          </div>
           </div>
         )
     }

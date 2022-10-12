@@ -37,5 +37,53 @@
   }
 }
 body{
-  background-color: ;
+  background:  #1d976c;
+background: linear-gradient(90deg, #1d976c  0%,#93f9b9  35%,  #219a6f 100%);
+}
+.box{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  
+}
+.main-conatiner{
+  max-width: 1200px;
+  display: block;
+  margin: auto;
+}
+.right-conatiner img{
+  width: 100%;
+}
+.header{
+  font-size: 40px;
+  color: white;
+}
+.searchInput{
+  display: flex;
+  flex-direction: column;
+}
+input{
+  padding: 8px 15px;
+  border:2px solid black;
+  width: 80%;
+  background-color: transparent;
+}
+input::placeholder{
+  font-size: 15px;
+  color: #282c34;
+  text-transform: capitalize;
+}
+.button-div{
+  margin-top: 20px;
+}
+button{
+  padding: 17px 27px;
+  border-radius: 12px;
+  background-color: #ffffff;
+  font-size: 18px;
+  color: #219a6f;
+  font-weight: 600;
+  border:none;
 }
