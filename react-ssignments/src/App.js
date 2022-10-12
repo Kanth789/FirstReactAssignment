@@ -1,12 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
+import Calucator from './Components/Calucator/Calucator';
 
-function App() {
-  return (
-    <div className="App">
-      
-    </div>
-  );
+function App(){
+
+return (
+ <Calucator/>
+);
 }
 
 export default App;
