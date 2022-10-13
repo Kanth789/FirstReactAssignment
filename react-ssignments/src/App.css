@@ -36,3 +36,33 @@
     transform: rotate(360deg);
   }
 }
+body{
+  background-color: #93c5fd;
+  font-family: Roboto;
+}
+.main-conatiner{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.main{
+  padding: 30px ;
+  background-color: #f8fafc;
+  border-radius: 25px;
+}
+.header h4{
+  font-size: 32px;
+  font-weight: 800;
+}
+select{
+  padding: 12px 40px;
+}
+label{
+  margin-left: 13px;
+  font-size: 18px;
+}
+.optionValue{
+  font-size: 22px;
+}
