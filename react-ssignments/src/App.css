@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+.app1 img{
+  width: 300px;
+}
+.app-conatiner{
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
