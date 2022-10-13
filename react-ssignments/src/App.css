@@ -36,45 +36,57 @@
     transform: rotate(360deg);
   }
 }
+body{
+  font-family: Roboto;
+}
 .main-conatiner{
     display: flex;
     flex-direction: column;
     text-align: center;
-    width: 500px;
+    width: 400px;
     background-color: #150b3e;
+    padding: 30px 46px;
+    border-radius: 20px;
 }
 .main-header{
   display: flex;
   flex-direction: row;
-
-  justify-content: space-between;
+  align-items: center;
+  
 
 }
 .circle{
   width: 100px;
   height: 100px;
   border-radius: 50px;
-  background-color: grey;
+  background-color:  #c7d2fe;
   margin-right: 20px;
+}
+.circle h3{
+  margin-top: 40%;
+  font-size: 20px;
+  color:  #7c3aed;
 }
 .mid-conatiner{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  
+  align-items: center;
 }
 .rupees p{
   float: right;
-  color: #d4d2db;
+  color: #585076 ;
 }
 .withdraw h3{
   float: left;
   color: #d4d2db;
+  font-size: 28px;
+  font-weight: 600;
 }
 .button-box{
   display: grid;
   grid-template-columns: auto auto;
-  grid-row-gap: 50px;
+  grid-row-gap: 20px;
 }
 .main{
   display: flex;
@@ -86,10 +98,30 @@
 }
 .user-name{
   color: #d4d2db;
+  font-size: 28px;
+  
 }
 .one, .two{
-  color: #d4d2db;
+  color: #585076;
+  font-size: 24px;
+}
+.two h5{
+   color:#d4d2db ;
+   font-size: 28px;
+   font-weight: 600;
 }
 .money h5{
   color: #d4d2db;
+  float: left;
+  font-size: 17px;
+  letter-spacing: 1.5px;
+} 
+button{
+  padding: 12px 70px;
+  background-color: #585076;
+  border: 1px solid #d4d2db;
+  font-size: 23px;
+  color:  #d4d2db;
+  font-weight: 600;
+  border-radius: 12px;
 }

@@ -34,7 +34,7 @@ class App extends Component{
       <div className='main'>
       <div className='main-conatiner'>
         <div className='main-header'>
-          <div className='circle'></div>
+          <div className='circle'><h3>S</h3></div>
           <div className='user-name'>Sarah Williams</div>
         </div>
         <div className='mid-conatiner'>
