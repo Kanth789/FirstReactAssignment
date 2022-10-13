@@ -58,6 +58,7 @@ font-family: Roboto;
 .main{
   padding: 40px;
   background-color: #ffffff;
+  border-radius: 15px;
 }
 .maiin{
   padding: 0px;
