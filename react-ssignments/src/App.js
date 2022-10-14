@@ -28,7 +28,7 @@ let TossList = ["Heads","Tails"]
 class App extends Component{
   state ={
     stateUrl:"https://i.ibb.co/bvdsr2w/Screenshot-from-2022-10-14-12-38-37.png",
-    HeadsCount:0,
+    HeadsCount:1,
     TailsCount:0
   }
   Onclicked = () =>{
@@ -63,13 +63,13 @@ class App extends Component{
           </div>
           <div className='Tabs'>
             <div className='tab1'>
-              <p>Total:{HeadsCount + TailsCount}</p>
+              <p>Total:<span>{HeadsCount + TailsCount}</span></p>
             </div>
             <div className='tab1'>
-              <p>Heads:{HeadsCount}</p>
+              <p>Heads:<span>{HeadsCount}</span></p>
             </div>
             <div className='tab1'>
-              <p>Tails:{TailsCount}</p>
+              <p>Tails:<span>{TailsCount}</span></p>
             </div>
           </div>
         </div>
