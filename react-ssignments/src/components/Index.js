@@ -7,7 +7,7 @@ const Tabs = (props) =>{
     }
     return(
         <div className="div1">
-            <p onClick={OnclickedTab}>{name}</p>
+            <p className="para" onClick={OnclickedTab}>{name}</p>
         </div>
     )
 }
