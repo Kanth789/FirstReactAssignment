@@ -36,3 +36,123 @@
     transform: rotate(360deg);
   }
 }
+body{
+  font-family: Roboto;
+  background: rgb(250,114,87);
+background: linear-gradient(90deg, rgba(250,114,87,1) 0%, rgba(252,99,167,1) 35%, rgba(253,221,219,1) 100%);
+}
+.main-conatiner{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.main{
+  padding: 20px 120px;
+  background-color: #ffffff;
+  width: 800px;
+  
+}
+form{
+  display: flex;
+  flex-direction: column;
+}
+.user-name{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+}
+.user-name h4{
+  margin-right: 30px;
+}
+.first-part{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.profile{
+  border-radius: 100px;
+  background-color: #61dafb;
+  padding: 20px 25px;
+}
+.user-details{
+  padding:12px 17px;
+}
+.second-part{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.like {
+  width: 60px;
+  
+ 
+}
+.like img{
+  width: 100%;
+  margin-right: 10px;
+}
+.like button{
+  background-color: transparent;
+  border: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.like  p{
+  font-size: 16px;
+}
+.delete {
+  width: 30px;
+  
+}
+.delete img{
+  width: 100%;
+}
+.form-conatiner{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.main-image{
+  width: 300px;
+}
+.main-image img{
+  width: 100%;
+}
+.heading{
+  font-size: 32px;
+}
+.input{
+  padding: 12px 30px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  border: 1px solid #cbd2d9 ;
+}
+
+.form-conatiner button{
+  padding: 15px;
+  background-color: #0284c7;
+  border: none;
+  border-radius: 6px;
+  color: #dee0e3;
+  font-size: 15px;
+}
+.counting-comment{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+}
+.count{
+   padding: 4px 10px;
+   background-color:#0284c7;
+   margin-right: 5px;
+   color: #ffffff;
+   font-size: 22px;
+   font-weight: 700;
+}
