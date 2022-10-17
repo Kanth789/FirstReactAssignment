@@ -1,4 +1,4 @@
-const TransactionItem = props => {
+const Transcation = props => {
     const {transactionDetails, deleteTransaction} = props
     const {id, title, amount, type} = transactionDetails
   
@@ -29,4 +29,4 @@ const TransactionItem = props => {
     )
   }
   
-  export default TransactionItem
+  export default Transcation

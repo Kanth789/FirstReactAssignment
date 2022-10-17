@@ -1,10 +1,9 @@
 import {Component} from 'react'
 import {v4} from 'uuid'
 
-import TransactionItem from '../TransactionItem'
-import MoneyDetails from '../MoneyDetails'
+import Transcation from './Transcation'
+import MoneyDetails from './MoneyDetails'
 
-import './index.css'
 
 const transactionTypeOptions = [
   {
@@ -129,17 +128,7 @@ class MoneyManager extends Component {
               Welcome back to your
               <span className="money-manager-text"> Money Manager</span>
             </p>
-            <p className="my-text">
-              WebApp built by Tenali Bhargav. <br />
-              To see my LinkedIn Profile
-              <a
-                href="https://www.linkedin.com/in/bhargavtenali/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Click Here
-              </a>
-            </p>
+           
           </div>
           <MoneyDetails
             balanceAmount={balanceAmount}
@@ -200,7 +189,7 @@ class MoneyManager extends Component {
                     <p className="table-header-cell">Type</p>
                   </li>
                   {transactionsList.map(eachTransaction => (
-                    <TransactionItem
+                    <Transcation
                       key={eachTransaction.id}
                       transactionDetails={eachTransaction}
                       deleteTransaction={this.deleteTransaction}
