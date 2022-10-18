@@ -8,10 +8,16 @@ import { Component } from "react";
     componentDidMount(){
         this.timerID = setInterval(
             this.tick,1000)
+         console.log("COUNT")
     }
     tick = ()=>{
         this.setState({ date : new Date()})
     }
+    componentWillUnmount(){
+        clearInterval(this.timerID)
+        console.log("UNMOUNT")
+    }
+    
     render(){
         const {date} = this.state
         console.log(date)
