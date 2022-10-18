@@ -36,7 +36,9 @@
     transform: rotate(360deg);
   }
 }
-
+.set-Timer-header{
+  text-align: center;
+}
 .main-conatiner{
   display: block;
   max-width: 1200px;
@@ -57,26 +59,26 @@
 .display-onTime{
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-content: center;
- margin-top: -100%;
+ 
 }
 .Timer-control-container{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-.start-stop{
-  width: 40px;
+.start-stop,.reset{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 .start-stop img{
-  width: 100%;
+  width: 40%;
 }
-.reset{
-  width: 40px;
-}
+
 .reset img{
-  width: 100%;
+  width: 40%;
 }
 .set-timer-tabs{
   display: flex;
@@ -96,3 +98,24 @@ background: linear-gradient(90deg,#ffffff 0%,#defafe 35%, #cffcf1 100%);
   height: 100px;
   font-size: 20px;
 }
+button{
+  background-color: transparent;
+  border: none;
+}
+.start-stop h2{
+  font-size: 30px;
+}
+.reset h2{
+  font-size: 30px;
+}
+.set-timer-decrement h3{
+  font-size: 30px;
+   background: linear-gradient(#34f0c1 , #09a77f );
+   padding: 7px 25px;
+   border-radius: 15px;
+  }
+  .set-timer-decrement button{
+    font-size: 34px;
+    margin-right: 10px;
+  }
+  
