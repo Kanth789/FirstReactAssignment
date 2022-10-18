@@ -36,17 +36,15 @@
     transform: rotate(360deg);
   }
 }
-/* .main-conatiner2{
+.main-conatiner2{
   background-image: url('https://assets.ccbp.in/frontend/react-js/stopwatch-sm-bg.png');
   background-repeat: no-repeat;
   object-fit:fill;
   height: 100vh;
-  background-size: 50%;
+  background-size: 100%;
   
-} */
-.main-conatiner2{
-  margin-top: 30%;
 }
+
 #root{
   display: flex;
   flex-direction: row;
