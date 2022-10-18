@@ -1,12 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      
-    </div>
-  );
+import Digital from './components/Digital';
+const App = () =>{
+  return <Digital/>
 }
 
 export default App;
