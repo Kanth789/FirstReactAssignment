@@ -36,3 +36,58 @@
     transform: rotate(360deg);
   }
 }
+/* .main-conatiner2{
+  background-image: url('https://assets.ccbp.in/frontend/react-js/stopwatch-sm-bg.png');
+  background-repeat: no-repeat;
+  object-fit:fill;
+  height: 100vh;
+  background-size: 50%;
+  
+} */
+.main-conatiner2{
+  margin-top: 30%;
+}
+#root{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 15px 51px 15px 15px rgb(196, 190, 190);
+  height: 100vh;
+}
+.main-conatiner{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+.box{
+  padding: 30px 50px;
+  box-shadow: 5px 5px 5px 5px rgb(196, 190, 190);
+}
+.timer-img{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.timer h2{
+  font-size: 35px;
+  text-align: center;
+  color: #282c34;
+}
+button{
+ margin-right: 8px;
+ padding: 8px 20px;
+ border: none;
+ border-radius: 8px;
+}
+.btn1{
+  background-color:  #1db05f;
+  
+}
+.btn2{
+  background-color:#ef0d36 ;
+}
+.btn3{
+  background-color: #eaa800;
+}
