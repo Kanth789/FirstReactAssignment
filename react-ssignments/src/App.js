@@ -12,7 +12,8 @@ class App extends Component{
      website:'',
      username:'',
      password:'',
-     isShowButton: false
+     isShowButton: false,
+     searchInput:''
   }
   Onchangewebsite = (event)=>{
      this.setState({website:event.target.value})
@@ -50,14 +51,19 @@ class App extends Component{
      
       
   }
+  onSearchInput = (event) =>{
+  
+     this.setState({searchInput:event.target.value})
+  }
   onDeleteApp = (uniqueNo) =>{
     const {statePasswordList} = this.state
     const filteredData = statePasswordList.filter(eachItem =>eachItem.uniqueNo !== uniqueNo)
     this.setState({statePasswordList:filteredData})
   }
   render(){
-    const searchResult = statePasswordList.filter((eachItem) => eachItem.username.toLowerCase().includes(.toLowerCase()))
-    const{statePasswordList,website,username,password,isShowButton} = this.state
+   
+    const{statePasswordList,website,username,password,isShowButton,searchInput} = this.state
+    const searchResult = statePasswordList.filter((eachItem) => eachItem.username.toLowerCase().includes(searchInput.toLowerCase()))
     return(
       <div className='main-conatiner'>
         <div className='main'>
@@ -84,7 +90,7 @@ class App extends Component{
                 <h3>Your Password<span></span></h3>
               </div>
               <div className='header-input'>
-              <input type="text"></input>
+              <input type="text" onChange = {this.onSearchInput}></input>
               </div>
               
             </div>
