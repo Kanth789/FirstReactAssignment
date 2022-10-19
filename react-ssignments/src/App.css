@@ -36,3 +36,70 @@
     transform: rotate(360deg);
   }
 }
+.main-conatiner{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #9ba9eb;
+}
+.first-Conatiner{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #5763a5;
+  margin-bottom: 20px;
+  padding: 20px 40px;
+  border-radius: 12px;
+}
+.first-image img{
+  width: 300px;
+}
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ 
+}
+.logo img{
+  width: 100px;
+}
+.header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.second-conatiner{
+  background-color: #5763a5;
+  padding: 20px 40px;
+  border-radius: 12px;
+}
+.second-header{
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+ align-items: center;
+ 
+}
+.div1{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.logo-circle{
+  padding: 20px;
+  background-color: aquamarine;
+  border-radius: 50px;
+  margin-right: 12px;
+}
+h4,h5,p{
+  margin: 0px;
+}
+.delete img{
+  width: 50px;
+}
+.checkBox{
+  float: right;
+}
