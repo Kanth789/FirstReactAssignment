@@ -56,6 +56,7 @@ class App extends Component{
     this.setState({statePasswordList:filteredData})
   }
   render(){
+    const searchResult = statePasswordList.filter((eachItem) => eachItem.username.toLowerCase().includes(.toLowerCase()))
     const{statePasswordList,website,username,password,isShowButton} = this.state
     return(
       <div className='main-conatiner'>
