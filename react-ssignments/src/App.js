@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import Password from './components/Password';
 
 const PasswordList = []
+const colorClassName = ['red','yellow','green','blue']
 
 class App extends Component {
   state = {
@@ -28,7 +29,9 @@ class App extends Component {
     this.setState({ password: event.target.value })
     console.log(event.target.value)
   }
+  
   onAddPassword = (event) => {
+    const randomColorName = colorClassName[Math.floor(Math.random() * colorClassName.length)];
     event.preventDefault()
     const { website, username, password } = this.state
     console.log(this.state)
@@ -37,6 +40,7 @@ class App extends Component {
       website,
       username,
       password,
+      colorName:randomColorName,
       isShowButton: false
     }
     this.setState(prevState => ({
@@ -64,7 +68,7 @@ class App extends Component {
   render() {
 
     const { statePasswordList, website, username, password, isShowButton, searchInput } = this.state
-    const searchResult = statePasswordList.filter((eachItem) => eachItem.username.toLowerCase().includes(searchInput.toLowerCase()))
+    const searchResult = statePasswordList.filter((eachItem) => eachItem.website.toLowerCase().includes(searchInput.toLowerCase()))
     return (
       <div className='main-conatiner'>
         <div className='main'>
