@@ -46,6 +46,7 @@
 .main{
   padding: 20px 80px;
   background-color: #ffffff;
+  max-width: 500px;
 }
 .header{
   font-size: 32px;
@@ -57,7 +58,7 @@ body{
 
 }
 .questions{
-  padding: 20px 60px;
+  padding: 7px 60px;
   border: 1px solid #9aa5b1;
   margin-top: 20px;
  
