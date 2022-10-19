@@ -1,14 +1,17 @@
 const Password = (props) =>{
     const{PropPassword,isShowButton,onDeleteApp} = props
     const{uniqueNo,website,username,password} = PropPassword
+    console.log(isShowButton,'isShowButton')
     const passwordShow = isShowButton ? password : "*".repeat(password.length)
     const OnDelete = () =>{
         onDeleteApp(uniqueNo)
     }
+   
     return(
+        
         <div className="div1">
             <div className="logo">
-                <div className="logo-circle"></div>
+                <div className="logo-circle">{username[0].toUpperCase()}</div>
             </div>
             <div className="div-content">
                 <div className="user-name">
