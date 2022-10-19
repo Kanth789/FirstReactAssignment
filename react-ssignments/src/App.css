@@ -36,3 +36,43 @@
     transform: rotate(360deg);
   }
 }
+.main-conatiner{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.main{
+  padding: 20px 80px;
+  background-color: #ffffff;
+}
+.header{
+  font-size: 32px;
+  text-align: center;
+  color: #cb8805;
+}
+body{
+  background: linear-gradient( #d4cdcd,#f1f5f8,#9aa5b1);
+
+}
+.questions{
+  padding: 20px 60px;
+  border: 1px solid #9aa5b1;
+  margin-top: 20px;
+ 
+  border-radius: 12px;
+}
+.questions button{
+  background-color: transparent;
+  border: none;
+  
+}
+.questions-conatiner{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.answer-para{
+  overflow-wrap: normal;
+}
