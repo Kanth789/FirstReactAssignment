@@ -75,6 +75,7 @@ li{
   padding: 20px;
   margin-top: 10%;
   border-radius: 12px;
+  height: 80vh;
  }
  .logo{
   display: flex;
@@ -101,3 +102,6 @@ li{
   
   margin-top: 25px;
  }
+ /* body{
+  font-family: Roboto;
+ } */
