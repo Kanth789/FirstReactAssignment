@@ -36,3 +36,70 @@
     transform: rotate(360deg);
   }
 }
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10%;
+  
+}
+.crypto-currencies-container{
+  width: 800px;
+}
+.crypto-currency-img{
+  width: 550px;
+  display: block;
+  margin: auto;
+}
+.heading{
+  text-align: center;
+  color: #00e7ff;
+}
+.list-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: white;
+  background-color: #092e33;
+  padding: 10px 30px;
+}
+.usd-and-euro-values-container{
+  display: flex;
+  flex-direction: row;
+  
+}
+.usd-and-euro-values-container p{
+  margin-left: 20px;
+}
+.currency-logo{
+  width: 35px;
+  height: 30px;
+}
+.logo-and-title-container{
+  display: flex;
+  align-items: center;
+}
+.logo-and-title-container img{
+  margin-right: 20px;
+}
+.item-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: white;
+  align-items: center;
+}
+.list-body{
+  padding: 10px 30px;
+}
+.item-container{
+  margin-top: 10px;
+}
+body{
+  background-color: #000000;
+  font-family: "Inter";
+}
+.crypto-currencies-list{
+  border: 4px solid #00e7ff;
+  
+}
