@@ -1,11 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
-
+import { BrowserRouter,Route ,Routes} from "react-router-dom" 
+import { RegisterForm } from './components/RegisterForm';
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <BrowserRouter>
+    <Routes>
+    
+      <Route path="/" element={<RegisterForm/>}></Route>
+    </Routes>
+ </BrowserRouter>
   );
 }
 
