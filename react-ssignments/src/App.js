@@ -1,12 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
-
-function App() {
+import { Home } from './components/Home';
+import { Notfound } from './components/Notfound';
+import { TeamMatchFuntcional } from './components/TeamMatchFuntcional';
+import { BrowserRouter,Route ,Routes} from "react-router-dom" 
+const App = () =>{
   return (
-    <div className="App">
+  <BrowserRouter>
+    <Routes>
       
-    </div>
-  );
+      <Route  path="/" element={<Home/>}></Route>
+      <Route path="/team-matches/:id" element={<TeamMatchFuntcional/>}></Route>
+      <Route path="*" element={<Notfound/>}></Route>
+    </Routes>
+ </BrowserRouter>
+  )  
 }
-
 export default App;
