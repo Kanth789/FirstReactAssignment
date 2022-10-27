@@ -1,135 +1,163 @@
-import { Component } from "react";
 
-class RegisterForm extends Component{
-    state ={
-        firstName:'',
-        lastName:'',
-        isFormSubmitted:false,
-        FirstMessage:'',
-        SecondMessage:''
-    }
-    validateFirstName = ()=>{
-        const{firstName} = this.state
-        return firstName !== ''
-    }
-    validateLastName = ()=>{
-        const{lastName} = this.state
-        return lastName !== ''
-    }
-    onBlurFirstName = ()=>{
-        const isValidateFirstName = this.validateFirstName()
-        this.setState({FirstMessage : !isValidateFirstName})
-    }
-    onBlurLastName = ()=>{
-        const isValidateLastName = this.validatelLastName()
-        this.setState({SecondMessage : !isValidateLastName})
-    }
-    renderUsernameField = ()=>{
-        const {firstName} = this.state
-        return (
-          <>
-            <label>
-              USERNAME
-            </label>
-            <input
-              type="text"
-              id="firstName"
-              className="username-input"
-              value={firstName}
-              placeholder="firstName"
-              onChange={this.onChangeUsername}
-            />
-          </>
-        )
-    }
-    renderPasswordField = () =>{
-        const {lastName} = this.state
-        return (
-          <>
-            <label>
-              lastName
-            </label>
-            <input
-              type="text"
-              id="lastName"
-              className="lastName-input"
-              value={lastName}
-              placeholder="lastName"
-              onChange={this.onChangePassword}
-            />
-          </>
-        )
-    }
-    button =( )=>{
-      return (
-        <>
-          <button>Login</button>
-        </>
-      )
-    }
-    onChangeUsername = event => {
-        this.setState({firstName: event.target.value})
-      }
-    
-      onChangePassword = event => {
-        this.setState({lastName: event.target.value})
-      }
-    submitForm = async (event)=>{
-        event.preventDefault()
-        const{firstName,lastName} = this.state
-        
-        
-          if(firstName && lastName !== '')
-          {
-            this.setState({isFormSubmitted:true})
-          }
-          else{
-            this.setState({isFormSubmitted:false,FirstMessage:!this.validateFirstName,SecondMessage:!this.validateLastName})
-          }
-        }
-    
-          
-    renderForm =() =>{
-        const {FirstMessage,SecondMessage} = this.state
-        return(
-        <div className="form">
-           
-        <form className="form-container" onSubmit={this.submitForm}>
-                
-                <div className="input-container">{this.renderUsernameField()}</div>
-                {FirstMessage && (<p className="red">*Required</p>)}
-                <div className="input-container">{this.renderPasswordField()}</div>
-                {SecondMessage && (<p className="red">*Required</p>)}
-                <div className="input-container">{this.button()}</div>
-                
-               
-                
-        </form>
+import {Component} from 'react'
 
+class RegistrationForm extends Component {
+  state = {
+    firstName: '',
+    lastName: '',
+    lastNameError: false,
+    firstNameError: false,
+    isFormSubmitted: false,
+  }
+
+  validateFirstName = () => {
+    const {firstName} = this.state
+    return firstName !== ''
+  }
+
+  validateLastName = () => {
+    const {lastName} = this.state
+    return lastName !== ''
+  }
+
+  onBlurFirstName = () => {
+    const isValidFirstName = this.validateFirstName()
+
+    this.setState({firstNameError: !isValidFirstName})
+  }
+
+  onBlurLastName = () => {
+    const isValidLastName = this.validateLastName()
+
+    this.setState({lastNameError: !isValidLastName})
+    
+  }
+
+  renderFormContainer = () => {
+    const {lastNameError, firstNameError} = this.state
+    
+    return (
+      <form className="form-container" onSubmit={this.submitForm}>
+        <div className="input-element">{this.renderFirstName()}</div>
+        {firstNameError && <p className="error-message">*Required</p>}
+        <div className="input-element">{this.renderLastName()}</div>
+        {lastNameError && <p className="error-message">*Required</p>}
+        <button className="submit-button" type="submit">
+          Submit
+        </button>
+      </form>
+    )
+  }
+
+  submitForm = event => {
+    event.preventDefault()
+    const isValidFirstName = this.validateFirstName()
+    const isValidLastName = this.validateLastName()
+
+    if (isValidFirstName && isValidLastName) {
+      this.setState({isFormSubmitted: true})
+    } else {
+      this.setState({
+        firstNameError: !isValidFirstName,
+        lastNameError: !isValidLastName,
+        isFormSubmitted: false,
+      })
+    }
+  }
+
+  renderFirstName = () => {
+    const {firstName, firstNameError} = this.state
+    const showError = firstNameError ? 'error-field' : ''
+    return (
+      <>
+        <label className="label-text" htmlFor="first_name">
+          FIRST NAME
+        </label>
+        <input
+          type="text"
+          value={firstName}
+          className={`user-input ${showError}`}
+          id="first_name"
+          placeholder="First Name"
+          onChange={this.onChangeFirstName}
+          onBlur={this.onBlurFirstName}
+        />
+      </>
+    )
+  }
+
+  onChangeFirstName = event => {
+    this.setState({firstName: event.target.value})
+  }
+
+  renderLastName = () => {
+    const {lastName, lastNameError} = this.state
+    const showError = lastNameError ? 'error-field' : ''
+    return (
+      <>
+        <label className="label-text" htmlFor="last_name">
+          LAST NAME
+        </label>
+        <input
+          type="text"
+          value={lastName}
+          className={`user-input ${showError}`}
+          id="last_name"
+          placeholder="Last Name"
+          onChange={this.onChangeLastName}
+          onBlur={this.onBlurLastName}
+        />
+      </>
+    )
+  }
+
+  onChangeLastName = event => {
+    this.setState({lastName: event.target.value})
+  }
+
+  renderSuccessContainer = () => (
+    <div className="success-container">
+      <img
+        className="success-image"
+        src="https://assets.ccbp.in/frontend/react-js/success-icon-img.png"
+        alt="success-logo"
+      />
+      <p className="success-heading">Submitted Successfully</p>
+      <button className="resubmit" type="button" onClick={this.onClickResubmit}>
+        Submit Another Response
+      </button>
     </div>
-        )
-    }  
-    
-    renderFormSumbitted = () =>{
-        <div className="form">
-            <div className="img">
-                <img src="https://assets.ccbp.in/frontend/react-js/success-icon-img.png "/>
-            </div>
-            <div className="para">Submitted Sucessfully</div>
-            <div className="button">
-                <button>Another-Form</button>
-            </div>
+  )
+
+  onClickResubmit = () =>
+    this.setState({isFormSubmitted: false, firstName: '', lastName: ''})
+
+  render() {
+    const {
+      firstName,
+      lastName,
+      firstNameError,
+      lastNameError,
+      isFormSubmitted,
+    } = this.state
+    console.log(
+      firstName,
+      lastName,
+      firstNameError,
+      lastNameError,
+      isFormSubmitted,
+    )
+    return (
+      <div className="app-container">
+        <h1 className="heading">Registration</h1>
+        <div className="box-container">
+          {isFormSubmitted
+            ? this.renderSuccessContainer()
+            : this.renderFormContainer()}
         </div>
-    }
-    render(){
-      const {isFormSubmitted} = this.state
-        return(
-            <div className="login-form-conatiner">
-                
-              {isFormSubmitted ? this.renderFormSumbitted():this.renderForm()}  
-            </div>
-        )
-    }
+      </div>
+    )
+  }
 }
 
-export  {RegisterForm}
+export default RegistrationForm
