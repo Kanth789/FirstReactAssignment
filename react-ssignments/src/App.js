@@ -5,18 +5,20 @@ import { Notfound } from './components/Notfound';
 import { Cart } from './components/Cart';
 import { Products } from './components/Products';
 import {LoginPageRoute} from './components/LoginPageRoute';
-import { BrowserRouter,Route ,Routes} from 'react-router-dom'; 
+import { BrowserRouter,Route ,Redirect,Switch} from 'react-router-dom'; 
+import ProctetedRoute from './components/ProctetedRoute';
 function App() {
   return (
     <BrowserRouter>
-    <Routes>
+    <Switch>
       
-      <Route  path="/" element={<Home/>}></Route>
-      <Route path="/products" element={<Products/>}></Route>
-      <Route path="/cart" element={<Cart/>}></Route>
-      <Route path="*" element={<Notfound/>}></Route>
-      <Route path="/login" element={<LoginPageRoute/>}></Route>
-    </Routes>
+      <ProctetedRoute exact path="/" component={Home}></ProctetedRoute>
+      <ProctetedRoute exact path="/products" component={Products}></ProctetedRoute>
+      <ProctetedRoute exact  path="/cart" component={Cart}></ProctetedRoute>
+      <Route exact path="/login" component={LoginPageRoute}></Route>
+      <Route  path="*" component={Notfound}></Route>
+      <Redirect to="not-found" />
+    </Switch>
  </BrowserRouter>
   )
 }

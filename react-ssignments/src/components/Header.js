@@ -1,13 +1,13 @@
-import {Link,useNavigate} from 'react-router-dom';
+import {Link,withRouter,useHistory} from 'react-router-dom';
 import Cookies from 'js-cookie';
-import { LogOutPageRoute } from './logoutrout'; 
-import { Navigate } from 'react-router-dom';
+
+
  const Header =()=>{
-     const navigate = useNavigate()
+     const history = useHistory()
     const onClickLogout = ()=>{
         
         Cookies.remove('jwt_token')
-        navigate('/login')
+        history.replace('/login')
     }
     return(
         <div className="header">

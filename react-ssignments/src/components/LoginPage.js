@@ -1,6 +1,6 @@
 import { Component } from "react";
 import Cookies from 'js-cookie';
-import { Navigate } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 class LoginPage extends Component{
     state ={
         username:'',
@@ -87,15 +87,15 @@ class LoginPage extends Component{
     }
     onSubmitSuccess = (jwtToken)=>{
         Cookies.set('jwt_token',jwtToken,{expires:30})
-        const {navigate} = this.props
-        navigate('/')
+        const {history} = this.props
+        history.replace('/')
     }
     render(){
       const {showerrorMsg,errorMessage} = this.state
       const jwtToken = Cookies.get('jwt_token')
       if(jwtToken !== undefined)
       {
-        return <Navigate to = "/"/>
+        return <Redirect to = "/"/>
       }
       
      

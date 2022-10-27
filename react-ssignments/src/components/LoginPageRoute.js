@@ -1,12 +1,12 @@
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { LoginPage } from "./LoginPage";
 
 function LoginPageRoute(){
-    const navigate = useNavigate()
+    const history = useHistory()
     
     
   
-    return <LoginPage navigate={navigate}/>
+    return <LoginPage history={history}/>
 }
 
 export {LoginPageRoute}
