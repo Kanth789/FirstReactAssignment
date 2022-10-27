@@ -8,6 +8,8 @@ export const Home = () =>{
     {
         return <Navigate to="/login"/>
     }
+    
+
     return(
         <>
         <Header/>

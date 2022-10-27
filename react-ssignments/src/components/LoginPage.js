@@ -95,8 +95,10 @@ class LoginPage extends Component{
       const jwtToken = Cookies.get('jwt_token')
       if(jwtToken !== undefined)
       {
-        return <Navigate to="/"/>
+        return <Navigate to = "/"/>
       }
+      
+     
         return(
             <div className="login-form-conatiner">
                 <div className="login-image">
