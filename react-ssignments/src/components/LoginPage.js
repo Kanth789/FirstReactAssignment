@@ -69,12 +69,15 @@ class LoginPage extends Component{
           const response = await fetch(url, options)
         
           const data = await response.json()
-          
+         
           if(response.ok===true)
           {
+            
             this.onSubmitSuccess()
+            
           }
           else{
+            
             this.setState({errorMessage:data.error_msg,
               showerrorMsg:true
           })
