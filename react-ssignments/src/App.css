@@ -36,3 +36,69 @@
     transform: rotate(360deg);
   }
 }
+.repository{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+}
+.card-img{
+  width: 100px;
+}
+.card-img img{
+  width: 100%;
+}
+.main-conatiner{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.header{
+  text-align: center;
+  font-family: Lobster;
+}
+.nav-links{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.repository{
+  margin-top: 40px;
+  font-family: Roboto;
+}
+.card-img {
+  display: block;
+  margin: auto;
+}
+.RepositoryItem-card{
+  text-align: center;
+  background-color: #f8f8ff;
+  padding: 16px;
+  border-radius: 12px;
+}
+.stars,.forks,.issues{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.4px;
+}
+
+.star-icon{
+  color: orange;
+  margin-right: 10px;
+}
+.fork-icon{
+  color: #0284c7;
+  margin-right: 10px;
+}
+.open-icon{
+  color: #e73959;
+  margin-right: 6px;
+}
+.card-title h3{
+  color: #e73959;
+}
+.div-1{
+  cursor: pointer;
+}
