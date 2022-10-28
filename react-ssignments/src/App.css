@@ -112,7 +112,7 @@
   margin: auto;
   
 }
-.products-conatiner,.cart-container{
+.cart-container{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -203,7 +203,7 @@ body{
   color: red;
 }
 
-.products-conatiner{
+.products-conatiner,.prime-deals-list{
   display: grid;
   grid-template-columns: auto auto auto;
   grid-column-gap: 3px;
@@ -276,4 +276,11 @@ body{
     grid-row-gap: 7px;
   }
   
+}
+.prime-deals-failure-img{
+  width: 1200px;
+}
+
+.prime-deals-failure-img img{
+  width: 100%;
 }
