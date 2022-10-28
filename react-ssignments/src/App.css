@@ -203,13 +203,18 @@ body{
   color: red;
 }
 
-.products-conatiner,.prime-deals-list{
+.product-conatiner,.prime-deals-list{
   display: grid;
   grid-template-columns: auto auto auto;
   grid-column-gap: 3px;
   grid-row-gap: 7px;
 }
-
+.product-conatiner{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-column-gap: 3px;
+  grid-row-gap: 7px;
+}
 .card-img img{
   width: 100%;
 }
@@ -283,4 +288,21 @@ body{
 
 .prime-deals-failure-img img{
   width: 100%;
+}
+
+.products-header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.sort-by-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.sort-by-container  select{
+  margin-left: 10px;
 }

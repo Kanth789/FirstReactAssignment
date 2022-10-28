@@ -2,16 +2,29 @@ import { Component } from "react";
 import Cookies from'js-cookie';
 import ProductCard from "./ProductCard";
 import { TailSpin } from 'react-loader-spinner'
+import ProductHeader from "./ProductHeader";
+const sortbyOptions = [
+    {
+      optionId: 'PRICE_HIGH',
+      displayText: 'Price (High-Low)',
+    },
+    {
+      optionId: 'PRICE_LOW',
+      displayText: 'Price (Low-High)',
+    },
+  ]
 class AllProducts extends Component{
     state = {
         productList :[],
         isLoading: true,
+        activeOptionId: sortbyOptions[0].optionId,
     }
     componentDidMount(){
         this.getProducts()
     }
     getProducts =async()=>{
-        const apiUrl ="https://apis.ccbp.in/products"
+        const {activeOptionId} = this.state
+        const apiUrl = `https://apis.ccbp.in/products?sort_by=${activeOptionId}`
         const jwtToken = Cookies.get('jwt_token')
         const options = {
             method:"GET",
@@ -35,15 +48,21 @@ class AllProducts extends Component{
            
         }
     }
+
+    updateActiveOptionId = activeOptionId => {
+        this.setState({activeOptionId}, this.getProducts)
+      }
     renderProductsList =()=>{
-        const {productList} = this.state
+        const {productList,activeOptionId} = this.state
         return(
             <div className="main-conatiner">
                 <div className="main">
-                    <div className="header"> 
-                        <h2>All Products</h2>
+                    <div className="header-all"> 
+                        <ProductHeader activeOptionId={activeOptionId}
+          sortbyOptions={sortbyOptions}
+          updateActiveOptionId={this.updateActiveOptionId}/>
                     </div>
-                    <div className="products-conatiner">
+                    <div className="product-conatiner">
                     {productList.map((eachItem) => (
             <ProductCard productData={eachItem} key={eachItem.id} />
           ))}
