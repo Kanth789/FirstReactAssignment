@@ -7,12 +7,15 @@ const Notification = (props) =>{
     const{className,title,desc,tagElement} = AlertData
     return(
         <div className="card">
-            <div className="card-icon">
+            <div className={`card-icon ${className}`}>
                {props.children}
             </div>
             <div className="card-contnet">
-                <h5>{AlertData.title}</h5>
+                <h5 className={`${className}-h5`}>{AlertData.title}</h5>
                 <p>{AlertData.desc}</p>
+            </div>
+            <div className="card-cross">
+                <GrFormClose/>
             </div>
         </div>
     )
