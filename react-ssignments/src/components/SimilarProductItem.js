@@ -1,13 +1,12 @@
-import { Link } from "react-router-dom";
-
-const ProductCard = (props) =>{
-    const {productData} = props
-    const { id,title, brand, image_Url, rating, price } = productData;
+const SimilarProductItem = (props)=>{
+    const{similarProducts}= props
+    const{total_reviews,title,brand,id,image_url,price,availability,description,rating} = similarProducts
     return(
-        <Link to={`/products/${id}`}  className="nav-link">
+        <>
+        
         <div className="card-conatiner">
             <div className="card-img">
-                <img src={image_Url} alt="card-img"/>
+                <img src={image_url} alt="card-img"/>
             </div>
             <div className="card-title">
                 <h3>{title}</h3>
@@ -29,8 +28,8 @@ const ProductCard = (props) =>{
                 </div>
             </div>
         </div>
-        </Link>
+        </>
     )
 }
 
-export default ProductCard
+export default SimilarProductItem

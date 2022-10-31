@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import  Header  from "./Header";
 export const Home = () =>{
     
@@ -17,7 +18,9 @@ export const Home = () =>{
           in your own way.</p>
           </div>
           <div className="home-content-button">
+            <Link to="/products" className="nav-links">
             <button>Shop Now</button>
+            </Link>
           </div>
           </div>
           <div className="home-content-img">
