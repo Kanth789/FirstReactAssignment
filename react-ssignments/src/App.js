@@ -1,11 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
+import CowinDashboard from './components/CowinDashboard';
 
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <CowinDashboard/>
   );
 }
 

@@ -36,3 +36,74 @@
     transform: rotate(360deg);
   }
 }
+.main-conatiner{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.recharts-default-legend {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.recharts-legend-wrapper{
+  width: 200px;
+  display: block;
+  margin: auto;
+}
+body{
+  background-color: #161625;
+  font-family: Roboto;
+}
+.heading{
+  font-size: 22px;
+  color: #fff;
+}
+.vaccination-coverage{
+  background-color: #1c1c2b;
+  padding: 20px 60px;
+  margin-top: 20px;
+}
+.vaccination-coverage h3,.vaccination-ByGender h3,.vaccination-ByAge h3{
+  color: #fff;
+  font-size: 22px;
+}
+.vaccination-ByGender{
+  background-color: #1c1c2b;
+  padding: 40px 60px;
+  margin-top: 40px;
+}
+.vaccination-ByAge{
+  background-color: #1c1c2b;
+  padding: 40px 60px;
+  margin-top: 40px;
+}
+.recharts-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute !important;
+}
+.header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.header img{
+  width: 50px;
+  
+}
+.header h4{
+  font-size: 28px;
+  color: #fff;
+}
+.recharts-legend-wrapper {
+  position: relative !important;
+  top: 2px !important;
+  display: block;
+  margin: auto;
+  width:1200px;
+}
