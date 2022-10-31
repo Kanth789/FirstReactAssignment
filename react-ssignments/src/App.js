@@ -1,11 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
+import AlertNotifcation from './components/AlertNotifcation';
 
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+  <AlertNotifcation/>
   );
 }
 
