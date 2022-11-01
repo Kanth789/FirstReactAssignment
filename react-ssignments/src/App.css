@@ -36,3 +36,29 @@
     transform: rotate(360deg);
   }
 }
+.main-conatiner{
+  max-width: 1200px;
+  display: block;
+  margin: auto;
+}
+.header,.links{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.link{
+  margin: 10px;
+}
+
+.home-img img{
+  width: 100%;
+}
+.popup-overlay {
+  background-color: #fff;
+}
+.header{
+  border-bottom: 1px solid grey;
+}
+.cross-icon{
+  width: 100px;
+}
