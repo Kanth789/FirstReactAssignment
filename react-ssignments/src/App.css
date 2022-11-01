@@ -49,7 +49,14 @@
 .link{
   margin: 10px;
 }
-
+.home-img{
+  margin-top: 70px;
+  box-shadow: 0px -10px 15px -6px  rgba(217, 154, 241, 0.7),
+              0px  5px  15px  0px  rgba(33, 204, 84, 0.3),
+              5px  0px  15px  0px  rgba(0,0,0,0.3),
+              -5px  0px  15px  0px  rgba(113, 209, 233, 0.3);                
+  border-radius: 9px;
+}
 .home-img img{
   width: 100%;
 }
