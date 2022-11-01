@@ -15,16 +15,15 @@ const Header =()=>{
      
      >{close =>(
         <>
-         <Link to = "/" className="nav-link">
+         
         <div className="cross-icon">
             <TiDeleteOutline size="50px"style={{
       position: 'absolute',
       top: '-420px',
       right: '-420px',
-    }}/>
+    }}  onClick={() => close()}/>
         </div>
-        </Link>
-        
+         
             <div className="links">
                 <Link  to = "/" className="nav-link">
                 <div className="link">
