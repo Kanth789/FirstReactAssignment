@@ -1,11 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
+import PrimeVideo from './components/PrimeVideo';
+
 
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <PrimeVideo/>
   );
 }
 
