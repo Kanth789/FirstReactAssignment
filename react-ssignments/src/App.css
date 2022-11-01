@@ -36,6 +36,7 @@
     transform: rotate(360deg);
   }
 }
+
 .main-conatiner{
   max-width: 1200px;
   display: block;
@@ -55,10 +56,18 @@
               0px  5px  15px  0px  rgba(33, 204, 84, 0.3),
               5px  0px  15px  0px  rgba(0,0,0,0.3),
               -5px  0px  15px  0px  rgba(113, 209, 233, 0.3);                
+
   border-radius: 9px;
 }
 .home-img img{
   width: 100%;
+
+  
+}
+.home-img img{
+  width: 100%;
+  border-radius: 19px;
+
 }
 .popup-overlay {
   background-color: #fff;
@@ -68,4 +77,5 @@
 }
 .cross-icon{
   width: 100px;
+
 }
