@@ -1,11 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
-
+import PlanetItem from './componets/PlanetItem';
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+   <PlanetItem/>
   );
 }
 
