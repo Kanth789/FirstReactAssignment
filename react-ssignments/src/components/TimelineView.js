@@ -9,8 +9,8 @@ const timelineItems =[
         duration : "10days",
         title:'10 DECEMBER 2020',
         courseTitle :'Static Website',
-        description  :" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        
+        description  :" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, .",
+        projectTitle: "Tourist Website",
         tagsList : [
                         {
                           id:1,
@@ -34,16 +34,16 @@ const timelineItems =[
                         }
                 ],
         imageUrl:"https://images.pexels.com/photos/815880/pexels-photo-815880.jpeg?auto=compress&cs=tinysrgb&w=300",
-        projectTitle :"responsive webiste",
         projectUrl : ""
     },
     {
         id:1,
         categoryId:'project',
-        title:'Static Website',
+        title:'10 DECEMBER 2020',
         courseTitle :'Static Website',
-        description  :" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        description  :" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, .",
         duration : "10days",
+        projectTitle: "Tourist Website",
         tagsList : [
                         {
                           id:1,
@@ -67,16 +67,17 @@ const timelineItems =[
                         }
                 ],
         imageUrl:"https://images.pexels.com/photos/815880/pexels-photo-815880.jpeg?auto=compress&cs=tinysrgb&w=300",
-        projectTitle :"responsive webiste",
+        
         projectUrl : ""
     },
     {
         id:1,
         categoryId:'course',
-        title:'Static Website',
+        title:'10 DECEMBER 2020',
         courseTitle :'Static Website',
-        description  :" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        description  :" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, .",
         duration : "10days",
+        projectTitle: "Tourist Website",
         tagsList : [
                         {
                           id:1,
@@ -100,7 +101,7 @@ const timelineItems =[
                         }
                 ],
         imageUrl:"https://images.pexels.com/photos/815880/pexels-photo-815880.jpeg?auto=compress&cs=tinysrgb&w=300",
-        projectTitle :"responsive webiste",
+      
         projectUrl : ""
     },
     {
@@ -109,8 +110,8 @@ const timelineItems =[
         duration : "10days",
         title:'10 DECEMBER 2020',
         courseTitle :'Static Website',
-        description  :" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        
+        description  :" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, .",
+        projectTitle: "Tourist Website",
         tagsList : [
                         {
                           id:1,
@@ -134,16 +135,17 @@ const timelineItems =[
                         }
                 ],
         imageUrl:"https://images.pexels.com/photos/815880/pexels-photo-815880.jpeg?auto=compress&cs=tinysrgb&w=300",
-        projectTitle :"responsive webiste",
+       
         projectUrl : ""
     },
     {
         id:1,
         categoryId:'project',
-        title:'Static Website',
+        title:'10 DECEMBER 2020',
         courseTitle :'Static Website',
-        description  :" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        description  :" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, .",
         duration : "10days",
+        projectTitle: "Tourist Website",
         tagsList : [
                         {
                           id:1,
@@ -167,16 +169,17 @@ const timelineItems =[
                         }
                 ],
         imageUrl:"https://images.pexels.com/photos/815880/pexels-photo-815880.jpeg?auto=compress&cs=tinysrgb&w=300",
-        projectTitle :"responsive webiste",
+      
         projectUrl : ""
     },
     {
         id:1,
         categoryId:'course',
-        title:'Static Website',
+        title:'10 DECEMBER 2020',
         courseTitle :'Static Website',
-        description  :" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        description  :" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, .",
         duration : "10days",
+        projectTitle: "Tourist Website",
         tagsList : [
                         {
                           id:1,
@@ -200,7 +203,7 @@ const timelineItems =[
                         }
                 ],
         imageUrl:"https://images.pexels.com/photos/815880/pexels-photo-815880.jpeg?auto=compress&cs=tinysrgb&w=300",
-        projectTitle :"responsive webiste",
+       
         projectUrl : ""
     },
     
@@ -217,7 +220,9 @@ class TimelineView extends Component{
                    
                     <div className="cards-conatiner">
                         
-                        <Chrono mode="VERTICAL_ALTERNATING" items={timelineItems}>
+                        <Chrono mode="VERTICAL_ALTERNATING" items={timelineItems} theme={{  
+    secondary: "white",  
+  }}>
                         
                         
                          {

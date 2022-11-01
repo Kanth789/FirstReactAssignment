@@ -36,3 +36,56 @@
     transform: rotate(360deg);
   }
 }
+
+.chrono-container {
+  width: 400px;
+  height: 600px;
+}
+.card-heading img{
+  width: 100%;
+}
+.header{
+  text-align: center;
+}
+.header h6{
+  font-size: 18px;
+}
+.header h2{
+  color: #171f46;
+}
+body{
+  font-family: Roboto;
+}
+.card-tag ul{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  list-style: none;
+  padding: 3px;
+ 
+}
+.card-tag li{
+  margin: 6px 6px 6px;
+  background-color: #c7d4e0;
+  padding: 4px;
+  text-align: left;
+  font-weight: 300;
+  border-radius: 4px;
+}
+.card-heading,.project-heading{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.time{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.card-tag a{
+  color: #0967d2;
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+}
