@@ -1,0 +1,34 @@
+.profile-job-conatiners{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.jobs-conatiner{
+   max-width: 1200px;
+}
+.card{
+    color: #fff;
+    background-color:#202020;
+    padding: 30px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+}
+.card-img img{
+  width: 80px;
+}
+.card-img-header,.card-location-work{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.card-header{
+    margin-left: 17px;
+}
+.location{
+    margin: 10px;
+}
+.card-icons{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
