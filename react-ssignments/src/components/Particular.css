@@ -6,7 +6,7 @@
 .life-at-company-desc{
     display: flex;
     flex-direction: row;
-    align-items: center;
+    
 
 }
 .similar-job-cards{
@@ -41,4 +41,23 @@ body{
     display: block;
     margin: auto;
     margin-top: 50px;
+}
+.life-at-compny{
+    margin-top: 40px;
+}
+.life-at-compny h3{
+    font-size: 25px;
+}
+.life-at-company-desc p{
+    width: 800px;
+    margin-top: 44px;
+}
+.life-at-company-desc img{
+    width: 400px;
+}
+.skill-conatiner h3{
+    font-size: 25px;
+}
+.icon p{
+    margin-left: 16px;
 }

@@ -1,6 +1,7 @@
 import Header from "./Header"
 import {Redirect} from 'react-router-dom'
 import Cookies from 'js-cookie'
+import './Home.css';
 const Home = () =>{
     const jwtToken = Cookies.get('jwt_token')
   if (jwtToken === undefined) {

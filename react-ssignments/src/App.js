@@ -4,16 +4,17 @@ import { BrowserRouter,Route ,Switch} from "react-router-dom" ;
 import Home from './components/Home';
 import Login from './components/Login';
 import JobPage from './components/JobPage';
+import ProctetedRoute from './components/Protected';
 import ParticularJobDeatils from './components/ParticularJobDetails';
 function App() {
   return (
     <BrowserRouter>
     <Switch>
       
-      <Route exact path="/" component={Home}></Route>
+      <ProctetedRoute exact path="/" component={Home}></ProctetedRoute>
       <Route exact path="/login" component={Login}></Route>
-      <Route exact path="/jobs" component={JobPage}></Route>
-      <Route exact path="/jobs/:id" component={ParticularJobDeatils}></Route>
+      <ProctetedRoute exact path="/jobs" component={JobPage}></ProctetedRoute>
+      <ProctetedRoute exact path="/jobs/:id" component={ParticularJobDeatils}></ProctetedRoute>
     </Switch>
  </BrowserRouter>
   );

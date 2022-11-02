@@ -36,15 +36,9 @@
     transform: rotate(360deg);
   }
 }
-body{
-  background-image: url('https://assets.ccbp.in/frontend/react-js/home-lg-bg.png');
-  font-family: Roboto;
-  background-repeat: no-repeat;
-  background-size: 100%;
-  
-}
+
 .main-conatiner{
-  max-width: 1200px;
+  max-width: 1300px;
   display: block;
   margin: auto;
   
@@ -56,7 +50,7 @@ body{
   justify-content: space-between;
 }
 .nav-bar{
-  max-width: 1200px;
+  max-width: 1300px;
   display: block;
   margin: auto;
   padding: 13px;
@@ -119,7 +113,7 @@ body{
   border: none;
 }
 .filters-profile{
-  max-width: 1200px;
+  max-width: 1300px;
   display: block;
   margin: auto;
 }

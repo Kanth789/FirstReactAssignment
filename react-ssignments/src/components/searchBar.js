@@ -1,3 +1,4 @@
+import { BsSearch } from "react-icons/bs";
 const SearchBar = (props)=>{
     const{changeSearchInput,enterSearchInput} = props
     const onEnterSearchInput = event => {
@@ -20,6 +21,7 @@ const SearchBar = (props)=>{
           placeholder="Search"
           onChange={onChangeSearchInput}
           onKeyDown={onEnterSearchInput}></input>
+          <button className="search-conatiner-icon"><BsSearch color="white"   size="17px"/></button>
         </div>
     )
 }

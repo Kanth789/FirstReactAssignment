@@ -39,8 +39,37 @@
     grid-template-columns: auto auto;
 }
 .filters-conatiner{
-    width: 170%;
+    width: 190%;
 }
 .jobs-conatiner {
     width: 800px;
+    margin-left: 40px;
+}
+.search-input {
+        padding: 18px 42px;
+        margin-bottom: 20px;
+        border-radius: 6px;
+        border: 1px solid #cbd2d9 ;
+        margin-top: 10px;
+        background-color: transparent;
+        font-size:22px;
+      
+}
+.profile-card{
+    margin-left: 40px;
+}
+.search-conatiner-icon{
+    position: absolute;
+    margin-left: -60px;
+    text-align: center;
+    margin-top: 11px;
+    background-color: #272727;
+    padding: 22px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border: none;
+}
+.search-conatiner input{
+    width: 100%;
+   
 }

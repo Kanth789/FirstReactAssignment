@@ -1,5 +1,7 @@
-
+import { AiFillStar } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { ImLocation } from "react-icons/im";
+import { MdWork } from "react-icons/md";
 import './Alljobs.css';
 const Alljobs =(props)=>{
     const {jobData} = props
@@ -14,6 +16,7 @@ const Alljobs =(props)=>{
                 <div className="card-header">
                     <h4>{title}</h4>
                     <div className="card-header-rating">
+                        <AiFillStar color="gold"   size="17px"/>
                         <p>{rating}</p>
                     </div>
                 </div>
@@ -21,9 +24,11 @@ const Alljobs =(props)=>{
             <div className="card-icons">
                 <div className="card-location-work">
                 <div className="location">
+                    <ImLocation color="white"   size="17px"/>
                     <p>{location}</p>
                 </div>
                 <div className="work">
+                    <MdWork color="white"   size="17px"/>
                     <p>{employment_type}</p>
                 </div>
                 </div>

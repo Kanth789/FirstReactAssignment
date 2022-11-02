@@ -7,6 +7,10 @@ import SimilarJob from "./SimilarJob";
 import Skills from "./Skills";
 import './Particular.css';
 import { BiLinkExternal } from "react-icons/bi";
+import { AiFillStar } from "react-icons/ai";
+import { ImLocation } from "react-icons/im";
+import { MdWork } from "react-icons/md";
+import NewWindow from 'react-new-window'
 const apiStatusConstants = {
     initial: 'INITIAL',
     success: 'SUCCESS',
@@ -102,6 +106,7 @@ class ParticularJobDeatils extends Component{
                 <div className="card-header">
                     <h4>{title}</h4>
                     <div className="card-header-rating">
+                    <AiFillStar color="gold"   size="17px"/>
                         <p>{rating}</p>
                     </div>
                 </div>
@@ -109,9 +114,11 @@ class ParticularJobDeatils extends Component{
             <div className="card-icons">
                 <div className="card-location-work">
                 <div className="location">
+                <ImLocation color="white"   size="17px"/>
                     <p>{location}</p>
                 </div>
                 <div className="work">
+                <MdWork color="white"   size="17px"/>
                     <p>{employment_type}</p>
                 </div>
                 </div>
@@ -122,12 +129,14 @@ class ParticularJobDeatils extends Component{
             <hr></hr>
             <div className="descripition-div">
             <h4>Description</h4>
-            <Link to={company_website_url} className="nav-link">
+            
             <div className="visit-link">
+             
             <p>Visit</p>
-            < BiLinkExternal/>
+            < BiLinkExternal onClick={() => window.open(company_website_url,"_self")} />
             </div>
-            </Link>
+            
+            
             </div>
             <p>{job_description}</p>
             <div className="skill-conatiner">
