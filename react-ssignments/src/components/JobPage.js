@@ -5,17 +5,76 @@ import { TailSpin } from 'react-loader-spinner';
 import './JobPage.css';
 import Header from "./Header";
 import Alljobs from "./Alljobs";
+import FiltersGroup from "./FilersGroup";
+import JobPackage from "./JobPackage";
+import SearchBar from "./searchBar";
 const apiStatusConstants = {
     initial: 'INITIAL',
     success: 'SUCCESS',
     failure: 'FAILURE',
     inProgress: 'IN_PROGRESS',
   }
+   const JobTypes = [
+    {
+      name: 'Full Time',
+      categoryId: 'FULLTIME',
+    },
+    {
+      name: 'Part Time',
+      categoryId: 'PARTTIME',
+    },
+    {
+      name: 'Freelance',
+      categoryId: 'FREELANCE',
+    },
+    {
+      name: 'Internship',
+      categoryId: 'INTERNSHIP',
+    },
+    
+  ]
+  const JobPackages = [
+    {
+      name: '10 LPA and above',
+      categoryId: '1000000',
+    },
+    {
+      name: '20 LPA and above',
+      categoryId: '2000000',
+    },
+    {
+      name: '30 LPA and above',
+      categoryId: '3000000',
+    },
+    {
+      name: '40 LPA and above',
+      categoryId: '4000000',
+    },
+    
+  ]
+  
 class JobPage extends Component{
     state ={
         profileData:[],
         jobsList :[],
         apiStatus: apiStatusConstants.initial,
+        activeJobType:'',
+        activeJobPackage:'',
+        searchInput: '',
+    }
+    onCheckedApp = (categoryId) =>{
+        this.setState({activeJobType:categoryId},this.getFullData)
+        console.log(this.state.activeJobType)
+    }
+    onCheckedRadioApp = (categoryId) =>{
+      this.setState({activeJobPackage:categoryId},this.getFullData)
+      console.log(this.state.activeJobPackage)
+    }
+    enterSearchInput = () => {
+      this.getFullData()
+    }
+    changeSearchInput = searchInput => {
+      this.setState({searchInput})
     }
     componentDidMount(){
         this.getData()
@@ -97,7 +156,13 @@ class JobPage extends Component{
                     <p>{short_bio}</p>
                 </div>
             </div>
+            <div className="filters-conatiner">
+              {JobTypes.map(eachItem=>(<FiltersGroup jobsFilters={eachItem} key={eachItem.categoryId} onCheckedApp={this.onCheckedApp}/> ))}
+              {JobPackages.map(eachItem=>(<JobPackage jobSalary={eachItem} key={eachItem.categoryId} onCheckedRadioApp={this.onCheckedRadioApp}/>))}
+            </div>
+            
             <div className="jobs-conatiner">
+              <SearchBar changeSearchInput={this.changeSearchInput} enterSearchInput={this.enterSearchInput}/>
                 {this.renderFullJobsList()}
             </div>
             </div>
@@ -140,6 +205,15 @@ class JobPage extends Component{
          
         </div>
       )
+      renderJobFailureView = () => (
+        <div className="job-failure-view">
+          
+          <img src="https://assets.ccbp.in/frontend/react-js/failure-img.png "/>
+          
+            
+         
+        </div>
+      )
       renderProfileDetails = () => {
         const {apiStatus} = this.state
     
@@ -154,11 +228,26 @@ class JobPage extends Component{
             return null
         }
       }
+      renderJobProfiles = () => {
+        const {apiStatus} = this.state
+    
+        switch (apiStatus) {
+          case apiStatusConstants.success:
+            return this.renderFullJobsList()
+          case apiStatusConstants.failure:
+            return this.renderJobFailureView()
+          case apiStatusConstants.inProgress:
+            return this.renderLoadingView()
+          default:
+            return null
+        }
+      }
     render()
     {
         return(
             <>
             {this.renderProfileDetails()} 
+            {this.renderJobProfiles()}
             </>
         )
     }
