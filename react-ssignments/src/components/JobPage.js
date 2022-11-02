@@ -56,7 +56,7 @@ const apiStatusConstants = {
     },
     
   ]
- const  updatedjob = [];
+ let  updatedjob = [];
 class JobPage extends Component{
     state ={
         profileData:[],
@@ -79,16 +79,16 @@ class JobPage extends Component{
         //   updatedjob.splice(categoryId,1)
         // }
         const CheckId = updatedjob.includes(categoryId)
-        const filterCheckId = (updatedjob) =>{
-            return updatedjob !== categoryId
-        }
-        console.log(filterCheckId())
+        // const filterCheckId = (updatedjob) =>{
+        //     return updatedjob !== categoryId
+        // }
+        // console.log(filterCheckId())
         if(!CheckId)
         {
           updatedjob.push(categoryId)
         }
         else{
-          updatedjob.filter(this.filterCheckId())
+          updatedjob=updatedjob.filter((item)=>item!==categoryId)
         }
         console.log(updatedjob)
         this.setState({activeJobType:updatedjob},this.getFullData)
@@ -172,9 +172,9 @@ class JobPage extends Component{
         const {profileData,apiStatus} = this.state
         const{name,profile_image_url,short_bio} = profileData
         return(
-            <>
-            <Header/>
             <div className="profile-job-conatiners">
+           
+            <div className="profile-job-details">
             <div className="profile-conatiner">
                 <div className="logo">
                     <img src={profile_image_url}/>
@@ -190,7 +190,7 @@ class JobPage extends Component{
               <SearchBar changeSearchInput={this.changeSearchInput} enterSearchInput={this.enterSearchInput}/>
             </div>
             </div>
-            </>
+            </div>
         )
     }
     renderFullJobsList = ()=>{
@@ -268,12 +268,19 @@ class JobPage extends Component{
       const{activeJobType,checkedBox} = this.state
         return(
             <>
+             <Header/>
+            <div className="filters-profile">
             {this.renderProfileDetails()} 
+            <div className="filters-profile-conatiner">
             <div className="filters-conatiner">
               {JobTypes.map(eachItem=>(<FiltersGroup jobsFilters={eachItem} key={eachItem.categoryId} onCheckedApp={this.onCheckedApp}  checkedBox={checkedBox}/> ))}
               {JobPackages.map(eachItem=>(<JobPackage jobSalary={eachItem} key={eachItem.categoryId} onCheckedRadioApp={this.onCheckedRadioApp}/>))}
             </div>
+            <div className="profile-card">
             {this.renderJobProfiles()}
+            </div>
+            </div>
+            </div>
             </>
         )
     }

@@ -1,8 +1,11 @@
+
+import { Link } from "react-router-dom";
 import './Alljobs.css';
 const Alljobs =(props)=>{
     const {jobData} = props
     const{company_logo_url,id,employment_type,job_description, location,package_per_annum,rating, title} = jobData
     return(
+        <Link to={`/jobs/${id}`} className="nav-link">
         <div className="card">
             <div className="card-img-header">
                 <div className="card-img">
@@ -32,6 +35,7 @@ const Alljobs =(props)=>{
             <h4>Description</h4>
             <p>{job_description}</p>
         </div>
+        </Link>
     )
 }
 export default Alljobs

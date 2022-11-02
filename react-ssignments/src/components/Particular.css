@@ -1,0 +1,44 @@
+.skills-cards{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-row-gap: 40px;
+}
+.life-at-company-desc{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+.similar-job-cards{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-column-gap: 30px;
+    margin-top: 50px;
+
+}
+.smiliar-card{
+    color: #fff;
+    background-color:#202020;
+    padding: 30px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+
+}
+body{
+    background-color: #202020;
+}
+.visit-link,.descripition-div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.icon{
+    display: flex;
+    align-items: center;
+}
+.job-similar{
+    max-width: 1200px;
+    display: block;
+    margin: auto;
+    margin-top: 50px;
+}

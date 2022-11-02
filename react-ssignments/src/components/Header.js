@@ -9,6 +9,7 @@ const Header = (props)=>{
     return(
         <div className="nav-conatiner">
             <div className="nav-bar">
+                <div className="navigations">
                 <Link className="nav-link">
             <div className="nav-bar-logo">
                 <img src="https://assets.ccbp.in/frontend/react-js/logo-img.png" alt="logo"/>
@@ -30,6 +31,7 @@ const Header = (props)=>{
                 <Link to="/login"className="nav-link"> 
                 <button onClick={onClickLogout}>Logout</button>
                 </Link>
+            </div>
             </div>
             </div>
         </div>

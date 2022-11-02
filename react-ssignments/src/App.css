@@ -43,18 +43,22 @@ body{
   background-size: 100%;
   
 }
-/* .main-conatiner{
+.main-conatiner{
   max-width: 1200px;
   display: block;
   margin: auto;
   
-} */
-
-.nav-bar{
+}
+.navigations{
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+.nav-bar{
+  max-width: 1200px;
+  display: block;
+  margin: auto;
   padding: 13px;
   
 }
@@ -113,4 +117,9 @@ body{
   font-size: 20px;
   border-radius: 7px;
   border: none;
+}
+.filters-profile{
+  max-width: 1200px;
+  display: block;
+  margin: auto;
 }

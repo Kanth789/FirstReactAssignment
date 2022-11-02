@@ -2,10 +2,15 @@
     background-image: url('https://assets.ccbp.in/frontend/react-js/profile-bg.png');
     background-repeat: no-repeat;
     background-size: 100%;
-    padding: 30px;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
-    margin: 20px;
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+.profile-job-details{
+    width: 170%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 .product-details-error-view-container{
     padding: 30px;
@@ -22,3 +27,20 @@
     border-radius: 8px;
 }
 
+.filters-profile-conatiner{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 50px;
+}
+
+.conatiner{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.filters-conatiner{
+    width: 170%;
+}
+.jobs-conatiner {
+    width: 800px;
+}
