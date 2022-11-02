@@ -1,9 +1,10 @@
+import {Link} from 'react-router-dom';
 const SimilarProductItem = (props)=>{
     const{similarProducts}= props
     const{total_reviews,title,brand,id,image_url,price,availability,description,rating} = similarProducts
     return(
         <>
-        
+        <Link to={`/products/${id}`}  className="nav-link">
         <div className="card-conatiner">
             <div className="card-img">
                 <img src={image_url} alt="card-img"/>
@@ -28,6 +29,7 @@ const SimilarProductItem = (props)=>{
                 </div>
             </div>
         </div>
+        </Link>
         </>
     )
 }
