@@ -18,18 +18,22 @@ const apiStatusConstants = {
     {
       name: 'Full Time',
       categoryId: 'FULLTIME',
+      checked:false
     },
     {
       name: 'Part Time',
       categoryId: 'PARTTIME',
+      checked:false
     },
     {
       name: 'Freelance',
       categoryId: 'FREELANCE',
+      checked:false
     },
     {
       name: 'Internship',
       categoryId: 'INTERNSHIP',
+      checked:false
     },
     
   ]
@@ -52,23 +56,46 @@ const apiStatusConstants = {
     },
     
   ]
-  
+ const  updatedjob = [];
 class JobPage extends Component{
     state ={
         profileData:[],
         jobsList :[],
         apiStatus: apiStatusConstants.initial,
-        activeJobType:'',
+        activeJobType:[],
         activeJobPackage:'',
         searchInput: '',
+        
+
     }
-    onCheckedApp = (categoryId) =>{
-        this.setState({activeJobType:categoryId},this.getFullData)
+   
+    onCheckedApp = (categoryId,checked) =>{
+       const{activeJobType,checkedBox} = this.state
+        // this.setState(prevState=>({checkedBox:!prevState.checkedBox}))
+        // if(checkedBox === true)
+        // {
+        //   updatedjob.push(categoryId)
+        // }else{
+        //   updatedjob.splice(categoryId,1)
+        // }
+        const CheckId = updatedjob.includes(categoryId)
+        const filterCheckId = (updatedjob) =>{
+            return updatedjob !== categoryId
+        }
+        console.log(filterCheckId())
+        if(!CheckId)
+        {
+          updatedjob.push(categoryId)
+        }
+        else{
+          updatedjob.filter(this.filterCheckId())
+        }
+        console.log(updatedjob)
+        this.setState({activeJobType:updatedjob},this.getFullData)
         console.log(this.state.activeJobType)
     }
     onCheckedRadioApp = (categoryId) =>{
       this.setState({activeJobPackage:categoryId},this.getFullData)
-      console.log(this.state.activeJobPackage)
     }
     enterSearchInput = () => {
       this.getFullData()
@@ -81,8 +108,9 @@ class JobPage extends Component{
         this.getFullData()
     }
     getFullData = async ()=>{
-        const{jobsList,apiStatus}  = this.state
-       const apiUrl="https://apis.ccbp.in/jobs"
+        const{jobsList,apiStatus,activeJobType,activeJobPackage,searchInput}  = this.state
+       console.log(activeJobPackage)
+        const apiUrl=`https://apis.ccbp.in/jobs?employment_type=${activeJobType.join()}&minimum_package=${activeJobPackage}&search=${searchInput}`
        const jwtToken = Cookies.get('jwt_token')
         const options = {
             method:"GET",
@@ -156,14 +184,10 @@ class JobPage extends Component{
                     <p>{short_bio}</p>
                 </div>
             </div>
-            <div className="filters-conatiner">
-              {JobTypes.map(eachItem=>(<FiltersGroup jobsFilters={eachItem} key={eachItem.categoryId} onCheckedApp={this.onCheckedApp}/> ))}
-              {JobPackages.map(eachItem=>(<JobPackage jobSalary={eachItem} key={eachItem.categoryId} onCheckedRadioApp={this.onCheckedRadioApp}/>))}
-            </div>
+            
             
             <div className="jobs-conatiner">
               <SearchBar changeSearchInput={this.changeSearchInput} enterSearchInput={this.enterSearchInput}/>
-                {this.renderFullJobsList()}
             </div>
             </div>
             </>
@@ -196,9 +220,6 @@ class JobPage extends Component{
       }
       renderFailureView = () => (
         <div className="product-details-error-view-container">
-          
-          
-          
             <button onClick ={this.ClickedButton} type="button" className="failure-button">
               Retry
             </button>
@@ -244,9 +265,14 @@ class JobPage extends Component{
       }
     render()
     {
+      const{activeJobType,checkedBox} = this.state
         return(
             <>
             {this.renderProfileDetails()} 
+            <div className="filters-conatiner">
+              {JobTypes.map(eachItem=>(<FiltersGroup jobsFilters={eachItem} key={eachItem.categoryId} onCheckedApp={this.onCheckedApp}  checkedBox={checkedBox}/> ))}
+              {JobPackages.map(eachItem=>(<JobPackage jobSalary={eachItem} key={eachItem.categoryId} onCheckedRadioApp={this.onCheckedRadioApp}/>))}
+            </div>
             {this.renderJobProfiles()}
             </>
         )
