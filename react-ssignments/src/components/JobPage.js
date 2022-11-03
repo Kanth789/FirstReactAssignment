@@ -320,9 +320,9 @@ class JobPage extends Component{
               <h2>Salary Range</h2>
               {JobPackages.map(eachItem=>(<JobPackage jobSalary={eachItem} key={eachItem.categoryId} onCheckedRadioApp={this.onCheckedRadioApp}/>))}
             </div>
-            <div className="profile-card">
-            {this.renderJobProfiles()}
-            </div>
+            <div className="profile-card"> 
+             {this.renderJobProfiles()}
+             </div>
             </div>
             </div>
             </>

@@ -6,7 +6,7 @@
     border-radius: 20px;
 }
 .profile-job-details{
-    width: 170%;
+    min-width: 400px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -30,7 +30,7 @@
 .filters-profile-conatiner{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     margin-top: 50px;
 }
 
@@ -39,7 +39,7 @@
     grid-template-columns: auto auto;
 }
 .filters-conatiner{
-    width: 190%;
+    min-width: 300px;
 }
 .jobs-conatiner {
     width: 800px;
@@ -58,6 +58,13 @@
 .profile-card{
     margin-left: 100px;
 }
+.products-details-loader-container{
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+}
 .search-conatiner-icon{
     position: absolute;
     margin-left: -60px;
@@ -73,6 +80,9 @@
     width: 100%;
    
 }
+.search-conatiner {
+    margin-left: 50px;
+}
 .type1 label{
     color: #fff;
 }
@@ -87,4 +97,7 @@ body{
 }
 .filters-conatiner h2{
   color: #fff;
+}
+.products-details-loader-container{
+    margin-right: 140px;
 }

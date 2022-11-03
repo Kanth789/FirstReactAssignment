@@ -11,5 +11,5 @@ const ProctetedRoute = (props) =>{
         return <Redirect to="/login"/>
     }
     return <Route {...props}></Route>
-}
+};
 export default ProctetedRoute

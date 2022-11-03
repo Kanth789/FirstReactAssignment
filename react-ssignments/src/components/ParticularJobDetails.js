@@ -90,6 +90,10 @@ class ParticularJobDeatils extends Component{
           })
         }
     }
+    OnclickedSimilar = (id) =>{
+        this.getParticularJob(id)
+        
+    }
     renderFullJobDetails = () =>{
         const{JobDetails,apiStatus,skillsData,similarJobDetails,lifeAtCompnay} = this.state
         const{company_website_url,company_logo_url,id,employment_type,job_description,location,package_per_annum,rating,title} = JobDetails
@@ -157,7 +161,7 @@ class ParticularJobDeatils extends Component{
             <div className="similar-jobs-conatiner">
                 <h3>Similar Jobs</h3>
                 <div className="similar-job-cards">
-                {similarJobDetails.map(eachItem=>(<SimilarJob similarData={eachItem} key={eachItem.id}/>))}
+                {similarJobDetails.map(eachItem=>(<SimilarJob similarData={eachItem} key={eachItem.id} OnclickedSimilar={this.OnclickedSimilar}/>))}
                 </div>
             </div>
             </div>
