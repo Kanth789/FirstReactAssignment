@@ -7,11 +7,13 @@ const Home = () =>{
   if (jwtToken === undefined) {
     return <Redirect to="/login" />
   }
+  
+  
     return(
         <>
         <Header/>
         <div className="main-conatiner">
-        
+        <div className="main">
         <div className="Home-conatiner">
             <div className="Home-content">
                 <div className="heading">
@@ -24,6 +26,7 @@ const Home = () =>{
                     <button>Find Jobs</button>
                 </div>
             </div>
+        </div>
         </div>
         </div>
         </>

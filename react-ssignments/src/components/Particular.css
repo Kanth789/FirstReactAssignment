@@ -25,7 +25,7 @@
 
 }
 body{
-    background-color: #202020;
+    background-color: #000000;
 }
 .visit-link,.descripition-div{
     display: flex;
@@ -37,7 +37,7 @@ body{
     align-items: center;
 }
 .job-similar{
-    max-width: 1200px;
+    max-width: 1300px;
     display: block;
     margin: auto;
     margin-top: 50px;
@@ -61,4 +61,7 @@ body{
 }
 .icon p{
     margin-left: 16px;
+}
+.similar-content {
+    width: 300px;
 }

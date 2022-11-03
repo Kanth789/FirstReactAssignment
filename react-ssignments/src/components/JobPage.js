@@ -115,6 +115,7 @@ class JobPage extends Component{
         this.getFullData()
     }
     getFullData = async ()=>{
+     
       this.setState({
         apiJobs: apiStatusOfJobs.inProgress,
       })
@@ -128,11 +129,14 @@ class JobPage extends Component{
                 Authorization : `Bearer ${jwtToken}`,
             },
         }
-        const response = await fetch(apiUrl,options)
-        console.log(response,'response--->')
+        try{
+        const response =  await fetch(apiUrl,options)
+       
         if(response.ok === true)
         {
+            console.log(response)
             const data =  await response.json()
+            
             const updatedFullJobs = data.jobs.map(eachItem=>({
                 company_logo_url:eachItem.company_logo_url,
                 id:eachItem.id,
@@ -146,7 +150,8 @@ class JobPage extends Component{
            this.setState({jobsList:updatedFullJobs,apiJobs:apiStatusOfJobs.success})
            
         }
-        if (response.status === 400) {
+      }
+        catch  {
             this.setState({
               apiJobs: apiStatusOfJobs.failure,
             })
@@ -163,6 +168,7 @@ class JobPage extends Component{
                 Authorization : `Bearer ${jwtToken}`,
             },
         }
+        try{
         const response = await fetch(apiUrl,options)
         if(response.ok === true)
         {
@@ -173,7 +179,8 @@ class JobPage extends Component{
             this.setState({profileData:UpdatedProfileData, apiStatus: apiStatusConstants.success})
            
         }
-        else {
+      }
+        catch {
             this.setState({
               apiStatus: apiStatusConstants.failure,
             })
@@ -306,7 +313,11 @@ class JobPage extends Component{
             {this.renderProfileDetails()} 
             <div className="filters-profile-conatiner">
             <div className="filters-conatiner">
+              <hr></hr>
+              <h2>Type of Employment</h2>
               {JobTypes.map(eachItem=>(<FiltersGroup jobsFilters={eachItem} key={eachItem.categoryId} onCheckedApp={this.onCheckedApp}  checkedBox={checkedBox}/> ))}
+              <hr></hr>
+              <h2>Salary Range</h2>
               {JobPackages.map(eachItem=>(<JobPackage jobSalary={eachItem} key={eachItem.categoryId} onCheckedRadioApp={this.onCheckedRadioApp}/>))}
             </div>
             <div className="profile-card">

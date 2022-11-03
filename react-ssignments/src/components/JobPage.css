@@ -43,7 +43,7 @@
 }
 .jobs-conatiner {
     width: 800px;
-    margin-left: 40px;
+    margin-right: 40px;
 }
 .search-input {
         padding: 18px 42px;
@@ -56,7 +56,7 @@
       
 }
 .profile-card{
-    margin-left: 40px;
+    margin-left: 100px;
 }
 .search-conatiner-icon{
     position: absolute;
@@ -64,8 +64,8 @@
     text-align: center;
     margin-top: 11px;
     background-color: #272727;
-    padding: 22px;
-    border-top-left-radius: 6px;
+    padding: 21px;
+    border-bottom-right-radius: 6px;
     border-top-right-radius: 6px;
     border: none;
 }
@@ -84,4 +84,7 @@
 }
 body{
     background-color: black;
+}
+.filters-conatiner h2{
+  color: #fff;
 }
