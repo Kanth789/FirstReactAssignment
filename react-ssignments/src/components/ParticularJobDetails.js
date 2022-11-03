@@ -26,7 +26,10 @@ class ParticularJobDeatils extends Component{
           lifeAtCompnay : []
     }
     componentDidMount(){
-        this.getParticularJob()
+        const { match } = this.props
+        const { params } = match
+        const { id } = params
+        this.getParticularJob(id)
     }
     getFormattedData = data => ({
         company_logo_url:data.company_logo_url,
@@ -45,10 +48,8 @@ class ParticularJobDeatils extends Component{
        image_url:data.image_url
       })
       
-    getParticularJob = async() =>{
-        const { match } = this.props
-        const { params } = match
-        const { id } = params
+    getParticularJob = async(id) =>{
+        
         const apiUrl = `https://apis.ccbp.in/jobs/${id}`
         const jwtToken = Cookies.get('jwt_token')
         const options = {
