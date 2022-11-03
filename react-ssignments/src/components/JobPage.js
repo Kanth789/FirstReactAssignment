@@ -1,7 +1,7 @@
 import { Component } from "react";
 import Cookies from 'js-cookie';
 import { Link } from "react-router-dom";
-import { TailSpin } from 'react-loader-spinner';
+import { BallTriangle } from 'react-loader-spinner';
 import './JobPage.css';
 import Header from "./Header";
 import Alljobs from "./Alljobs";
@@ -9,6 +9,12 @@ import FiltersGroup from "./FilersGroup";
 import JobPackage from "./JobPackage";
 import SearchBar from "./searchBar";
 const apiStatusConstants = {
+    initial: 'INITIAL',
+    success: 'SUCCESS',
+    failure: 'FAILURE',
+    inProgress: 'IN_PROGRESS',
+  }
+  const apiStatusOfJobs = {
     initial: 'INITIAL',
     success: 'SUCCESS',
     failure: 'FAILURE',
@@ -62,6 +68,7 @@ class JobPage extends Component{
         profileData:[],
         jobsList :[],
         apiStatus: apiStatusConstants.initial,
+        apiJobs:apiStatusOfJobs.initial,
         activeJobType:[],
         activeJobPackage:'',
         searchInput: '',
@@ -108,7 +115,10 @@ class JobPage extends Component{
         this.getFullData()
     }
     getFullData = async ()=>{
-        const{jobsList,apiStatus,activeJobType,activeJobPackage,searchInput}  = this.state
+      this.setState({
+        apiJobs: apiStatusOfJobs.inProgress,
+      })
+        const{jobsList,apiJobs,activeJobType,activeJobPackage,searchInput}  = this.state
        console.log(activeJobPackage)
         const apiUrl=`https://apis.ccbp.in/jobs?employment_type=${activeJobType.join()}&minimum_package=${activeJobPackage}&search=${searchInput}`
        const jwtToken = Cookies.get('jwt_token')
@@ -119,6 +129,7 @@ class JobPage extends Component{
             },
         }
         const response = await fetch(apiUrl,options)
+        console.log(response,'response--->')
         if(response.ok === true)
         {
             const data =  await response.json()
@@ -132,12 +143,12 @@ class JobPage extends Component{
                 rating:eachItem.rating,
                 title:eachItem.title
             }))
-           this.setState({jobsList:updatedFullJobs,apiStatus:apiStatusConstants.success})
+           this.setState({jobsList:updatedFullJobs,apiJobs:apiStatusOfJobs.success})
            
         }
-        else {
+        if (response.status === 400) {
             this.setState({
-              apiStatus: apiStatusConstants.failure,
+              apiJobs: apiStatusOfJobs.failure,
             })
           }
     }
@@ -193,26 +204,45 @@ class JobPage extends Component{
             </div>
         )
     }
+   
+    lengthOfList=()=>{
+      const{jobsList} = this.state
+      console.log(jobsList)
+      if(jobsList.length > 0 )
+      {
+          return this.renderFullJobsList()
+      }
+      else{
+        return this.renderNoJobsFound() 
+      }
+    }
+    renderNoJobsFound = ()=>{
+      return(
+        <div>
+          <img src="https://assets.ccbp.in/frontend/react-js/no-jobs-img.png"/>
+        </div>
+      )
+    }
     renderFullJobsList = ()=>{
         const{jobsList,apiStatus}  = this.state
         return(
-            <>
+            <div> 
               {jobsList.map(eachItem=>(<Alljobs jobData={eachItem} key={eachItem.id}/>))}
-              </>
+              </div>
         )
     }
     renderLoadingView = () => (
         <div className="products-details-loader-container" testid="loader">
-           <TailSpin
-      height="80"
-      width="80"
-      color="red"
-      ariaLabel="tail-spin-loading"
-      radius="1"
-      wrapperStyle={{}}
-      wrapperClass=""
-      visible={true}
-    />
+                    <BallTriangle
+            height={100}
+            width={100}
+            radius={5}
+            color="#4fa94d"
+            ariaLabel="ball-triangle-loading"
+            wrapperClass={{}}
+            wrapperStyle=""
+            visible={true}
+          />
         </div>
       )
       ClickedButton = ()=>{
@@ -250,14 +280,17 @@ class JobPage extends Component{
         }
       }
       renderJobProfiles = () => {
-        const {apiStatus} = this.state
-    
-        switch (apiStatus) {
-          case apiStatusConstants.success:
-            return this.renderFullJobsList()
-          case apiStatusConstants.failure:
+        const {apiJobs} = this.state
+        console.log(apiJobs)
+        switch (apiJobs) {
+          
+          case apiStatusOfJobs.success:
+          
+            return this.lengthOfList()
+          case apiStatusOfJobs.failure:
+            
             return this.renderJobFailureView()
-          case apiStatusConstants.inProgress:
+          case apiStatusOfJobs.inProgress:
             return this.renderLoadingView()
           default:
             return null

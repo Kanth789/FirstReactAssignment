@@ -19,10 +19,11 @@ const Header = (props)=>{
             </div>
             </Link>
             <div className="nav-links">
-
+            <Link to="/"className="nav-link">
                 <div className="links">
                     Home
                 </div>
+                </Link>
                 <Link to="/jobs"className="nav-link">
                 <div className="links">
                     Jobs
