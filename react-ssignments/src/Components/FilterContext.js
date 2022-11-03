@@ -1,11 +1,13 @@
 import React from 'react'
 
 const FilterContext = React.createContext({
-    onToggleShowContent : false,
-    onToggleShowLeftNavbar : false,
-    onToggleShowRightNavbar : false,
+    showContent : true,
+    showLeftNavbar : true,
+    showRightNavbar : true,
     
-    OnclickedBox: () => {},
+    onToggleShowContent: () => {},
+    onToggleShowLeftNavbar:()=>{},
+    onToggleShowRightNavbar:() =>{}
    
 })
 
