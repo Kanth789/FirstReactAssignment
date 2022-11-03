@@ -19,7 +19,10 @@ class ProductItemDetails  extends Component{
         apiStatus: apiStatusConstants.initial,
      }
      componentDidMount(){
-        this.getSpecificProduct()
+      const { match } = this.props
+        const { params } = match
+        const { id } = params
+        this.getSpecificProduct(id)
      }
      getFormattedData = data => ({
         availability: data.availability,
@@ -32,11 +35,9 @@ class ProductItemDetails  extends Component{
         title: data.title,
         totalReviews: data.total_reviews,
       })
-     getSpecificProduct = async()=>{
+     getSpecificProduct = async(id)=>{
         const{productData,similarProductData,quantity,apiStatus} = this.state
-        const { match } = this.props
-        const { params } = match
-        const { id } = params
+        
         const apiUrl = `https://apis.ccbp.in/products/${id}`
         const jwtToken = Cookies.get('jwt_token')
         const options = {
@@ -67,7 +68,9 @@ class ProductItemDetails  extends Component{
         }
 
      }
-
+     OnclickedSimilarProduct = (id) =>{
+      this.getSpecificProduct(                      )
+     }
   renderLoadingView = () => (
     <div className="products-details-loader-container" testid="loader">
        <TailSpin
@@ -177,7 +180,7 @@ class ProductItemDetails  extends Component{
                 <div className="similar-products">
                 <h2>Similar Products</h2>
                 <div className="similar-conatiner">
-                   {similarProductData.map(eachItem=>(<SimilarProductItem similarProducts={eachItem} key={eachItem.id}/>))}
+                   {similarProductData.map(eachItem=>(<SimilarProductItem similarProducts={eachItem} key={eachItem.id} OnclickedSimilarProduct={this.OnclickedSimilarProduct}/>))}
                    </div>
                 </div>
             </div>

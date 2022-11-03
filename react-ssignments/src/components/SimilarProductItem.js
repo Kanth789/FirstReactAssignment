@@ -1,11 +1,14 @@
 import {Link} from 'react-router-dom';
 const SimilarProductItem = (props)=>{
-    const{similarProducts}= props
+    const{similarProducts,OnclickedSimilarProduct}= props
     const{total_reviews,title,brand,id,image_url,price,availability,description,rating} = similarProducts
+    const OnclickedSimilar = () =>{
+        OnclickedSimilarProduct(id)
+    }
     return(
         <>
         <Link to={`/products/${id}`}  className="nav-link">
-        <div className="card-conatiner">
+        <div className="card-conatiner" onClick={OnclickedSimilar}>
             <div className="card-img">
                 <img src={image_url} alt="card-img"/>
             </div>
