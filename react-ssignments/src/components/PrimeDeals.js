@@ -28,6 +28,7 @@ class PrimeDeals extends Component{
       },
       method: 'GET',
     }
+    try{
     const response = await fetch(apiUrl, options)
     if (response.ok === true) {
       const fetchedData = await response.json()
@@ -43,14 +44,15 @@ class PrimeDeals extends Component{
         primeDeals: updatedData,
         apiStatus: apiStatusConstants.success,
       })
-    }
-    if (response.status === 401) {
+    }}
+
+    catch{  
       this.setState({
         apiStatus: apiStatusConstants.failure,
       })
     }
     }
-
+     
     renderPrimeDealsList = ()=>{
         const {primeDeals} = this.state
         return(

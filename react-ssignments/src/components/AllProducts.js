@@ -4,6 +4,7 @@ import ProductCard from "./ProductCard";
 import { TailSpin } from 'react-loader-spinner'
 import ProductHeader from "./ProductHeader";
 import FiltersGroup from "./FiltersGroup";
+import "./AllProducts.css"
 const sortbyOptions = [
     {
       optionId: 'PRICE_HIGH',
@@ -90,6 +91,7 @@ class AllProducts extends Component{
                 Authorization : `Bearer ${jwtToken}`,
             },
         }
+        try{
         const response = await fetch(apiUrl,options)
         if(response.ok === true)
         {
@@ -106,7 +108,8 @@ class AllProducts extends Component{
             
            
         }
-        else {
+      }
+        catch {
           this.setState({
             apiStatus: apiStatusConstants.failure,
           })

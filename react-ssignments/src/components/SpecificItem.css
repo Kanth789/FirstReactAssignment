@@ -4,12 +4,16 @@
     justify-content: space-between;
     align-items: center;
 }
-.part-1{
-    width: 1200px;
-    height: 400px;
+.part2-rating p{
+    font-size: 17px;
+    font-weight: 600;
+}
+.part1-img{
+    width: 550px;
 }
 .part-1 img{
     width: 100%;
+    border-radius: 8px;
 }
 .part-2{
     padding: 30px;
@@ -32,15 +36,16 @@
     justify-content: center;
     width: 45px;
     height: 30px;
-    padding: 2px 8px;
+    padding: 2px 10px;
     border-radius: 8px;
+    
 }
 .part2-rating img{
     width: 20px;
     height: 20px;
 }
 .part2-content p{
-    font-size: 19px;
+    font-size: 21px;
 }
 .avaiable ,.brand{
     display: flex;
@@ -48,13 +53,13 @@
     align-items: center;
 }
 .avaiable h5,.brand h5{
-    font-size: 15px;
-   
+    font-size: 20px;
+    margin-top: 5px;
     
 }
 .avaiable h6,.brand h6{
-    font-size: 13px;
-   
+    font-size: 17px;
+    margin-top: 12px;
 }
 .part2-avai-brand{
     display: flex;
@@ -68,6 +73,10 @@
     
     
 }
+.part2-buttons button{
+    padding: 9px 12px;
+    font-size: 15px;
+}
 .part2-buttons p{
     margin: 20px 20px 20px 20px;
     font-size: 20px;
@@ -75,11 +84,20 @@
 }
 .addcart{
     background-color: #3b82f6;
-    padding: 8px;
+    padding: 10px;
     border: none;
     color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 8px;
 }
 .similar-conatiner{
     display: grid;
     grid-template-columns: auto auto auto;
+}
+.part2-heading h3{
+    font-size: 35px;
+}
+.part2-heading h6{
+    font-size: 23px;
 }

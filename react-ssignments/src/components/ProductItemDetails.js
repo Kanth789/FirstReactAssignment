@@ -4,6 +4,9 @@ import Header from "./Header";
 import {Link} from 'react-router-dom';
 import { TailSpin } from 'react-loader-spinner';
 import SimilarProductItem from "./SimilarProductItem";
+import {BsPlusSquare, BsDashSquare} from 'react-icons/bs'
+
+
 import './SpecificItem.css';
 import CartContext from "./CartContext";
 const apiStatusConstants = {
@@ -16,7 +19,7 @@ class ProductItemDetails  extends Component{
      state={
         productData:{},
         similarProductData:[],
-        quantity:0,
+        quantity:1,
         apiStatus: apiStatusConstants.initial,
      }
      componentDidMount(){
@@ -47,6 +50,7 @@ class ProductItemDetails  extends Component{
                 Authorization : `Bearer ${jwtToken}`,
             },
         }
+        try{
         const response = await fetch(apiUrl,options)
        
         
@@ -61,8 +65,9 @@ class ProductItemDetails  extends Component{
             this.setState({productData:updatedData,similarProductData:updatedSimilarProductsData, apiStatus: apiStatusConstants.success})
             
            
-        }
-        else {
+        }}
+
+        catch {
           this.setState({
             apiStatus: apiStatusConstants.failure,
           })
@@ -176,9 +181,9 @@ class ProductItemDetails  extends Component{
                       </div>
                       <hr></hr>
                       <div className="part2-buttons">
-                          <button onClick={this.onIncrementQuantity}>+</button>
+                         <BsPlusSquare color="#52606D" size={22} onClick={this.onIncrementQuantity} />
                           <p>{quantity}</p>
-                          <button onClick={this.onDecrementQuantity}>-</button>
+                          <BsDashSquare color="#52606D" size={22} onClick={this.onDecrementQuantity} />
                       </div>
                       <button className="addcart" onClick={onClickAddtoCart}>
                         ADD TO CART

@@ -1,0 +1,27 @@
+.card-title h3{
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+.card-brand h6{
+    margin-top: 6px;
+    font-size: 19px;
+    margin-bottom: 10px;
+}
+.card-price h5{
+    font-size: 19px;
+    margin: 10px 0px;
+}
+.card-rating p{
+    font-size: 20px;
+    font-weight: 600;
+}
+.star{
+    margin-left: 6px;
+}
+.category-item p{
+    font-size: 22px;
+}
+.sort-by{
+    font-size: 20px;
+}

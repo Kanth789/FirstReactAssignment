@@ -10,7 +10,7 @@ const Cartview = () =>{
                     const {cartList} = value
                     return(
                         <ul className="cart-list">
-                            {cartList.map(eachItem=>(<CartItem  key={eachItem.id} cartItemdetails={eachItem}/>))}
+                            {cartList.map(eachItem=>(<CartItem  key={eachItem.id} cartItemDetails={eachItem}/>))}
                         </ul>
                     )
                 }

@@ -20,7 +20,7 @@ class LoginPage extends Component{
               id="username"
               className="username-input"
               value={username}
-              placeholder="username"
+              placeholder="Username"
               onChange={this.onChangeUsername}
             />
           </>
