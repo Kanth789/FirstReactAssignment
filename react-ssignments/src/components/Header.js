@@ -1,5 +1,6 @@
 import {Link,withRouter,useHistory} from 'react-router-dom';
 import Cookies from 'js-cookie';
+import CartContext from './CartContext';
 
 
  const Header =()=>{
@@ -9,6 +10,21 @@ import Cookies from 'js-cookie';
         Cookies.remove('jwt_token')
         history.replace('/login')
     }
+    const renderCartItemsCount = () =>(
+        <CartContext.Consumer>
+            {value=>{
+                const {cartList} = value
+                const cartItemsCount = cartList.length
+                return(
+                    <>
+                    {cartItemsCount > 0 ? (<span className='cart-count-tag'>
+                        {cartList.length}
+                    </span>):null}
+                    </>
+                )
+            }}
+        </CartContext.Consumer>
+    )
     return(
         <div className="header">
             <div className="header-logo">
@@ -22,7 +38,10 @@ import Cookies from 'js-cookie';
                     <div className="link">Products</div>
                 </Link>
                 <Link to="/cart" className="nav-link">
-                <div className="link">Cart</div>
+                <div className="link">
+                    Cart
+                    <div>{renderCartItemsCount()}</div>
+                </div>
                 </Link>
                 
                 <button type="button" className="logout-mobile-btn" onClick={onClickLogout}>
