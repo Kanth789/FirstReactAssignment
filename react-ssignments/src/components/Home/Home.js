@@ -6,9 +6,12 @@ const Home = ()=>{
         <ToggleContext.Consumer>
             {
                 value=>{
-                    const{showtoggleButton} = value
+                    const {showtoggleButton} = value
+                    console.log(showtoggleButton);
+                   
                     return(
-                        <div className="main-conatiner">
+                        
+                        <div className={`${showtoggleButton ? "light-theme" : "dark-theme"}`}>
             <Navbar/>
             <div className="home-img">
                {showtoggleButton ?  

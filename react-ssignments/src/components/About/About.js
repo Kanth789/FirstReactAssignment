@@ -8,7 +8,7 @@ const About = ()=>{
                 value=>{
                     const{showtoggleButton} = value
                     return(
-                        <div className="main-conatiner">
+                        <div className={`${showtoggleButton ? "light-theme" : "dark-theme"}`}>
                             <Navbar/>
                             <div className="home-img">
                                {showtoggleButton ?  

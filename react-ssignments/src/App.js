@@ -8,18 +8,23 @@ import { Component } from 'react';
 import ToggleContext from './components/ToggleContext';
 class  App  extends Component {
   state ={
-    showtoggleButton: false
+    showtoggleButton: true,
+    
   }
   onClickedToggle = () =>{
+   
     this.setState(prevState=>({showtoggleButton:!prevState.showtoggleButton}))
+   
   }
+  
   render(){
     const{showtoggleButton}  = this.state
+    
   return (
     <BrowserRouter>
     <ToggleContext.Provider 
-        value={{onClickedToggle:this.onClickedToggle,showtoggleButton:false}}
-       >
+    value={{onClickedToggle:this.onClickedToggle,showtoggleButton}}
+    >
       
     <Switch>
       <Route exact path="/" component={Home}></Route>

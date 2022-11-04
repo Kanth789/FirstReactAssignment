@@ -6,8 +6,11 @@ const Navbar =()=>{
         <ToggleContext.Consumer>
             {
                 value=>{
-                    const{showtoggleButton,onClickedToggle} = value
-
+                    const{showtoggleButton,onClickedToggle,themeName} = value
+                    const onClicked = () => {
+                        console.log(showtoggleButton)
+                        onClickedToggle()
+                    }
                     return(
                         
                         <div className="header">
@@ -30,7 +33,7 @@ const Navbar =()=>{
                                 </div>
                                 </Link>
                             </div>
-                            <div className="toggle-icon" onClick={onClickedToggle}>
+                            <div className="toggle-icon" onClick={onClicked}>
                             {showtoggleButton  ?   
                               <img src="https://assets.ccbp.in/frontend/react-js/dark-theme-img.png"/> 
                               : 
