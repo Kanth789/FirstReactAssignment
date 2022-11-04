@@ -1,5 +1,5 @@
 import Header from "./Header"
-import {Redirect} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import './Home.css';
 const Home = () =>{
@@ -19,7 +19,9 @@ const Home = () =>{
                     <p>Millions of people are searching for jobs,salary information, company reviews.Find the job that fits your abilities and potential</p>
                 </div>
                 <div>
+                    <Link to="/jobs" className="nav-link">
                     <button>Find Jobs</button>
+                    </Link>
                 </div>
             </div>
         </div>
