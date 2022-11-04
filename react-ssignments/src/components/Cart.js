@@ -1,3 +1,4 @@
+import Cartview from "./CartvIew/Cartview"
 import  Header  from "./Header"
 export const Cart = ()=>{
     
@@ -5,11 +6,15 @@ export const Cart = ()=>{
         <>
         <Header/>
         <div className="cart-container">
-        <img
+        {/* <img
             src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-cart-img.png"
             alt="cart"
             className="cart-img"
-        />
+        /> */}
+        <div className="cart-content-conatiner">
+            <h1>My Cart</h1>
+            <Cartview/>
+        </div>
         </div>
         
         </>

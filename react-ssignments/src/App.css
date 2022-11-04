@@ -112,13 +112,7 @@
   margin: auto;
   
 }
-.cart-container{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 90vh;
- 
-}
+
 .cart-container img{
   width: 300px;
 }

@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom';
 import { TailSpin } from 'react-loader-spinner';
 import SimilarProductItem from "./SimilarProductItem";
 import './SpecificItem.css';
+import CartContext from "./CartContext";
 const apiStatusConstants = {
     initial: 'INITIAL',
     success: 'SUCCESS',
@@ -69,7 +70,7 @@ class ProductItemDetails  extends Component{
 
      }
      OnclickedSimilarProduct = (id) =>{
-      this.getSpecificProduct(                      )
+      this.getSpecificProduct(id)
      }
   renderLoadingView = () => (
     <div className="products-details-loader-container" testid="loader">
@@ -127,64 +128,74 @@ class ProductItemDetails  extends Component{
         }
       }
       renderProductDetailsView = ()=>{
-        const{productData,similarProductData,quantity,apiStatus} = this.state
-        const{total_reviews,title,brand,id,image_url,price,availability,description,rating} = productData
         return(
-            <div className="main-container">
-                <div className="specific-details">
-                    <div className="part-1">
-                    <div className="part1-img">
-                        <img src={image_url} alt="specific-card-img"/>
-                    </div>
-                    </div>
-                    <div className="part-2">
-                    <div className="part2-heading">
-                        <h3>{title}</h3>
-                        <h6>Rs:{price}</h6>
-                    </div>
-                    <div className="part2-rating">
-                        <p>{rating}</p>
-                        <img
-            src="https://assets.ccbp.in/frontend/react-js/star-img.png"
-            alt="star"
-            className="star"
-          />
-                    </div>
-                    <div className="part2-revies">
-                        <p>{total_reviews}</p>
-                    </div>
-                    <div className="part2-content">
-                        <p>{description}</p>
-                    </div>
-                    <div className="part2-avai-brand">
-                        <div className="avaiable">
-                            <h5>Available : </h5>
-                            <h6>{availability}</h6>
-                        </div>
-                        <div className="brand">
-                            <h5>Brand : </h5>
-                            <h6>{brand}</h6>
-                        </div>
-                    </div>
-                    <hr></hr>
-                    <div className="part2-buttons">
-                        <button onClick={this.onIncrementQuantity}>+</button>
-                        <p>{quantity}</p>
-                        <button onClick={this.onDecrementQuantity}>-</button>
-                    </div>
-                    <button className="addcart">ADD TO CART</button>
-
-                    
-                    </div>
-                </div>
-                <div className="similar-products">
-                <h2>Similar Products</h2>
-                <div className="similar-conatiner">
-                   {similarProductData.map(eachItem=>(<SimilarProductItem similarProducts={eachItem} key={eachItem.id} OnclickedSimilarProduct={this.OnclickedSimilarProduct}/>))}
-                   </div>
-                </div>
-            </div>
-            
+        <CartContext.Consumer>
+          {value=>{
+            const {addCartItem} = value
+            const{productData,similarProductData,quantity,apiStatus} = this.state
+            const{total_reviews,title,brand,id,image_url,price,availability,description,rating} = productData
+            const onClickAddtoCart = () =>{
+              addCartItem({...productData,quantity})
+            }
+            return(
+              <div className="main-container">
+                  <div className="specific-details">
+                      <div className="part-1">
+                      <div className="part1-img">
+                          <img src={image_url} alt="specific-card-img"/>
+                      </div>
+                      </div>
+                      <div className="part-2">
+                      <div className="part2-heading">
+                          <h3>{title}</h3>
+                          <h6>Rs:{price}</h6>
+                      </div>
+                      <div className="part2-rating">
+                          <p>{rating}</p>
+                          <img
+              src="https://assets.ccbp.in/frontend/react-js/star-img.png"
+              alt="star"
+              className="star"
+            />
+                      </div>
+                      <div className="part2-revies">
+                          <p>{total_reviews}</p>
+                      </div>
+                      <div className="part2-content">
+                          <p>{description}</p>
+                      </div>
+                      <div className="part2-avai-brand">
+                          <div className="avaiable">
+                              <h5>Available : </h5>
+                              <h6>{availability}</h6>
+                          </div>
+                          <div className="brand">
+                              <h5>Brand : </h5>
+                              <h6>{brand}</h6>
+                          </div>
+                      </div>
+                      <hr></hr>
+                      <div className="part2-buttons">
+                          <button onClick={this.onIncrementQuantity}>+</button>
+                          <p>{quantity}</p>
+                          <button onClick={this.onDecrementQuantity}>-</button>
+                      </div>
+                      <button className="addcart" onClick={onClickAddtoCart}>
+                        ADD TO CART
+                        </button>
+  
+                      
+                      </div>
+                  </div>
+                  <div className="similar-products">
+                  <h2>Similar Products</h2>
+                  <div className="similar-conatiner">
+                     {similarProductData.map(eachItem=>(<SimilarProductItem similarProducts={eachItem} key={eachItem.id} OnclickedSimilarProduct={this.OnclickedSimilarProduct}/>))}
+                     </div>
+                  </div>
+              </div>
+          )}}
+        </CartContext.Consumer>
         )
       }
      render(){

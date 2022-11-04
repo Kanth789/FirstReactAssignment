@@ -1,0 +1,24 @@
+.cart-list li{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.cart-item-img img{
+    width: 100px;
+}
+.cart-item-count{
+    display: flex;
+    align-items: center;
+    
+}
+.cart-item-count p{
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.cart-tem-header{
+    min-width: 350px
+}
+.cart-item-count{
+    min-width: 200px;
+}
