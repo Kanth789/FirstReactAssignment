@@ -1,8 +1,10 @@
 import { Component } from "react";
+import Popup from "reactjs-popup";
 import GameView from "../GameView";
 import { GlobalStyle } from "./StyledComponent";
 import { CustomButton } from "./StyledComponent";
 import { Heading } from "./StyledComponent";
+import { AiOutlineCloseCircle } from "react-icons/ai";
 const ChoiceList = [
     {
         uniqueId:"rock",
@@ -109,7 +111,24 @@ class RockPaper extends Component{
                     </div>
                     </div> 
                     {gameView ? this.renderGameStartView() : this.renderFullGameView()}
-                    
+                    <Popup
+                     modal
+                    trigger ={
+                     <CustomButton float={"right"}>Rules</CustomButton>
+                    }
+                     >{close =>(
+                        <>
+                        <div className="img-conatiner">
+                            <div className="close-icon">
+                             <AiOutlineCloseCircle onClick={()=>close()}/>
+                            </div>
+                            
+                            <img src="https://assets.ccbp.in/frontend/react-js/rock-paper-scissor/rules-image.png "/>
+                            
+                        </div>
+                        </>
+                     )}
+                        </Popup>
                 
                </div> 
             </div>

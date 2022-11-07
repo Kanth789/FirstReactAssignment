@@ -17,6 +17,7 @@ font-size:20px;
 font-weight:600;
 color:#223a5f;
 border-radius:6px;
+float:${(props)=>props.float};
 `
 
 export const Heading = styled.h2`

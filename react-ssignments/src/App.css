@@ -48,6 +48,7 @@
   grid-template-columns: auto auto;
   align-items: center;
   justify-content: space-around;
+
 }
 .score{
   display: flex;
@@ -68,4 +69,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.popup-overlay  {
+  background-color: #3a3b3b;
+}
+.main{
+  max-width: 1200px;
+  display: block;
+  margin: auto;
+  height: 100vh;
+  margin-top: 60px;
 }
