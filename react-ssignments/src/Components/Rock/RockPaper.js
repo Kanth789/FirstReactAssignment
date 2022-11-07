@@ -16,6 +16,7 @@ const ChoiceList = [
     },
     {
         uniqueId:"scissors",
+        name:"third",
         imgUrl:"https://i.ibb.co/ZKDbFyj/Screenshot-from-2022-11-07-14-25-36.png"
     }
 ]
@@ -59,7 +60,7 @@ class RockPaper extends Component{
     }
     OnclickedPlayAgain = () =>{
         this.setState(prevState=>({gameView:!prevState.gameView}))
-        this.setState({score:0,
+        this.setState({
             gameView:false,
             imgUrlState:'',
             GameWin:false,})

@@ -1,12 +1,12 @@
 const GameView = (props) =>{
     const {gameItems,OnclickedImageItem} = props
-    const {uniqueId,imgUrl} = gameItems
+    const {uniqueId,imgUrl,name} = gameItems
     const OnclickedItem = () =>{
         OnclickedImageItem(imgUrl,uniqueId)
     }
     return(
             <div className="first-line-img">
-            <div className="img1" onClick={OnclickedItem}>
+            <div className={`img1 ${name}`} onClick={OnclickedItem}>
                 <img src={imgUrl}/>
                 </div>
                                     
