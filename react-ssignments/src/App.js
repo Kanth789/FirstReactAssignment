@@ -1,11 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
+import MemeGenerator from './Components/MemeGenerator';
 
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <MemeGenerator/>
   );
 }
 
