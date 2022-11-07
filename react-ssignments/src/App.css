@@ -36,3 +36,36 @@
     transform: rotate(360deg);
   }
 }
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  
+}
+.game-view{
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  justify-content: space-around;
+}
+.score{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  color: #223a5f;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 14px;
+}
+.imges-game-start{
+  display: flex;
+  justify-content: space-around;
+
+}
+.score-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
