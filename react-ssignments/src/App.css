@@ -39,8 +39,10 @@
 .header {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  border-radius: 5px;
+  border:2px solid#fff;
   
 }
 .game-view{
@@ -48,7 +50,7 @@
   grid-template-columns: auto auto;
   align-items: center;
   justify-content: space-around;
-
+  margin-top: 120px;
 }
 .score{
   display: flex;
@@ -72,6 +74,7 @@
 }
 .popup-overlay  {
   background-color: #3a3b3b;
+  opacity: 0.9;
 }
 .main{
   max-width: 1200px;
@@ -79,4 +82,7 @@
   margin: auto;
   height: 100vh;
   margin-top: 60px;
+}
+.game-start{
+  margin-top: 120px;
 }
