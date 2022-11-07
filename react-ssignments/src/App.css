@@ -36,3 +36,40 @@
     transform: rotate(360deg);
   }
 }
+
+.form{
+  display: flex;
+  flex-direction: column;
+  min-width: 350px;
+}
+.form input {
+  padding: 10px 20px;
+  margin-bottom: 20px;
+}
+.form label{
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+.form select{
+  padding: 10px 20px;
+  margin-bottom: 20px;
+}
+.form button{
+  padding: 10px 20px;
+  background-color: blue;
+  color: #fff;
+  font-size: 19px;
+  border: none;
+  border-radius: 6px;
+}
+.main{
+  display: flex;
+  justify-content: space-between;
+ 
+
+}
+.main-conatiner{
+  max-width: 1200px;
+  display: block;
+  margin: auto;
+}

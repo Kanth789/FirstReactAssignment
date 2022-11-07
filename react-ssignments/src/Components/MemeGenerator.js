@@ -1,3 +1,5 @@
+import { Heading } from "./styledComponents";
+import { Conatiner } from "./styledComponents";
 import { Component } from "react";
 const fontByOption = [
     {
@@ -38,22 +40,18 @@ class MemeGenerator extends Component{
         this.setState({bottomText:event.target.value})
     }
     OnclickedGenerate = () =>{
-        this.setState(prevState=>({generate:!prevState.generate}))
+        
+        this.setState({generate:true})
     }
     updateActiveOptionId = (activeOption) =>{
+        console.log(activeOption)
         this.setState({activeOption})
     }
-    changeSortby = () =>{
-        return(
-            <>
-            {this.renderImageConatiner()}
-            </>
-        )
-    }
+    
     renderFormConatiner = () =>{
         const{activeOption} = this.state
         const onChangeSortby = event => {
-            const {changeSortby} = this.changeSortby
+            console.log(this.state.activeOption)
             this.updateActiveOptionId(event.target.value)
           }
         return(
@@ -66,7 +64,7 @@ class MemeGenerator extends Component{
                             <input type="text" onChange = {this.OnToptext} placeholder="Enter the Top Text"></input>
                             <label>Bottom Text</label>
                             <input type="text" onChange = { this.OnBottomtext}  placeholder="Enter the Bottom text"></input>
-                            <select value={activeOption} onChange={this.onChangeSortby}>
+                            <select value={activeOption} onChange={onChangeSortby}>
                                 {fontByOption.map(eachItem =>(<option key={eachItem.optionId} value={eachItem.optionId}>{eachItem.displayText}</option>))}
                             </select>
                             <button onClick={this.OnclickedGenerate}>Generate</button>
@@ -78,14 +76,15 @@ class MemeGenerator extends Component{
     renderImageConatiner = () =>{
         const{topText,bottomText,imgUrl,activeOption}  = this.state
         console.log(activeOption)
+        console.log(imgUrl)
         return(
             <div className="div2">
-                <div className="img-conatiner">
-                    <img src={imgUrl}/>
-                    <h2>{topText}</h2>
-                    <h2>{bottomText}</h2>
+                <Conatiner imgUrl={imgUrl}>
+                    
+                   <Heading fontsize ={activeOption}>{topText}</Heading>
+                   <Heading fontsize ={activeOption}>{bottomText}</Heading>
                 
-                </div>
+                </Conatiner>
             </div>
         )
     }
