@@ -17,9 +17,7 @@ const ChoiceList = [
         imgUrl:"https://i.ibb.co/ZKDbFyj/Screenshot-from-2022-11-07-14-25-36.png"
     }
 ]
-const ramdom =  Math.floor(Math.random() * 3)
-const ramdomImg = ChoiceList[ramdom].imgUrl
-const ramdomId = ChoiceList[ramdom].uniqueId
+
 
 class RockPaper extends Component{
     state = {
@@ -27,9 +25,14 @@ class RockPaper extends Component{
         gameView:false,
         imgUrlState:'',
         GameWin:false,
+        ramdomImg:''
     }
     
     OnclickedImageItem = (imgUrl,uniqueId) =>{
+        const ramdom =  Math.floor(Math.random() * 3)
+        const ramdomImgurl = ChoiceList[ramdom].imgUrl
+        this.setState({ramdomImg:ramdomImgurl})
+        const ramdomId = ChoiceList[ramdom].uniqueId
         this.setState(prevState=>({gameView:!prevState.gameView}))
         this.setState({imgUrlState:imgUrl})
         if(uniqueId === ramdomId)
@@ -54,6 +57,10 @@ class RockPaper extends Component{
     }
     OnclickedPlayAgain = () =>{
         this.setState(prevState=>({gameView:!prevState.gameView}))
+        this.setState({score:0,
+            gameView:false,
+            imgUrlState:'',
+            GameWin:false,})
     }
     renderFullGameView = () =>{
         return(
@@ -65,7 +72,7 @@ class RockPaper extends Component{
 
    
     renderGameStartView = () =>{
-        const{imgUrlState,GameWin} = this.state
+        const{imgUrlState,GameWin,ramdomImg} = this.state
         return(
             <div className="game-start">
                 <div className="imges-game-start">
