@@ -13,6 +13,6 @@ background-image:url("${(props)=>props.imgUrl}");
 height:100vh;
 background-repeat: no-repeat;
 background-repeat: no-repeat;
-    min-width: 683px;
-    background-size: 100%;
+min-width: 683px;
+background-size: 100%;
 `
