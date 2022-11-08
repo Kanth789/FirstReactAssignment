@@ -7,8 +7,10 @@ const Saved = ( ) =>{
         <ToggleContext.Consumer>
             {value=>{
                 const{savedData} = value
+                const{showtoggleButton} = value
                 const showEmptyview = savedData.length === 0
                 return(
+                    <div className={`Home-conatiner ${showtoggleButton ? "" : "dark-theme"}`}>
                     <div className="saved-videos-conatiner">
                         <div className="saved-video-banner">
                            <div className="saved-icon">
@@ -19,6 +21,7 @@ const Saved = ( ) =>{
                             </div>
                         </div>
                         <SavedView/>
+                    </div>
                     </div>
                 )
             }}

@@ -2,6 +2,8 @@ import { Component } from "react"
 import Cookies from'js-cookie';
 import { BallTriangle } from 'react-loader-spinner';
 import TrendingItem from "./TrendingItem";
+import ToggleContext from "../ToggleContext";
+import {AiOutlineFire} from "react-icons/ai";
 const apiStatusConstants = {
     initial: 'INITIAL',
     success: 'SUCCESS',
@@ -100,10 +102,28 @@ class  Trending  extends Component{
       }
     render(){
     return(
+        <ToggleContext.Consumer>
+        {
+        value=>{
+            const{showtoggleButton} = value
+            return(
+        <div className={`Home-conatiner ${showtoggleButton ? "" : "dark-theme"}`}>
         <div className="Trending-conatiner">
+        <div className="saved-video-banner">
+                           <div className="saved-icon">
+                            <AiOutlineFire color="Red" size={30}/>
+                            </div> 
+                            <div className="saved-icon-name">
+                                <h2>Gaming Videos</h2>
+                            </div>
+                        </div>
             {this.renderTrendingDeatilsView()}
         </div>
-    
+        </div>
+            )
+         }
+        }
+    </ToggleContext.Consumer>
     )
     }
 }

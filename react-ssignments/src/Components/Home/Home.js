@@ -1,9 +1,6 @@
 import { Component } from "react";
-import {AiOutlineHome}  from "react-icons/ai";
-import {AiOutlineFire} from "react-icons/ai";
-import { SiYoutubegaming } from "react-icons/si";
-import { MdPlaylistAdd } from "react-icons/md";
 import { BallTriangle } from 'react-loader-spinner';
+import { AiOutlineClose } from "react-icons/ai";
 import './Home.css'
 import Cookies from 'js-cookie';
 import Leftbar from "../Leftbar";
@@ -23,7 +20,7 @@ class Home extends Component{
         VideosData : [],
         apiStatus: apiStatusConstants.initial,
         searchInput: '',
-        FullVideo:false,
+        isShown:true,
     }
     OnclickedCardHome = (id) =>{
       this.setState(prevState=>({FullVideo:!prevState.FullVideo}))
@@ -82,10 +79,19 @@ class Home extends Component{
               })
             }
       }
+      OnclickedClose = () =>{
+        this.setState(prevState=>({isShown:!prevState.isShown}))
+        
+      }
       renderFullVideoData = () =>{
-        const{VideosData,FullVideo} = this.state
+        const{VideosData,isShown} = this.state
+        
         return(
           <>
+          {isShown ? <div className="Home-banner">
+            <AiOutlineClose onClick={this.OnclickedClose}/>
+            <img src="https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png " alt="home-banner-img"/>
+          </div> : ""}
           <div className="search-bar-Conatiner">
             <SearchBar changeSearchInput={this.changeSearchInput} enterSearchInput={this.enterSearchInput}/>
           </div>
@@ -158,7 +164,7 @@ class Home extends Component{
                     return(
                            <>
                         
-                        <div className="Home-conatiner">
+                        <div className={`Home-conatiner ${showtoggleButton ? "" : "dark-theme"}`}>
                         
                         <div className="right-bar">
                           <div className="right-bar-videos">

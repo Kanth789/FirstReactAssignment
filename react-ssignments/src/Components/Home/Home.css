@@ -32,3 +32,12 @@
 .nav-link{
     text-decoration: none;
 }
+.Home-banner{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    
+}
+.Home-banner img{
+    width: 1100px;
+}

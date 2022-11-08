@@ -1,5 +1,6 @@
 import ToggleContext from "../ToggleContext"
 import './Saved.css'
+
 const SavedItem = (props) =>(
     <ToggleContext.Consumer>
         {value=>{
@@ -7,6 +8,7 @@ const SavedItem = (props) =>(
             const {published_at,thumbnail_url,title,view_count,name,profile_image_url,id} = SavedvideoDetails
        
     return(
+        
         <div className="saved-card">
             <div className="saved-card-video-img">
                 <img src={thumbnail_url} alt="saved-card-thumbnail"/>

@@ -8,8 +8,10 @@ const SavedView = () =>{
             {
                 value =>{
                     const {savedData} = value
+                    const{showtoggleButton} = value
                     return(
-                        <div className="saved-list">
+                        
+                        <div className={`saved-list  ${showtoggleButton ? "" : "dark-theme"}`}>
                             {savedData.map(eachItem=>(< SavedItem key={eachItem.id} SavedvideoDetails={eachItem}/>))}
                         </div>
                     )
