@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { BallTriangle } from 'react-loader-spinner';
+import { ThreeDots } from 'react-loader-spinner';
 import { AiOutlineClose } from "react-icons/ai";
 import './Home.css'
 import Cookies from 'js-cookie';
@@ -120,17 +120,17 @@ class Home extends Component{
         )
       }
       renderLoadingView = () => (
-        <div className="products-details-loader-container" testid="loader">
-                    <BallTriangle
-            height={100}
-            width={100}
-            radius={5}
-            color="#4fa94d"
-            ariaLabel="ball-triangle-loading"
-            wrapperClass={{}}
-            wrapperStyle=""
+        <div className="Particular-video-loading">
+                        <ThreeDots 
+            height="80" 
+            width="80" 
+            radius="9"
+            color="blue" 
+            ariaLabel="three-dots-loading"
+            wrapperStyle={{}}
+            wrapperClassName=""
             visible={true}
-          />
+            />
         </div>
       )
       renderFailureView = () => (
@@ -164,7 +164,7 @@ class Home extends Component{
                     return(
                            <>
                         
-                        <div className={`Home-conatiner ${showtoggleButton ? "" : "dark-theme"}`}>
+                        <div className={`Home-conatiner ${showtoggleButton ? "" : "dark-theme-conatiner"}`}>
                         
                         <div className="right-bar">
                           <div className="right-bar-videos">

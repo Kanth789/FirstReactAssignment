@@ -1,6 +1,6 @@
 import { Component } from "react"
 import Cookies from'js-cookie';
-import { BallTriangle } from 'react-loader-spinner';
+import { ThreeDots } from 'react-loader-spinner';
 import GamingItem from "./GamingItem";
 import ToggleContext from "../ToggleContext";
 import { SiYoutubegaming } from "react-icons/si";
@@ -73,15 +73,16 @@ class  Gaming  extends Component{
     )
     rendeLoadingView = () =>(
         <div className="Particular-video-loading">
-             <BallTriangle
-            height={100}
-            width={100}
-            radius={5}
-            color="#4fa94d"
-            ariaLabel="ball-triangle-loading"
-            wrapperClass={{}}
-            wrapperStyle=""
-            visible={true}/>
+                        <ThreeDots 
+            height="80" 
+            width="80" 
+            radius="9"
+            color="blue" 
+            ariaLabel="three-dots-loading"
+            wrapperStyle={{}}
+            wrapperClassName=""
+            visible={true}
+            />
         </div>
     )
     renderTrendingDeatilsView = () => {
@@ -105,15 +106,17 @@ class  Gaming  extends Component{
         value=>{
             const{showtoggleButton} = value
             return(
-                <div className={`Home-conatiner ${showtoggleButton ? "" : "dark-theme"}`}>
+                <div className={`Home-conatiner ${showtoggleButton ? "" : "dark-theme-conatiner"}`}>
         <div className="Gaming-conatiner">
-        <div className="saved-video-banner">
+            <div className="saved-video">
+        <div className= {`saved-video-banner ${showtoggleButton ? "" : "saved-dark-theme-conatiner"}`}>
                            <div className="saved-icon">
                             <SiYoutubegaming color="Red" size={30}/>
                             </div> 
                             <div className="saved-icon-name">
                                 <h2>Gaming Videos</h2>
                             </div>
+                        </div>
                         </div>
             {this.renderTrendingDeatilsView()}
         </div>

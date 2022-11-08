@@ -42,3 +42,12 @@ body{
 .main-conatiner{
   display: flex;
 }
+@media screen and (max-width:512px)
+{
+  .left-bar{
+    display: none;
+  }
+  .nav-bar-logo img {
+    width: 100px;
+    } 
+}

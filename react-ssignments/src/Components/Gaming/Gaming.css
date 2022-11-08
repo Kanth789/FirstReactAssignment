@@ -3,9 +3,10 @@
     grid-template-columns: auto auto auto auto;
     grid-column-gap: 40px;
     grid-row-gap: 40px;
+    padding: 20px 67px;
 }
 .Game-card-img img{
-    width: 200px;
+    width: 250px;
 }
 @media only screen and (max-width: 768px){
     .gaming-cards{
@@ -14,4 +15,14 @@
         grid-column-gap: 40px;
         grid-row-gap: 40px;
     }   
+}
+.saved-dark-theme-conatiner{
+    background-color: #181818;
+}
+.Particular-video-loading {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }

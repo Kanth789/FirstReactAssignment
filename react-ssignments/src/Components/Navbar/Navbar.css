@@ -15,6 +15,10 @@
     background-color:  #231f20;
     
 }
+.dark-theme-conatiner {
+    background-color: #0f0f0f;
+   
+}
 .nav-bar-logo img{
     width: 200px;
 }
@@ -36,4 +40,15 @@
 .dark-theme button{
     color: #fff;
     border: 3px solid #fff;
+}
+.pop-up,.nav-button-hidden{
+    display: none;
+}
+@media screen  and (max-width:768px){
+    .pop-up,.nav-button-hidden{
+        display: block;
+    }
+    .nav-button,.profile-img{
+        display: none;
+    }
 }

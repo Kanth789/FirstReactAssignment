@@ -32,3 +32,9 @@
 .Trending-list{
     margin-top: 40px;
 }
+.trending{
+    padding: 20px 67px;
+}
+.dark-theme h2{
+    color: #fff;
+}

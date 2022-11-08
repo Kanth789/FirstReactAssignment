@@ -74,6 +74,7 @@ class  App extends Component {
   render(){
     const {showtoggleButton,savedData} = this.state
   return (
+    <div className='app'>
     <BrowserRouter>
     
     <ToggleContext.Provider  value={{onClickedToggle:this.onClickedToggle,showtoggleButton,savedData,addVideoItem:this.addVideoItem}}>
@@ -100,6 +101,7 @@ class  App extends Component {
     </div>
     </ToggleContext.Provider>
  </BrowserRouter>
+ </div>
   )
 }
 }

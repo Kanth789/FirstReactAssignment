@@ -19,6 +19,8 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    padding: 20px 67px;
+    
 }
 .saved-icon-name{
     margin-left: 10px;
@@ -31,4 +33,13 @@
 }
 .saved-list{
     margin-top: 40px;
+}
+
+.empty-view-conatiner{
+    width: 624px;
+    display: block;
+    margin: auto;
+}
+.empty-view-conatiner img{
+    width: 100%;
 }

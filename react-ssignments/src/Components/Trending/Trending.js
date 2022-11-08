@@ -1,6 +1,6 @@
 import { Component } from "react"
 import Cookies from'js-cookie';
-import { BallTriangle } from 'react-loader-spinner';
+import { ThreeDots } from 'react-loader-spinner';
 import TrendingItem from "./TrendingItem";
 import ToggleContext from "../ToggleContext";
 import {AiOutlineFire} from "react-icons/ai";
@@ -75,15 +75,16 @@ class  Trending  extends Component{
     )
     rendeLoadingView = () =>(
         <div className="Particular-video-loading">
-             <BallTriangle
-            height={100}
-            width={100}
-            radius={5}
-            color="#4fa94d"
-            ariaLabel="ball-triangle-loading"
-            wrapperClass={{}}
-            wrapperStyle=""
-            visible={true}/>
+             <ThreeDots 
+height="80" 
+width="80" 
+radius="9"
+color="blue" 
+ariaLabel="three-dots-loading"
+wrapperStyle={{}}
+wrapperClassName=""
+visible={true}
+ />
         </div>
     )
     renderTrendingDeatilsView = () => {
