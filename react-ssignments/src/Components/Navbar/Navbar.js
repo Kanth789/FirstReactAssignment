@@ -39,6 +39,9 @@ const Navbar = (props)=>{
                               <img src="https://assets.ccbp.in/frontend/react-js/light-theme-img.png"/>
             }
             </div>
+            <div className="pop-up">
+                
+            </div>
             <div>
                 <img src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png"/>
             </div>
