@@ -2,11 +2,11 @@
     display: flex;
     justify-content: space-between;
 }
-.Particular-video-view,.Particular-video-icons,.like,.Dis-like,.Saved{
+.Particular-video-view,.Particular-video-icons,.like,.Dis-like,.Saved-icon{
     display: flex;
     align-items: center;
 }
-.like,.Dis-like,.Saved{
+.like,.Dis-like,.Saved-icon{
    margin-left: 20px;
 }
 .Particular-video-logo img{

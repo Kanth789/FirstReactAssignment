@@ -6,6 +6,7 @@ import Cookies from'js-cookie';
 import { BallTriangle } from 'react-loader-spinner';
 import ReactPlayer from 'react-player'
 import './ParticularVideo.css'
+import ToggleContext from "./ToggleContext";
 const apiStatusConstants = {
     initial: 'INITIAL',
     success: 'SUCCESS',
@@ -82,12 +83,20 @@ class ParticluarVideoDeatils extends Component{
             }
     }
     renderParticularVideoView = () =>{
-        const{particluarVideo,clickedLike,clcikedDislike,clickedSaved} = this.state
-        const {published_at,thumbnail_url,subscriber_count,title,view_count,name,profile_image_url,id,video_url,description} = particluarVideo
+        
         return(
-            <>
+            <ToggleContext.Consumer>
+            {value=>{
+                const{addVideoItem} = value
+                const{particluarVideo,clickedLike,clcikedDislike,clickedSaved} = this.state
+                const {published_at,thumbnail_url,subscriber_count,title,view_count,name,profile_image_url,id,video_url,description} = particluarVideo
+                const onClickAddtoCart  = () =>{
+                    addVideoItem({...particluarVideo})
+                    this.setState(prevState=>({clickedSaved:!prevState.clickedSaved}))
+                  }
+                 
             
-            
+            return(
             <div className="ParticularVideo-Conatiner">
               
             <div className="Particular-video">
@@ -111,8 +120,8 @@ class ParticluarVideoDeatils extends Component{
                                 {clcikedDislike ? <BiDislike  color = "blue" /> :<BiDislike/>}
                                 {clcikedDislike ? <p className="blue">Dislike</p> : <p className="blue-disLike">Dislike</p>}
                             </div>
-                            <div className="Saved"  onClick={this.OnclickedSaved}>
-                                {clickedSaved ?  <MdPlaylistAdd  color ="blue"/> : <MdPlaylistAdd /> }
+                            <div className="Saved-icon"  onClick={onClickAddtoCart}>
+                                {clickedSaved ?  <MdPlaylistAdd  color ="blue" onClick={this.OnclickedSaved} />  : <MdPlaylistAdd onClick={this.OnclickedSaved}/> }
                                 {clickedSaved ? <p className="blue">Save</p> : <p className="blue-saved">Save</p>}
                             </div>
                         </div>
@@ -137,8 +146,9 @@ class ParticluarVideoDeatils extends Component{
                     
             </div>
         </div>
-          
-           </>
+            ) 
+          }}
+           </ToggleContext.Consumer>
         )
     }
     renderFailureView = ( )=>(

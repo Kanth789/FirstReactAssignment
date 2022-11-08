@@ -1,0 +1,34 @@
+.saved-card{
+    display: flex;
+    align-items: center;
+}
+.saved-card-video-img img{
+    width: 350px;
+}
+.saved-card-views{
+    display: flex;
+    align-items: center;
+}
+.saved-icon{
+    padding:  20px 20px;
+    background-color: #000;
+    border-radius: 100%;
+    text-align: center;
+}
+.saved-video-banner{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.saved-icon-name{
+    margin-left: 10px;
+}
+.saved-card{
+    margin-bottom: 20px;
+}
+.saved-card-content{
+    margin-left: 30px;
+}
+.saved-list{
+    margin-top: 40px;
+}

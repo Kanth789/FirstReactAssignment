@@ -22,3 +22,13 @@
  margin: 90px;
   
 }
+.active .leftbar-link{ 
+    background-color: #fff;
+    
+}
+.active p{
+    color: #000;
+}
+.nav-link{
+    text-decoration: none;
+}
