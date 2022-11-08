@@ -1,0 +1,39 @@
+.navigations{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+.nav-links{
+    display: flex;
+    flex-direction: row;
+  align-items: center;
+ 
+}
+.dark-theme {
+    background-color:  #231f20;
+    
+}
+.nav-bar-logo img{
+    width: 200px;
+}
+.toggle-icon img{
+    width: 40px;
+}
+.nav-links img{
+    width: 50px;
+}
+.nav-links >div{
+    margin-left: 40px;
+}
+.nav-button button{
+    padding: 9px 25px;
+    background-color: transparent;
+    border: 3px solid blue;
+    font-size: 18px;
+}
+.dark-theme button{
+    color: #fff;
+    border: 3px solid #fff;
+}

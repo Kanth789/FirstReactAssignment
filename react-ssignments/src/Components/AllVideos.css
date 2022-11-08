@@ -1,0 +1,35 @@
+.AllVideos-conatiner{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+}
+.video img{
+    width: 400px;
+}
+.video-logo img{
+    width: 60px;
+}
+.video-content{
+    display: flex;
+    flex-direction: row;
+}
+.video-views{
+    display: flex;
+    flex-direction: row;
+
+}
+.video-header p{
+    margin-top: 2px;
+    margin-bottom: 4px;
+    
+}
+.video-card{
+    min-width: 400px;
+}
+.video-card{
+    width: 150px;
+}
+.right-bar{
+    min-width: 900px;
+}
