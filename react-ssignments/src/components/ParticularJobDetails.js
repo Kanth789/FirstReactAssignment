@@ -10,7 +10,7 @@ import { BiLinkExternal } from "react-icons/bi";
 import { AiFillStar } from "react-icons/ai";
 import { ImLocation } from "react-icons/im";
 import { MdWork } from "react-icons/md";
-import NewWindow from 'react-new-window'
+
 const apiStatusConstants = {
     initial: 'INITIAL',
     success: 'SUCCESS',
