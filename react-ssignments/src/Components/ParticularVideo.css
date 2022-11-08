@@ -1,0 +1,21 @@
+.Particular-video-view-duration{
+    display: flex;
+    justify-content: space-between;
+}
+.Particular-video-view,.Particular-video-icons,.like,.Dis-like,.Saved{
+    display: flex;
+    align-items: center;
+}
+.like,.Dis-like,.Saved{
+   margin-left: 20px;
+}
+.Particular-video-logo img{
+    width: 60px;
+}
+.Particular-video-logo{
+    display: flex;
+    align-items: center;
+}
+.blue{
+    color: blue;
+}

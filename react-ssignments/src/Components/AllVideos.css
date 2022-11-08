@@ -33,3 +33,7 @@
 .right-bar{
     min-width: 900px;
 }
+.nav-link{
+    text-decoration: none;
+    color: black;
+}

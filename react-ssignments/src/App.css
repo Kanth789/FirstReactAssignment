@@ -39,3 +39,6 @@
 body{
   font-family: Roboto;
 }
+.main-conatiner{
+  display: flex;
+}

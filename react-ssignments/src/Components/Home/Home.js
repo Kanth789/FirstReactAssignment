@@ -11,28 +11,7 @@ import Navbar from "../Navbar/Navbar";
 import ToggleContext from "../ToggleContext";
 import AllVideo from "../AllVideo";
 import SearchBar from "../Searchbar";
-const Caterogy = [
-    {
-        uniqueId:'Home',
-        name:'Home',
-        icon:'AiOutlineHome'
-    },
-    {
-        uniqueId:'Trending',
-        name:'Trending',
-        icon:'AiOutlineFire'
-    },
-    {
-        uniqueId:"Gaming",
-        name:"Gaming",
-        icon:'SiYoutubegaming'
-    },
-    {
-        uniqueId:"Saved",
-        name:"Saved videos",
-        icon:'MdPlaylistAdd',
-    }
-]
+
 const apiStatusConstants = {
     initial: 'INITIAL',
     success: 'SUCCESS',
@@ -44,6 +23,10 @@ class Home extends Component{
         VideosData : [],
         apiStatus: apiStatusConstants.initial,
         searchInput: '',
+        FullVideo:false,
+    }
+    OnclickedCardHome = (id) =>{
+      this.setState(prevState=>({FullVideo:!prevState.FullVideo}))
     }
     componentDidMount(){
         this.getFullVideosData()
@@ -77,7 +60,7 @@ class Home extends Component{
           {
               
               const data =  await response.json()
-              console.log(data)
+              // console.log(data)
               
               const updatedFullVideosData = data.videos.map(eachItem=>({
                 published_at :eachItem.published_at,
@@ -100,7 +83,7 @@ class Home extends Component{
             }
       }
       renderFullVideoData = () =>{
-        const{VideosData} = this.state
+        const{VideosData,FullVideo} = this.state
         return(
           <>
           <div className="search-bar-Conatiner">
@@ -110,6 +93,24 @@ class Home extends Component{
            {VideosData.map(eachItem=>(<AllVideo key={eachItem.id} VideosList={eachItem}/>))}
            </div>
            </>
+        )
+      }
+      lengthOfList=()=>{
+        const{VideosData} = this.state
+        
+        if(VideosData.length > 0 )
+        {
+            return this.renderFullVideoData()
+        }
+        else{
+          return this.renderNoJobsFound() 
+        }
+      }
+      renderNoJobsFound = ()=>{
+        return(
+          <div>
+            <img src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png "/>
+          </div>
         )
       }
       renderLoadingView = () => (
@@ -137,7 +138,7 @@ class Home extends Component{
     
         switch (apiStatus) {
           case apiStatusConstants.success:
-            return this.renderFullVideoData()
+            return this.lengthOfList()
           case apiStatusConstants.failure:
             return this.renderFailureView()
           case apiStatusConstants.inProgress:
@@ -156,11 +157,9 @@ class Home extends Component{
                     
                     return(
                            <>
-                        <Navbar/>
+                        
                         <div className="Home-conatiner">
-                        <div className={`left-bar ${showtoggleButton ? "light-theme  " : "dark-theme"}`}>
-                            {Caterogy.map(eachItem=>(<Leftbar  key={eachItem.uniqueId} leftbarLinks={eachItem}/>))}
-                        </div>
+                        
                         <div className="right-bar">
                           <div className="right-bar-videos">
                          {this.renderAllVideosDetails()}

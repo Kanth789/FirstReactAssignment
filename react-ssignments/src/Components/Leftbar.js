@@ -1,6 +1,7 @@
 const Leftbar = (props) =>{
     const {leftbarLinks} = props
-    const{uniqueId,name,icon} = leftbarLinks
+    const{name} = leftbarLinks
+   
     return(
        
             <div className="leftbar-link">
