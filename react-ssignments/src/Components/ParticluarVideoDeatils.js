@@ -25,7 +25,7 @@ class ParticluarVideoDeatils extends Component{
     
     componentDidMount() {
         this.getData()
-        this.isSaved()
+       
       }
     
       componentWillUnmount() {
@@ -33,6 +33,7 @@ class ParticluarVideoDeatils extends Component{
       }
     
       getData = async () => {
+        this.isSaved()
         this.mounted = true
         const {match} = this.props
         const {params} = match
@@ -124,6 +125,7 @@ class ParticluarVideoDeatils extends Component{
                     console.log(saved)
                     this.isSaved()
                     addSavedVideos(videoDetails)
+                    
                   }
                   
             
