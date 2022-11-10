@@ -1,12 +1,8 @@
 .left-bar{
-    min-width: 250px;
-    background-color:  #231f20 ;
+    max-width: 250px;
     height: 100vh;
 }
-.Home-conatiner{
-    
-    width: 100%;
-}
+
 .light-theme{
     background-color: #fff;
 }
@@ -23,7 +19,7 @@
     font-size: 20px;
 }
 .right-bar-videos{
-    padding-left: 90px;
+    padding-left: 30px;
 
   
 }
@@ -38,11 +34,175 @@
     text-decoration: none;
 }
 .Home-banner{
+    
+    background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png ');
+    background-size: 100% ;
+    height: 30vh;
+    background-repeat: no-repeat;
+    padding: 20px;
+}
+
+.leftbar-socailicons{
+    display: flex;
+    flex-direction: row;
+}
+.icon img{
+    width: 50px;
+}
+.icon{
+    margin-left: 10px;
+}
+.left-bar {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    justify-content: space-between;
+}
+.dark-theme-conatiner{
+    background-color: black;
+}
+.dark-theme h4{
+    color: #fff;
+}
+.dark-theme .socail-para h3{
+    color: #fff;
+}
+.search-input{
+    position:absolute;
     
 }
-.Home-banner img{
-    width: 100%;
+.search-conatiner-icon{
+    position: relative;
+    left: 310px;
+    margin-top: 10px;
+    padding: 19px 18px;
+    background-color: grey;
+}
+.search-conatiner{
+    margin-bottom: 30px;
+}
+
+.Home-icon{
+    float: right;
+    padding: 30px;
+}
+.home-banner-icon img{
+    width: 200px;
+}
+.home-banner-header{
+    font-size: 22px;
+}
+.banner-button{
+    padding: 10px 20px;
+    font-size: 19px;
+    font-weight: 600;
+}
+
+@media screen and (max-width: 768px) {
+    .right-bar-videos {
+        padding-left: 30px;
+    }
+    .search-conatiner-icon {
+        padding: 21px 22px;
+        margin-top: 9px;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 7px;
+        border: none;
+    }
+    .left-bar {
+       display: none;
+       
+    }
+    .Home-banner{
+       
+       
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+       
+    }
+}
+@media screen and (max-width: 576px) {
+    .right-bar-videos {
+        padding-left: 21px;
+    }
+    .dark-theme p {
+        
+        margin-bottom: 2px;
+        margin-top: 2px;
+    }
+    .search-conatiner-icon {
+        padding: 21px 22px;
+        margin-top: 9px;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 7px;
+        border: none;
+    }
+   
+    .left-bar {
+        max-width: 190px;
+        display: none;
+       
+    }
+    
+    .Home-banner{
+      
+     
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        
+    }
+    .leftbar-link {
+        padding: 8px;
+        margin-top: 8px;
+        font-size: 17px;
+    }
+    .icon img {
+        width: 30px;
+    }
+    .socail-para h3{
+        font-size: 16px;
+        padding-bottom: 15px;
+    }
+}
+@media screen and (max-width: 992px) {
+    .right-bar-videos {
+        padding-left: 20px;
+    }
+    .search-conatiner-icon {
+        padding: 21px 22px;
+        margin-top: 10px;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 7px;
+        border: none;
+    }
+    .left-bar {
+        max-width: 200px;
+        height: 100vh;
+    }
+    
+    
+}
+@media screen and (max-width: 1200px) {
+    .right-bar-videos {
+        padding-left: 20px;
+    }
+    .search-conatiner-icon {
+        padding: 21px 22px;
+        margin-top: 10px;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 7px;
+        border: none;
+    }
+    .Home-banner{
+      
+        height: 20vh;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        
+    }
+    .left-bar {
+        max-width: 200px;
+        height: 100vh;
+    }
+    
+    
 }

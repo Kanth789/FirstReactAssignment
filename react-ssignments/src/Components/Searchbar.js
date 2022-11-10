@@ -21,7 +21,7 @@ const SearchBar = (props)=>{
           placeholder="Search"
           onChange={onChangeSearchInput}
          ></input>
-          <button className="search-conatiner-icon" onClick={onEnterSearchInput}><BsSearch color="white"   size="17px"/></button>
+          <button className="search-conatiner-icon" onClick={onEnterSearchInput}><BsSearch color="black"   size="20px"/></button>
         </div>
     )
 }

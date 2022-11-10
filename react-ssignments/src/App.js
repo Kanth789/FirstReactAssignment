@@ -12,21 +12,29 @@ import Leftbar from './Components/Leftbar';
 import Saved from './Components/SavedRoute/Saved';
 import Trending from './Components/Trending/Trending';
 import Gaming from './Components/Gaming/Gaming';
+import SocialMedia from './Components/SocialMedia';
+import Cookies from 'js-cookie';
 const Caterogy = [
   {
       uniqueId:'Home',
       name:'Home',
-      icon:'AiOutlineHome'
+      icon:'AiOutlineHome',
+      imgUrl :'https://assets.ccbp.in/frontend/react-js/nxt-watch-facebook-logo-img.png',
+      altName:'face-book-icon'
   },
   {
       uniqueId:'Trending',
       name:'Trending',
-      icon:'AiOutlineFire'
+      icon:'AiOutlineFire',
+      imgUrl :'https://assets.ccbp.in/frontend/react-js/nxt-watch-twitter-logo-img.png ',
+      altName:'twitter-icon'
   },
   {
       uniqueId:"Gaming",
       name:"Gaming",
-      icon:'SiYoutubegaming'
+      icon:'SiYoutubegaming',
+      imgUrl :'https://assets.ccbp.in/frontend/react-js/nxt-watch-linked-in-logo-img.png',
+      altName:'likedIn-icon'
   },
   {
       uniqueId:"Saved",
@@ -34,35 +42,37 @@ const Caterogy = [
       icon:'MdPlaylistAdd',
   }
 ]
+
+const getAccessToken =()=>{
+  return Cookies.get('jwt_token')
+}
 class  App extends Component {
   state ={
     showtoggleButton: true,
-    savedData:[],
-    
+    jwtaccesToken:'',
+    savedVideos: []
   }
-  
-  addVideoItem = particluarVideo => {
-    const {savedData} = this.state
-    const videoObject = savedData.find(
-      eachItem => eachItem.id === particluarVideo.id,
-    )
+  componentDidMount(){
+    this.OnJwtTokken()
+  }
+  OnclickedSaved = () =>{
+    this.setState(prevState=>({clickedSaved:!prevState.clickedSaved}))
+}
 
-    if (videoObject) {
-      this.setState(prevState => ({
-        savedData: prevState.savedData.map(eachItem => {
-          if (videoObject.id !== eachItem.id) {
-            
-
-            return {...eachItem}
-          }
-
-          return eachItem
-        }),
-      }))
+  addSavedVideos =  data => {
+    
+    const {savedVideos} = this.state
+    if (savedVideos.length > 0) {
+      const checkSavedVideos = savedVideos.filter(item => item.id === data.id)
+      if (checkSavedVideos.length === 0) {
+         this.setState({
+          savedVideos: [...savedVideos, data],
+        })
+      }
     } else {
-      const updatedVideoList = [...savedData, particluarVideo]
-
-      this.setState({savedData: updatedVideoList})
+       this.setState({
+        savedVideos: [...savedVideos, data],
+      })
     }
   }
 
@@ -71,31 +81,59 @@ class  App extends Component {
     this.setState(prevState=>({showtoggleButton:!prevState.showtoggleButton}))
    
   }
-  render(){
-    const {showtoggleButton,savedData} = this.state
-  return (
-    <div className='app'>
-    <BrowserRouter>
-    
-    <ToggleContext.Provider  value={{onClickedToggle:this.onClickedToggle,showtoggleButton,savedData,addVideoItem:this.addVideoItem}}>
-      
-      <div className='App-conatiner'>
-        <Navbar/>
-        <div className='main-conatiner'>
-        <  div className={`left-bar ${showtoggleButton ? "light-theme  " : "dark-theme"}`}>
-                            {Caterogy.map(eachItem=>(<Leftbar  key={eachItem.uniqueId} leftbarLinks={eachItem} OnclickedLeftbarLink={this.OnclickedLeftbarLink}/>))}
-                        </div>
-                        
+
+  OnJwtTokken = () =>{
+    console.log(getAccessToken()=== undefined)
+    this.setState({jwtaccesToken:getAccessToken()})
+  }
+  renderRoute = () =>{
+    return(
       <Switch>
       <Route exact path="/login" component={Login}></Route>
-       <Route exact  path="/Saved" component={Saved}></Route>
-       <Route exact path="/Gaming" component={Gaming}></Route>
-       <Route exact path="/Trending" component={Trending}></Route>
+       <ProctetedRoute exact  path="/Saved" component={Saved}></ProctetedRoute>
+       <ProctetedRoute exact path="/Gaming" component={Gaming}></ProctetedRoute>
+       <ProctetedRoute exact path="/Trending" component={Trending}></ProctetedRoute>
        <Route exact path="/Home" component={Home}></Route>
       <ProctetedRoute exact path="/" component={Home}></ProctetedRoute>
       <ProctetedRoute exact path="/videos/:id" component={ParticluarVideoDeatils}></ProctetedRoute>
       <Redirect to="not-found" />
     </Switch>
+    )
+  }
+  render(){
+    const {showtoggleButton,savedData,jwtaccesToken,savedVideos} = this.state
+   
+    console.log(jwtaccesToken,"jwt token")
+  return (
+    <div className='app'>
+    <BrowserRouter>
+    
+    <ToggleContext.Provider  value={{onClickedToggle:this.onClickedToggle,showtoggleButton,savedData,jwtaccesToken:this.OnJwtTokken, savedVideos,addSavedVideos: this.addSavedVideos}}>
+      
+      <div className='App-conatiner'>
+       {jwtaccesToken === undefined || null ?    "" : <Navbar/>}
+        <div className='main-conatiner'>
+          <div className= {`left-right-conatiner ${showtoggleButton ? "light-theme  " : "dark-theme"}`}>
+        {jwtaccesToken === undefined || null ? "" : <div className="left-bar">
+                            <div className='left-link-conatiner'>
+                            {Caterogy.map(eachItem=>(<Leftbar  key={eachItem.uniqueId} leftbarLinks={eachItem} OnclickedLeftbarLink={this.OnclickedLeftbarLink}/>))}
+                            </div>
+                            <div className="leftbar-social-media">
+                            <h4>CONTACT US</h4>
+                            <div className='leftbar-socailicons'>
+                            {Caterogy.map(eachItem=>(<SocialMedia  key={eachItem.uniqueId} leftbarLinks={eachItem} />))}
+                            
+                            </div>
+                            <div className='socail-para'>
+                              <h3>Enjoy! Now you can see your channel and recommdationa</h3>
+                            </div>
+                            </div>
+        </div> }
+                        
+        <div className='right-conatiner'>
+        {this.renderRoute()}
+        </div>
+        </div>
     </div>
     
     </div>

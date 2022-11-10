@@ -56,3 +56,7 @@
     color: red;
     letter-spacing: 1px;
   }
+
+  @media screen and (max-width:576px) {
+    
+  }

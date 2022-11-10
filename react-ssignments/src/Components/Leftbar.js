@@ -4,6 +4,7 @@ import { SiYoutubegaming } from "react-icons/si";
 import { MdPlaylistAdd } from "react-icons/md";
 import { Component } from "react"
 import { NavLink } from "react-router-dom"
+import SocialMedia from "./SocialMedia";
 class  Leftbar extends Component{ 
     state ={
         activeLink :'true'
@@ -13,18 +14,22 @@ class  Leftbar extends Component{
       }
  render(){
     const {leftbarLinks} = this.props
-    const{uniqueId,name} = leftbarLinks
+    const{uniqueId,name,imgUrl,altName} = leftbarLinks
     const{activeLink} = this.state
     return(
+      <>
            <NavLink to ={`/${uniqueId}`} className={isActive =>
             "nav-link" + (!isActive ? " unselected" : "")
           }>
             <div className={`leftbar-link ${uniqueId}`} onClick={this.OnclikedLeftBar} >
-                
+                <div className="leftbar-conatiner">
                 <p>{name}</p>
+                </div>
+                
             </div>
             </NavLink>
-   
+           
+   </>
     )
  }
     

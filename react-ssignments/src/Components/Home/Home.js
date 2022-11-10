@@ -84,14 +84,26 @@ class Home extends Component{
         
       }
       renderFullVideoData = () =>{
-        const{VideosData,isShown} = this.state
+       
         
         return(
-          <>
-          {isShown ? <div className="Home-banner">
-            <AiOutlineClose onClick={this.OnclickedClose}/>
-            <img src="https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png " alt="home-banner-img"/>
-          </div> : ""}
+          <ToggleContext.Consumer>
+          {value=>{
+            const{showtoggleButton} = value
+             const{VideosData,isShown} = this.state
+          return(
+            <>
+          {   isShown ? <div className="Home-banner">
+                 <AiOutlineClose  size ={30} onClick={this.OnclickedClose} className="Home-icon"/>
+                 <div className="home-banner-icon">
+                      {showtoggleButton ?  <img src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"/> : <img src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png"/>}
+                      </div>
+                      <div className="home-banner-header">
+                        <h2>Buy Nxt Watch Premium prepaid plans with UPI</h2>
+                      </div>
+                      <button className="banner-button">GET IT NOW</button>
+                      </div>
+          : ""}
           <div className="search-bar-Conatiner">
             <SearchBar changeSearchInput={this.changeSearchInput} enterSearchInput={this.enterSearchInput}/>
           </div>
@@ -99,6 +111,9 @@ class Home extends Component{
            {VideosData.map(eachItem=>(<AllVideo key={eachItem.id} VideosList={eachItem}/>))}
            </div>
            </>
+          )
+          }}
+           </ToggleContext.Consumer>
         )
       }
       lengthOfList=()=>{
@@ -166,7 +181,7 @@ class Home extends Component{
                         
                         <div className={`Home-conatiner ${showtoggleButton ? "" : "dark-theme-conatiner"}`}>
                         
-                        <div className="right-bar">
+                        <div className={`right-bar ${showtoggleButton ? "" : "dark-theme-conatiner"}`}>
                           <div className="right-bar-videos">
                          {this.renderAllVideosDetails()}
                          </div>

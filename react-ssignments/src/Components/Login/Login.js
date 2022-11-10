@@ -2,7 +2,11 @@ import {Component} from 'react'
 import Cookies from 'js-cookie'
 import './Login.css';
 import { Redirect } from 'react-router-dom';
+import ToggleContext from '../ToggleContext';
 class Login extends Component {
+
+  static contextType = ToggleContext
+  
   state = {
     username: '',
     password: '',
@@ -10,7 +14,7 @@ class Login extends Component {
     errorMsg: '',
     showPassword: 'false'
   }
-
+  
   onChangeUsername = event => {
     this.setState({username: event.target.value})
   }
@@ -24,6 +28,10 @@ class Login extends Component {
 
     Cookies.set('jwt_token', jwtToken, {expires: 30})
     history.replace('/')
+    const context = this.context;
+    
+    const layout = context.jwtaccesToken();
+    
   }
 
   onSubmitFailure = errorMsg => {
@@ -46,8 +54,9 @@ class Login extends Component {
     } else {
       this.onSubmitFailure(data.error_msg)
     }
+    
   }
-
+ 
   renderPasswordField = () => {
     const {password,showPassword} = this.state
     return (
@@ -112,6 +121,11 @@ class Login extends Component {
       }
      
     return (
+      <ToggleContext.Consumer>
+        {
+          value=>{
+            const{jwtaccesToken,OnJwtTokken} = value
+          return(
       <div className="login-form-container">
         
         
@@ -130,6 +144,11 @@ class Login extends Component {
           {showSubmitError && <p className="error-message">*{errorMsg}</p>}
         </form>
       </div>
+          )
+        }
+      }
+      </ToggleContext.Consumer>
+      
     )
   }
 }

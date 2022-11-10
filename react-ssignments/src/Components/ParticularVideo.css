@@ -28,3 +28,57 @@
 .Particular-video-failure img{
     width: 100%;
 }
+.ParticularVideo-Conatiner{
+    padding: 30px;
+    height: 100vh;
+}
+.reactplayer{
+    width: 1100px !important;
+    height: 600px !important;
+}
+.particular-video-header-desc{
+    width: 1100px;
+    height: 600px ;
+}
+@media screen and (max-width:768px) {
+    .reactplayer{
+        width: 480px !important;
+        height: 300px !important;
+    }
+    .particular-video-header-desc{
+        width: 480px;
+        height: 300px;
+    }
+}
+@media screen and (max-width:992px) {
+    .reactplayer{
+        width: 650px !important;
+        height: 400px !important;
+    }
+    .particular-video-header-desc{
+        width: 650px;
+        height: 400px;
+    }
+}
+@media screen and (max-width:576px) {
+    .reactplayer{
+        width: 500px !important;
+        height: 320px !important;
+       
+    }
+    .particular-video-header-desc{
+        width: 500px;
+        height: 320px;
+    }
+}
+@media screen and (max-width:1180px) and (min-width:992px) {
+    .reactplayer{
+        width: 782px !important;
+        height: 320px !important;
+       
+    }
+    .particular-video-header-desc{
+        width: 782px;
+        height: 320px;
+    }
+}

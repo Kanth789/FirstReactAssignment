@@ -15,10 +15,7 @@
     background-color:  #231f20;
     
 }
-.dark-theme-conatiner {
-    background-color: #0f0f0f;
-   
-}
+
 .nav-bar-logo img{
     width: 200px;
 }
@@ -37,18 +34,143 @@
     border: 3px solid blue;
     font-size: 18px;
 }
-.dark-theme button{
-    color: #fff;
-    border: 3px solid #fff;
-}
+
 .pop-up,.nav-button-hidden{
     display: none;
 }
+.popup-content {
+  margin: auto;
+  background: rgb(255, 255, 255);
+  padding: 40px 90px;
+  border-radius: 10px;
+  text-align: center;
+}
+.pop-up{
+    display: block ;
+}
+.popup-arrow {
+  color: rgb(255, 255, 255);
+}
+[role='tooltip'].popup-content {
+  width: 200px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+}
+
+.popup-overlay {
+  
+  background: rgba(0, 0, 0, 0.5);
+}
+[data-popup='tooltip'].popup-overlay {
+  background: transparent;
+}
+.link {
+    font-size: 26px;
+    padding: 10px 20px;
+}
+.link:hover{
+    color: blue;
+}
+.trigger-button{
+    font-size: 17px;
+    font-weight: 600;
+    padding:  10px 20px;
+    margin:10px;
+    border-radius: 8px;
+}
+.nav-link button{
+    background-color: blue;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    padding:  10px 20px;
+    margin:10px;
+}
+.logout-conatiner p{
+    font-size: 20px;
+
+}
+
+
 @media screen  and (max-width:768px){
     .pop-up,.nav-button-hidden{
         display: block;
     }
     .nav-button,.profile-img{
         display: none;
+    }
+    .nav-bar-logo img{
+        width: 100px;
+    }
+    .nav-links img {
+        width: 30px;
+    }
+    .nav-links >div {
+        margin-left: 20px;
+    }
+}
+@media screen and (max-width:576px) {
+    .pop-up,.nav-button-hidden{
+        display: block;
+    }
+    .nav-button,.profile-img{
+        display: none;
+    }
+    
+    .nav-links img {
+        width: 30px;
+    }
+    .nav-links >div {
+        margin-left: 20px;
+    }
+    .navigations{
+        padding: 10px;
+    }
+    .nav-bar{
+        width: 501px;
+    }
+    .dark-theme button{
+    color: #fff;
+    border: none;
+    
+    }
+}
+@media screen and (max-width:992px) {
+    .pop-up,.nav-button-hidden{
+        display: block;
+    }
+    .nav-button,.profile-img{
+        display: none;
+    }
+    
+    .nav-links img {
+        width: 30px;
+    }
+    .nav-links >div {
+        margin-left: 20px;
+    }
+    .navigations{
+        padding: 10px;
+    }
+    
+}
+
+@media screen and (min-width:576px) and (max-width:768px) {
+    .pop-up,.nav-button-hidden{
+        display: block;
+    }
+    .nav-button,.profile-img{
+        display: none;
+    }
+    
+    .nav-links img {
+        width: 30px;
+    }
+    .nav-links >div {
+        margin-left: 20px;
+    }
+    .navigations{
+        padding: 10px;
     }
 }

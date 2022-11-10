@@ -7,12 +7,12 @@ const SavedView = () =>{
         <ToggleContext.Consumer>
             {
                 value =>{
-                    const {savedData} = value
+                    const {savedVideos} = value
                     const{showtoggleButton} = value
                     return(
                         
-                        <div className={`saved-list  ${showtoggleButton ? "" : "dark-theme"}`}>
-                            {savedData.map(eachItem=>(< SavedItem key={eachItem.id} SavedvideoDetails={eachItem}/>))}
+                        <div className="saved-list">
+                            {savedVideos.map(eachItem=>(< SavedItem key={eachItem.id} SavedvideoDetails={eachItem}/>))}
                         </div>
                     )
                 }

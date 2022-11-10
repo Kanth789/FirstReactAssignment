@@ -2,8 +2,9 @@
     display: flex;
     align-items: center;
 }
-.saved-card-video-img img{
-    width: 350px;
+.saved-card-video-img img {
+    width: 250px;
+    height: 200px;
 }
 .saved-card-views{
     display: flex;
@@ -33,13 +34,56 @@
 }
 .saved-list{
     margin-top: 40px;
+    padding-left: 30px;
 }
 
 .empty-view-conatiner{
     width: 624px;
     display: block;
     margin: auto;
+    height: 100vh;
 }
 .empty-view-conatiner img{
     width: 100%;
+}
+.saved-videos-conatiner{
+  height: 100vh;
+}
+
+@media screen and (max-width: 768px) {
+    .saved-video-banner{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 10px 27px;
+        
+    }
+    .empty-view-conatiner{
+        width: 465px;
+        
+    }
+    
+}
+
+@media screen and (max-width:576px) {
+    .gaming-cards{
+        display: grid;
+        grid-template-columns: auto auto ;
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+        padding: 10px 47px;
+    }
+    .Game-card-img img{
+        width: 100px;
+    }
+    .saved-icon {
+        padding: 13px 13px;
+        
+    }
+    .saved-videos-conatiner {
+        min-width: 374px;
+    }
+    .empty-view-conatiner {
+        width: 349px;
+    }
 }

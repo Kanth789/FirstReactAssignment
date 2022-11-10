@@ -108,9 +108,9 @@ visible={true}
         value=>{
             const{showtoggleButton} = value
             return(
-        <div className={`Home-conatiner ${showtoggleButton ? "" : "dark-theme"}`}>
-        <div className="Trending-conatiner">
-        <div className="saved-video-banner">
+        
+        <div className= {`Trending-conatiner ${showtoggleButton ? "" : "dark-theme-conatiner"}`}>
+       <div className={`saved-video-banner ${showtoggleButton ? "" : "saved-dark-theme-conatiner"}`}>
                            <div className="saved-icon">
                             <AiOutlineFire color="Red" size={30}/>
                             </div> 
@@ -120,7 +120,7 @@ visible={true}
                         </div>
             {this.renderTrendingDeatilsView()}
         </div>
-        </div>
+       
             )
          }
         }

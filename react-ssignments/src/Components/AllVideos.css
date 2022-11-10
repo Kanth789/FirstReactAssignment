@@ -1,8 +1,10 @@
 .AllVideos-conatiner{
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    grid-column-gap: 30px;
-    grid-row-gap: 30px;
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   height: 80vh;
+   overflow-y: scroll;
+  -webkit-overflow-scrolling:auto;
 }
 .video img{
     width: 400px;
@@ -13,6 +15,7 @@
 .video-content{
     display: flex;
     flex-direction: row;
+    min-width: 400px;
 }
 .video-views{
     display: flex;
@@ -24,16 +27,194 @@
     margin-bottom: 4px;
     
 }
+
 .video-card{
-    min-width: 400px;
+    width: 400px;
+    margin: 20px;
 }
-.video-card{
-    width: 150px;
-}
-.right-bar{
-    min-width: 900px;
-}
+
 .nav-link{
     text-decoration: none;
     color: black;
 }
+
+@media screen and (max-width:768px) {
+    .AllVideos-conatiner{
+        display: grid;
+        grid-template-columns: 250px 200px;
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+    }
+    .video img{
+        width: 250px;
+    }
+    
+    .video-card {
+        min-width: 300px;
+    }
+    .video-logo img {
+        width: 40px;
+        margin-right: 6px;
+
+    }
+    .video-header p {
+        margin-top: 2px;
+        margin-bottom: 4px;
+        font-size: 15px;
+    }
+    .video-header h3 {
+        margin-top: 2px;
+        margin-bottom: 4px;
+        font-size: 16px;
+    }
+    
+    .video-content {
+        display: flex;
+        flex-direction: row;
+        width: 250px;
+    }
+}
+@media screen and (max-width:576px) {
+    .AllVideos-conatiner{
+        display: grid;
+        grid-template-columns: 450px;
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+    }
+    .video img{
+        width: 450px;
+    }
+   
+    .video-card {
+        min-width: 300px;
+    }
+    .video-logo img {
+        width: 40px;
+        margin-right: 6px;
+
+    }
+    .video-header p {
+        margin-top: 2px;
+        margin-bottom: 4px;
+        font-size: 17px;
+    }
+    .video-header h3 {
+        margin-top: 2px;
+        margin-bottom: 4px;
+        font-size: 16px;
+    }
+    
+    .video-content {
+        display: flex;
+        flex-direction: row;
+        min-width: 450px;
+    }
+}
+
+@media screen and (max-width:992px) {
+    .AllVideos-conatiner{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .video img{
+        width: 500px;
+    }
+    
+    .video-card {
+        min-width: 500px;
+    }
+    .video-logo img {
+        width: 40px;
+        margin-right: 6px;
+
+    }
+    .video-header p {
+        margin-top: 2px;
+        margin-bottom: 4px;
+        font-size: 17px;
+    }
+    .video-header h3 {
+        margin-top: 2px;
+        margin-bottom: 4px;
+        font-size: 16px;
+    }
+    
+    .video-content {
+        display: flex;
+        flex-direction: row;
+        min-width: 500px;
+    }
+}
+@media screen and (max-width:1179px) {
+    .AllVideos-conatiner{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .video img{
+        width: 550px;
+    }
+    
+    .video-card {
+        min-width: 550px;
+    }
+    .video-logo img {
+        width: 40px;
+        margin-right: 6px;
+
+    }
+    .video-header p {
+        margin-top: 2px;
+        margin-bottom: 4px;
+        font-size: 17px;
+    }
+    .video-header h3 {
+        margin-top: 2px;
+        margin-bottom: 4px;
+        font-size: 16px;
+    }
+    
+    .video-content {
+        display: flex;
+        flex-direction: row;
+        min-width: 550px;
+    }
+}
+
+@media screen and (min-width:400px) and (max-width:576px) {
+    .AllVideos-conatiner{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .video img{
+        width: 450px;
+    }
+    
+    .video-card {
+        min-width: 450px;
+    }
+    .video-logo img {
+        width: 40px;
+        margin-right: 6px;
+
+    }
+    .video-header p {
+        margin-top: 2px;
+        margin-bottom: 4px;
+        font-size: 17px;
+    }
+    .video-header h3 {
+        margin-top: 2px;
+        margin-bottom: 4px;
+        font-size: 16px;
+    }
+    
+    .video-content {
+        display: flex;
+        flex-direction: row;
+        min-width: 450px;
+    }
+}
+

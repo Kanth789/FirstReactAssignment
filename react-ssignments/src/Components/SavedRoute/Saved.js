@@ -15,12 +15,12 @@ class  Saved extends Component {
     return(
         <ToggleContext.Consumer>
             {value=>{
-                const{savedData} = value
+                const{savedVideos} = value
                 const{showtoggleButton} = value
-                const showEmptyview = savedData.length === 0
+                const showEmptyview = savedVideos.length === 0
                 return(
-                    <div className={`Home-conatiner ${showtoggleButton ? "" : "dark-theme-conatiner"}`}>
-                    <div className="saved-videos-conatiner">
+                   
+                    <div className= {`saved-videos-conatiner ${showtoggleButton ? "" : "dark-theme-conatiner"}`}>
                         <div className={`saved-video-banner ${showtoggleButton ? "" : "saved-dark-theme-conatiner"}`}>
                            <div className="saved-icon">
                             <AiFillFire color="Red" size={30}/>
@@ -31,7 +31,7 @@ class  Saved extends Component {
                         </div>
                         {showEmptyview ?  this.renderShowemptyView() :<SavedView/>}
                     </div>
-                    </div>
+                   
                 )
             }}
         </ToggleContext.Consumer>

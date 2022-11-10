@@ -38,3 +38,48 @@
 .dark-theme h2{
     color: #fff;
 }
+
+@media screen and (max-width: 768px) {
+    .trending{
+        padding: 10px 27px;
+    }
+    .Trending-card-video-img img{
+        width: 210px;
+    }
+    .Trending-card-header h2{
+        margin-bottom: 7px;
+        margin-top: 5px;
+        font-size: 20px;
+    }
+    .Trending-card-header p{
+
+        margin-bottom: 7px;
+        margin-top: 2px;
+        font-size: 17px;
+    }
+}
+@media screen and (max-width: 576px) {
+    .trending {
+        padding: 5px 17px;
+    }
+    .Trending-card-video-img img {
+        width: 170px;
+    }
+    .Trending-card-header h2{
+        margin-bottom: 7px;
+        margin-top: 5px;
+        font-size: 17px;
+    }
+    .Trending-card-header p{
+
+        margin-bottom: 7px;
+        margin-top: 2px;
+        font-size: 14px;
+    }
+    .saved-icon-name h2{
+        font-size: 20px;
+    }
+    .Trending-card-content {
+        margin-left: 10px;
+    }
+}

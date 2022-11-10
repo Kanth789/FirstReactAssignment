@@ -15,114 +15,146 @@ const apiStatusConstants = {
 }
 class ParticluarVideoDeatils extends Component{
     state={
-        particluarVideo:{},
+        videoDetails:{},
+        channelDataObj:{},
         apiStatus: apiStatusConstants.initial,
-        clickedLike:false,
-        clcikedDislike:false,
-        clickedSaved:false
+        liked: false,
+        disliked: false,
+        saved: false,
     }
-    OnclickedLike = () =>{
-        
-        this.setState(prevState=>({clickedLike:!prevState.clickedLike}))
-    }
-    OnclickedDisLike = () =>{
-        this.setState(prevState=>({clcikedDislike:!prevState.clcikedDislike}))
-    }
-    OnclickedSaved = () =>{
-        this.setState(prevState=>({clickedSaved:!prevState.clickedSaved}))
-    }
-    componentDidMount(){
-        this.getparticluarVideo()
-    }
-    getFormattedData = (data)=>({
-        published_at :data.published_at,
-                thumbnail_url:data.thumbnail_url,
-                title:data.title,
-                view_count:data.view_count,
-                name:data.channel.name,
-                profile_image_url:data.channel.profile_image_url,
-                id:data.id,
-                video_url:data.video_url ,
-                subscriber_count:data.channel.subscriber_count,
-                description:data.description
-    })
-    getparticluarVideo = async() =>{
-        const { match } = this.props
-        const { params } = match
-        const { id } = params
-      
-      
-          const apiUrl=`https://apis.ccbp.in/videos/${id}`
-         const jwtToken = Cookies.get('jwt_token')
-          const options = {
-              method:"GET",
-              headers:{
-                  Authorization : `Bearer ${jwtToken}`,
-              },
+    
+    componentDidMount() {
+        this.getData()
+        this.isSaved()
+      }
+    
+      componentWillUnmount() {
+        this.mounted = false
+      }
+    
+      getData = async () => {
+        this.mounted = true
+        const {match} = this.props
+        const {params} = match
+        const {id} = params
+        const jwtToken = Cookies.get('jwt_token')
+        const url = `https://apis.ccbp.in/videos/${id}`
+        const options = {
+          headers: {
+            Authorization: `Bearer ${jwtToken}`,
+          },
+          method: 'GET',
+        }
+        try{
+        const response = await fetch(url, options)
+        if (response.ok) {
+          const responseData = await response.json()
+          const data = responseData.video_details
+          const convertedData = {
+            channel: data.channel,
+            description: data.description,
+            id: data.id,
+            publishedAt: data.published_at,
+            thumbnailUrl: data.thumbnail_url,
+            title: data.title,
+            videoUrl: data.video_url,
+            viewCount: data.view_count,
           }
-          
-          try{
-          const response =  await fetch(apiUrl,options)
-         
-          if(response.ok === true)
-          {
-              
-              const data =  await response.json()
-              
-              console.log(data)
-              const updatedParticularVideosData = this.getFormattedData(data.video_details)
-              console.log(updatedParticularVideosData)
-             this.setState({particluarVideo:updatedParticularVideosData,apiStatus:apiStatusConstants.success})
-             
+          const channelData = {
+            name: data.channel.name,
+            profileImageUrl: data.channel.profile_image_url,
+            subscriberCount: data.channel.subscriber_count,
+          }
+          if (this.mounted) {
+             this.setState({
+              videoDetails: convertedData,
+              channelDataObj: channelData,
+              apiStatus:apiStatusConstants.success
+            })
           }
         }
-          catch  {
-              this.setState({
-                apiStatus: apiStatusConstants.failure,
-              })
-            }
     }
+    catch{
+        this.setState({apiStatus:apiStatusConstants.failure})
+    }
+      }
+      isDisliked = () => {
+        const {liked, disliked} = this.state
+        if (liked) {
+          this.setState({liked: false})
+        }
+        if (disliked) {
+          this.setState({disliked: false})
+        } else {
+          this.setState({disliked: true})
+        }
+      }
+    
+      isLiked = () => {
+        const {liked, disliked} = this.state
+        if (disliked) {
+          this.setState({disliked: false})
+        }
+        if (liked) {
+          this.setState({liked: false})
+        } else {
+          this.setState({liked: true})
+        }
+      }
+    
+      isSaved = async () => {
+        const {saved} = this.state
+        if (saved) {
+           this.setState({saved: false})
+        } else {
+           this.setState({saved: true})
+        }
+      }
     renderParticularVideoView = () =>{
         
         return(
             <ToggleContext.Consumer>
             {value=>{
-                const{addVideoItem} = value
-                const{particluarVideo,clickedLike,clcikedDislike,clickedSaved} = this.state
-                const {published_at,thumbnail_url,subscriber_count,title,view_count,name,profile_image_url,id,video_url,description} = particluarVideo
-                const onClickAddtoCart  = () =>{
-                    addVideoItem({...particluarVideo})
-                    this.setState(prevState=>({clickedSaved:!prevState.clickedSaved}))
+                const{addVideoItem,showtoggleButton,addSavedVideos} = value
+            
+                const {videoDetails, channelDataObj, liked, disliked, saved} = this.state
+                const {videoUrl, title, viewCount, publishedAt, description} = videoDetails
+                const{profileImageUrl,subscriberCount,name} = channelDataObj
+                const onSave = () => {
+                    console.log(saved)
+                    this.isSaved()
+                    addSavedVideos(videoDetails)
                   }
-                 
+                  
             
             return(
-            <div className="ParticularVideo-Conatiner">
+            <div className={`ParticularVideo-Conatiner ${showtoggleButton ? "" : "dark-theme-conatiner"}`} >
               
             <div className="Particular-video">
-            <ReactPlayer url={video_url} />
+        <ReactPlayer url={videoUrl}  className="reactplayer"/>
             </div>
+            <div className="particular-video-header-desc">
             <div className="Particular-video-header">
                 <div className="Particular-video-heading">
                     <h2>{title}</h2>
                     <div className="Particular-video-view-duration">
                         <div className="Particular-video-view">
-                        <p>{view_count}</p>
+                        <p>{viewCount}</p>
                         <span>.</span>
-                        <p>{published_at}</p>
+                        <p>{publishedAt}</p>
                         </div>
                         <div className="Particular-video-icons">
-                            <div className="like" onClick={this.OnclickedLike}>
-                                {clickedLike ? <BiLike  color="blue" /> : <BiLike  />}
-                                {clickedLike ? <p className="blue">Like</p> : <p>Like</p> } 
+                            <div className="like" onClick={this.isLiked}>
+                                {liked ? <BiLike  color="blue" /> : <BiLike  />}
+                                {liked ? <p className="blue">Like</p> : <p>Like</p> } 
                             </div>
-                            <div className="Dis-like" onClick={this.OnclickedDisLike}>
-                                {clcikedDislike ? <BiDislike  color = "blue" /> :<BiDislike/>}
-                                {clcikedDislike ? <p className="blue">Dislike</p> : <p className="blue-disLike">Dislike</p>}
+                            <div className="Dis-like" onClick={this.isDisliked}>
+                                {disliked ? <BiDislike  color = "blue" /> :<BiDislike/>}
+                                {disliked ? <p className="blue">Dislike</p> : <p className="blue-disLike">Dislike</p>}
                             </div>
-                            <div className="Saved-icon"  onClick={onClickAddtoCart}>
-                                {clickedSaved ?  <MdPlaylistAdd  color ="blue" onClick={this.OnclickedSaved} />  : <MdPlaylistAdd onClick={this.OnclickedSaved}/> }
-                                {clickedSaved ? <p className="blue">Save</p> : <p className="blue-saved">Save</p>}
+                            <div className="Saved-icon"  onClick={onSave}>
+                             {saved ?  <><p>Saved</p><MdPlaylistAdd size={20} color="black"/> </> : <><p>Save</p><MdPlaylistAdd size={20} color="white"/> </>}
+                            
                             </div>
                         </div>
                     </div>
@@ -133,17 +165,18 @@ class ParticluarVideoDeatils extends Component{
                
                     <div className="Particular-video-logo">
                         <div>
-                        <img src={profile_image_url}alt="video-logo"/>
+                        <img src={profileImageUrl}alt="video-logo"/>
                         </div>
                     <div className="Particular-video-header">
                         <h3>{name}</h3>
-                        <p>{subscriber_count}</p>
+                        <p>{subscriberCount}</p>
                         <div className="Particular-video-para">
                             <p>{description}</p>
                         </div>
                     </div>
                   </div>
                     
+            </div>
             </div>
         </div>
             ) 
