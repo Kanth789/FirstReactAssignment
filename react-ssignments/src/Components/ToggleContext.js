@@ -4,8 +4,13 @@ const ToggleContext = React.createContext({
     onClickedToggle : () =>{},
     jwtaccesToken:'',
     OnJwtTokken:()=>{},
-    addSavedVideos: () => {},
+    // addSavedVideos: () => {},
     savedVideos: [],
+    toggleSavedvideo:()=>{},
+    likedVideos:[],
+    toggleLikedvideo:()=>{},
+    DislikedVideo:[],
+    toggleDislikedvideo:()=>{}
     
 })
 

@@ -14,8 +14,9 @@ class  Leftbar extends Component{
       }
  render(){
     const {leftbarLinks} = this.props
-    const{uniqueId,name,imgUrl,altName} = leftbarLinks
+    const{uniqueId,name,imgUrl,altName,icon} = leftbarLinks
     const{activeLink} = this.state
+    
     return(
       <>
            <NavLink to ={`/${uniqueId}`} className={isActive =>
@@ -23,6 +24,7 @@ class  Leftbar extends Component{
           }>
             <div className={`leftbar-link ${uniqueId}`} onClick={this.OnclikedLeftBar} >
                 <div className="leftbar-conatiner">
+                 <div className="icon">{icon}</div>
                 <p>{name}</p>
                 </div>
                 

@@ -15,14 +15,17 @@ const SearchBar = (props)=>{
       const {searchInput} = props
     return(
         <div className="search-conatiner">
-            <input value={searchInput}
+           <input value={searchInput}
           type="search"
           className="search-input"
           placeholder="Search"
           onChange={onChangeSearchInput}
          ></input>
-          <button className="search-conatiner-icon" onClick={onEnterSearchInput}><BsSearch color="black"   size="20px"/></button>
+        <button onClick={onEnterSearchInput}><BsSearch color="black"   size="20px"/></button>
         </div>
+
+
+
     )
 }
 export default SearchBar

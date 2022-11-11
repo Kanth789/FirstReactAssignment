@@ -14,6 +14,7 @@ const apiStatusConstants = {
     inProgress: 'IN_PROGRESS',
 }
 class ParticluarVideoDeatils extends Component{
+  static contextType = ToggleContext
     state={
         videoDetails:{},
         channelDataObj:{},
@@ -25,15 +26,49 @@ class ParticluarVideoDeatils extends Component{
     
     componentDidMount() {
         this.getData()
+        
+        
        
       }
-    
+      checkingSaved = () =>{
+        const {videoDetails} = this.state
+        const context = this.context
+        const savedVideo = context.savedVideos
+        if(savedVideo.find(eachItem=>eachItem.id === videoDetails.id))
+                  {
+                    this.setState(prevState=>({saved:!prevState.saved}))
+                  }
+                 
+      }
+      checkingLiked = () =>{
+        const {videoDetails} = this.state
+        const context = this.context
+        const likedvideo = context.likedVideos
+        console.log(likedvideo)
+       
+                  if(likedvideo.find(eachItem=>eachItem.id === videoDetails.id))
+                  {
+                      this.setState(prevState=>({liked:!prevState.liked}))
+                 }
+      }
+      checkingDisLiked = () =>{
+        const {videoDetails} = this.state
+        const context = this.context
+        const Dislikedvideo = context.DislikedVideo
+        
+       
+                  if(Dislikedvideo.find(eachItem=>eachItem.id === videoDetails.id))
+                  {
+                      this.setState(prevState=>({disliked:!prevState.disliked}))
+                 }
+      }
+      
       componentWillUnmount() {
         this.mounted = false
       }
     
       getData = async () => {
-        this.isSaved()
+        
         this.mounted = true
         const {match} = this.props
         const {params} = match
@@ -72,10 +107,14 @@ class ParticluarVideoDeatils extends Component{
               channelDataObj: channelData,
               apiStatus:apiStatusConstants.success
             })
+            this.checkingSaved()
+            this.checkingLiked()
+            this.checkingDisLiked()
           }
         }
     }
-    catch{
+    catch(error){
+      console.log(error)
         this.setState({apiStatus:apiStatusConstants.failure})
     }
       }
@@ -116,19 +155,32 @@ class ParticluarVideoDeatils extends Component{
         return(
             <ToggleContext.Consumer>
             {value=>{
-                const{addVideoItem,showtoggleButton,addSavedVideos} = value
+                const{addVideoItem,showtoggleButton,savedVideos,toggleSavedvideo,toggleLikedvideo,toggleDislikedvideo} = value
             
                 const {videoDetails, channelDataObj, liked, disliked, saved} = this.state
                 const {videoUrl, title, viewCount, publishedAt, description} = videoDetails
                 const{profileImageUrl,subscriberCount,name} = channelDataObj
-                const onSave = () => {
-                    console.log(saved)
-                    this.isSaved()
-                    addSavedVideos(videoDetails)
+                // const onSave = () => {
+                //     console.log(saved)
+                //     this.isSaved()
+                //     addSavedVideos(videoDetails)
                     
+                //   }
+                  const toggleSave = () =>{
+                    toggleSavedvideo(videoDetails)
+                    this.isSaved()
                   }
+                 const toggleLike = () =>{
+                  toggleLikedvideo(videoDetails)
+                  this.isLiked()
+                 }
+                 const toggleDisLike = () =>{
+                  toggleDislikedvideo(videoDetails)
+                  this.isDisliked()
+                 }
+                  const colorIcon = showtoggleButton ? "black" : "white"
+                
                   
-            
             return(
             <div className={`ParticularVideo-Conatiner ${showtoggleButton ? "" : "dark-theme-conatiner"}`} >
               
@@ -146,16 +198,17 @@ class ParticluarVideoDeatils extends Component{
                         <p>{publishedAt}</p>
                         </div>
                         <div className="Particular-video-icons">
-                            <div className="like" onClick={this.isLiked}>
-                                {liked ? <BiLike  color="blue" /> : <BiLike  />}
+                            <div className="like" onClick={toggleLike}>
+                                {liked ? <BiLike  color=" #3b82f6"  size={25} /> : <BiLike color={colorIcon} size={25} />}
                                 {liked ? <p className="blue">Like</p> : <p>Like</p> } 
                             </div>
-                            <div className="Dis-like" onClick={this.isDisliked}>
-                                {disliked ? <BiDislike  color = "blue" /> :<BiDislike/>}
+                            <div className="Dis-like" onClick={toggleDisLike}>
+                                {disliked ? <BiDislike  color=" #3b82f6"size={25} /> :<BiDislike color={colorIcon} size={25}/>}
                                 {disliked ? <p className="blue">Dislike</p> : <p className="blue-disLike">Dislike</p>}
                             </div>
-                            <div className="Saved-icon"  onClick={onSave}>
-                             {saved ?  <><p>Saved</p><MdPlaylistAdd size={20} color="black"/> </> : <><p>Save</p><MdPlaylistAdd size={20} color="white"/> </>}
+                            <div className="Saved-icon"  onClick={toggleSave}>
+                            {saved ? <MdPlaylistAdd  color=" #3b82f6" size={25} /> :<MdPlaylistAdd color={colorIcon}  size={25}/>}
+                                {saved ? <p className="blue">Saved</p> : <p className="">Save</p>}
                             
                             </div>
                         </div>

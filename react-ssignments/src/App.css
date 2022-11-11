@@ -39,14 +39,21 @@
 }
 body{
   font-family: Roboto;
-  height: 100vh;
+  height: 90vh;
+  overflow: hidden;
 }
 .left-right-conatiner{
   display: flex;
 }
 .right-conatiner{
   width: 100%;
+  overflow-y: hidden;
+  height: 100vh;
 }
+.App-conatiner::-webkit-scrollbar {
+  display: none;
+}
+
 @media screen and (max-width:512px)
 {
   .left-bar{

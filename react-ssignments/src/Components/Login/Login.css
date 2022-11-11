@@ -14,7 +14,7 @@
     margin: auto;
     margin-bottom: 15px;
   }
-  input{
+  .password-input-filed ,.username-input-filed{
     padding: 18px 42px;
     margin-bottom: 20px;
     border-radius: 6px;

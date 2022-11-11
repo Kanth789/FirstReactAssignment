@@ -50,10 +50,11 @@ console.log(context)
                               <img src="https://assets.ccbp.in/frontend/react-js/light-theme-img.png"/>
             }
             </div>
-            <div className="pop-up">
-                        <Popup modal
+            <div className="pop-up-hamburger">
+                        <Popup  className="pop-up-ham"
+                        modal
                 trigger={
-                <GiHamburgerMenu size="50px"/>
+                <GiHamburgerMenu size="40px" />
                 }
                 
                 >{close =>(
@@ -97,7 +98,7 @@ console.log(context)
                         trigger={
 
                             
-                            <Link to="/login"className="nav-link"> 
+                            <Link to="/login"className="nav-link-logout"> 
                             <div className={`nav-button ${showtoggleButton ? "light-theme  " : "dark-theme"}`}>
                                 <button >Logout</button>
                                  

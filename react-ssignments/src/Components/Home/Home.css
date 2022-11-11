@@ -12,6 +12,10 @@
 .dark-theme-conatiner p,.dark-theme-conatiner h3,.dark-theme-conatiner h2{
     color: #fff;
    
+
+}
+.dark-theme .home-banner-header h2{
+    color: #000;
 }
 .leftbar-link {
     padding: 10px;
@@ -23,15 +27,40 @@
 
   
 }
+.No-job-found{
+    max-width: 800px;
+    display: block;
+    margin: auto;
+    margin-top: 10%;
+}
+.No-job-found img{
+    width: 100%;
+}
 .active .leftbar-link{ 
-    background-color: #fff;
+    background-color: #f1f5f9;
     
+}
+.dark-theme .active .leftbar-link{
+    background-color: #424242;
 }
 .active p{
     color: #000;
+    font-size: 22px;
+    font-weight: 600;
+}
+.dark-theme .active p{
+    color: #fff;
+    font-size: 22px;
+    font-weight: 600;
 }
 .nav-link{
     text-decoration: none;
+}
+.leftbar-social-media{
+    margin-bottom: 90px;
+}
+.light-theme .search-videos-conatiner{
+    background-color: #f1f1f1;
 }
 .Home-banner{
     
@@ -66,21 +95,43 @@
 .dark-theme .socail-para h3{
     color: #fff;
 }
-.search-input{
-    position:absolute;
-    
+.search-conatiner {
+    width: 50%;
+    padding: 10px 22px;
 }
-.search-conatiner-icon{
-    position: relative;
-    left: 310px;
-    margin-top: 10px;
-    padding: 19px 18px;
-    background-color: grey;
-}
-.search-conatiner{
-    margin-bottom: 30px;
-}
-
+.search-input {
+    padding: 12px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+  }
+  .search-videos-conatiner{
+    height: 100vh;
+  }
+  
+  .search-conatiner button {
+    float: left;
+    width: 20%;
+    padding: 11px;
+    background: #424242;
+    color: white;
+    font-size: 17px;
+    border: none;
+    border-left: none;
+    cursor: pointer;
+  }
+  
+  .search-conatiner button:hover {
+    background: #475569;
+  }
+  
+ .search-conatiner::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
 .Home-icon{
     float: right;
     padding: 30px;
@@ -96,7 +147,22 @@
     font-size: 19px;
     font-weight: 600;
 }
-
+.leftbar-conatiner{
+    display: flex;
+    align-items: center;
+}
+.leftbar-conatiner p{
+    margin-left: 10px;
+}
+.active .icon{
+    color: red;
+}
+.unselected .icon{
+    color: white;
+}
+.light-theme .unselected .icon{
+    color: #000;
+}
 @media screen and (max-width: 768px) {
     .right-bar-videos {
         padding-left: 30px;

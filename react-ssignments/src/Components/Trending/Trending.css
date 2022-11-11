@@ -34,11 +34,15 @@
 }
 .trending{
     padding: 20px 67px;
+    height: 100vh;
+    overflow-y: scroll;
 }
 .dark-theme h2{
     color: #fff;
 }
-
+.light-theme .trending {
+    background-color: #f1f1f1;
+}
 @media screen and (max-width: 768px) {
     .trending{
         padding: 10px 27px;

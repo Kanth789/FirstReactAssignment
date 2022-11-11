@@ -96,7 +96,12 @@ class Home extends Component{
           {   isShown ? <div className="Home-banner">
                  <AiOutlineClose  size ={30} onClick={this.OnclickedClose} className="Home-icon"/>
                  <div className="home-banner-icon">
-                      {showtoggleButton ?  <img src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"/> : <img src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png"/>}
+                 {showtoggleButton  ?   
+                              <img src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"/> 
+                              : 
+                              
+                              <img src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"/> 
+                            }
                       </div>
                       <div className="home-banner-header">
                         <h2>Buy Nxt Watch Premium prepaid plans with UPI</h2>
@@ -104,11 +109,13 @@ class Home extends Component{
                       <button className="banner-button">GET IT NOW</button>
                       </div>
           : ""}
+          <div className="search-videos-conatiner">
           <div className="search-bar-Conatiner">
             <SearchBar changeSearchInput={this.changeSearchInput} enterSearchInput={this.enterSearchInput}/>
           </div>
            <div className="AllVideos-conatiner">
            {VideosData.map(eachItem=>(<AllVideo key={eachItem.id} VideosList={eachItem}/>))}
+           </div>
            </div>
            </>
           )
@@ -129,8 +136,8 @@ class Home extends Component{
       }
       renderNoJobsFound = ()=>{
         return(
-          <div>
-            <img src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png "/>
+          <div className="No-job-found">
+            <img src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png "/> 
           </div>
         )
       }

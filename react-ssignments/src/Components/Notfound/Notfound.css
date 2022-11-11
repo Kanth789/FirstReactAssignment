@@ -1,0 +1,13 @@
+.Notfound-conatiner {
+    max-width: 800px;
+    display: block;
+    margin: auto;
+    margin-top: 10%;
+}
+
+.Notfound-conatiner img{
+    width: 100%;
+}
+.dark-theme .right-conatiner{
+    background-color: black;
+}

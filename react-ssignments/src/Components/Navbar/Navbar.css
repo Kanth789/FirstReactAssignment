@@ -15,9 +15,11 @@
     background-color:  #231f20;
     
 }
-
+.pop-up-hamburger{
+    display: none;
+}
 .nav-bar-logo img{
-    width: 200px;
+    width: 150px;
 }
 .toggle-icon img{
     width: 40px;
@@ -33,11 +35,20 @@
     background-color: transparent;
     border: 3px solid blue;
     font-size: 18px;
+    font-weight: 600;
 }
-
+.dark-theme .nav-button button{
+    padding: 9px 25px;
+    background-color: transparent;
+    border: 3px solid #fff;
+    font-size: 18px;
+    
+    color: #fff;
+}
 .pop-up,.nav-button-hidden{
     display: none;
 }
+
 .popup-content {
   margin: auto;
   background: rgb(255, 255, 255);
@@ -45,9 +56,7 @@
   border-radius: 10px;
   text-align: center;
 }
-.pop-up{
-    display: block ;
-}
+
 .popup-arrow {
   color: rgb(255, 255, 255);
 }
@@ -94,7 +103,7 @@
 
 
 @media screen  and (max-width:768px){
-    .pop-up,.nav-button-hidden{
+    .pop-up-hamburger,.nav-button-hidden{
         display: block;
     }
     .nav-button,.profile-img{
@@ -137,7 +146,7 @@
     }
 }
 @media screen and (max-width:992px) {
-    .pop-up,.nav-button-hidden{
+    .pop-up-hamburger,.nav-button-hidden{
         display: block;
     }
     .nav-button,.profile-img{
