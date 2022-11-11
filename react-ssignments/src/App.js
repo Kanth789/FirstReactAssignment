@@ -1,11 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
+import Password from './Component/PasswordValidator';
 
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+   <Password/>
   );
 }
 
