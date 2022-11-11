@@ -49,6 +49,9 @@
     .Game-card-img img{
         width: 150px;
     }
+    .Game-card{
+        min-width: 0px;
+    }
 }
 
 @media screen and (max-width:512px) {

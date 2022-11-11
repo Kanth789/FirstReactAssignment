@@ -97,14 +97,14 @@
 }
 .search-conatiner {
     width: 50%;
-    padding: 10px 22px;
+    padding: 10px 52px;
 }
 .search-input {
     padding: 12px;
     font-size: 17px;
     border: 1px solid grey;
     float: left;
-    width: 80%;
+    width: 60%;
     background: #f1f1f1;
   }
   .search-videos-conatiner{

@@ -151,6 +151,7 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+        padding: 10px 27px;
     }
     .video img{
         width: 550px;
@@ -218,3 +219,40 @@
     }
 }
 
+@media screen and (max-width:440px) {
+    .AllVideos-conatiner{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 0px;
+    }
+    
+    .video img{
+        width: 300px;
+    }
+    
+    .video-card {
+        min-width: 300px;
+    }
+    .video-logo img {
+        width: 40px;
+        margin-right: 6px;
+
+    }
+    .video-header p {
+        margin-top: 2px;
+        margin-bottom: 4px;
+        font-size: 17px;
+    }
+    .video-header h3 {
+        margin-top: 2px;
+        margin-bottom: 4px;
+        font-size: 16px;
+    }
+    
+    .video-content {
+        display: flex;
+        flex-direction: row;
+        min-width: 300px;
+    }
+}
