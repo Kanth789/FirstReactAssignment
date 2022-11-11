@@ -1,26 +1,26 @@
 import { useState } from "react";
-import { MainContainer, TextContainer,Text } from "./styledComponent";
+import { MainContainer, TextContainer,Text, StyleButton } from "./styledComponent";
 
 const Unlock = ()=>{
-    const [button,setButtonName] = useState(false)
+    const [button,setterFun] = useState(false)
     const OnclickedButton = () =>{
-        setButtonName(prevState=>({button:!prevState.button}))
+        setterFun((prevState)=>!button)
+        console.log(button)
+        
     }
     const lockImg = "https://assets.ccbp.in/frontend/hooks/lock-img.png"
     const UnlockImg = "https://assets.ccbp.in/frontend/hooks/unlock-img.png"
-    const imgUrl = button ? lockImg : UnlockImg
-    const buttonName = button ? "Lock" : "Unlock"
-    const Paratext = button ? "You have locked" : "You have unlocked"
+   
     return(
         <MainContainer>
             <TextContainer>
                 <div className="img">
-                    <img src={imgUrl}/>
+                    <img src={button ? lockImg : UnlockImg}/>
                 </div>
                 <div className="img-text">
-                    <Text>{Paratext}</Text>
+                    <Text>{button ? "You have locked" : "you have unlocked"}</Text>
                 </div>
-                <button onClick={OnclickedButton}>{buttonName}</button>
+                <StyleButton onClick={OnclickedButton} >{button ? "Lock" : "Unlock"}</StyleButton>
             </TextContainer>
         </MainContainer>
     )
