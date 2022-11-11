@@ -1,11 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
+import Unlock from './Unlock';
 
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+   <Unlock/>
   );
 }
 
