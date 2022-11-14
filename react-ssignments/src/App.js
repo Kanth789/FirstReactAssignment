@@ -1,11 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
+import Todoview from './Components/Todos';
 
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <Todoview/>
   );
 }
 
