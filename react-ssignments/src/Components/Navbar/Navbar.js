@@ -11,14 +11,11 @@ const Navbar = (props)=>{
 const context = useContext(ToggleContext)
 console.log(context)
   const onClickLogout = () => {
-    window.location.reload(true);
     Cookies.remove('jwt_token')
-    
     const {history} = props
     history.replace('/login')
-    console.log("removed")
+
     
-    const layout = context.jwtaccesToken();
   }
     return(
         <ToggleContext.Consumer>
@@ -106,7 +103,7 @@ console.log(context)
                             
                             <div className={`nav-button-hidden ${showtoggleButton ? "light-theme  " : "dark-theme"}`}>
                             
-                                <FiLogOut  size={40}/>
+                                <FiLogOut  onClick={onClickLogout}  size={40}/>
                                 
                             </div>
                             </Link> 

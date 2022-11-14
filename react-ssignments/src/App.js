@@ -60,9 +60,7 @@ class  App extends Component {
     DislikedVideo:[]
     
   }
-  componentDidMount(){
-    this.OnJwtTokken()
-  }
+
   OnclickedSaved = () =>{
     this.setState(prevState=>({clickedSaved:!prevState.clickedSaved}))
 }
@@ -107,10 +105,7 @@ toggleSavedvideo =  data => {
    
   }
 
-  OnJwtTokken = () =>{
-    console.log(getAccessToken()=== undefined)
-    this.setState({jwtaccesToken:getAccessToken()})
-  }
+
   renderRoute = () =>{
     return(
       <Switch>
@@ -137,35 +132,48 @@ toggleSavedvideo =  data => {
     <ToggleContext.Provider  value={{onClickedToggle:this.onClickedToggle,showtoggleButton,savedData,jwtaccesToken:this.OnJwtTokken, DislikedVideo,likedVideos,savedVideos,toggleSavedvideo: this.toggleSavedvideo,toggleLikedvideo:this.toggleLikedvideo,toggleDislikedvideo:this.toggleDislikedvideo}}>
       
       <div className='App-conatiner'>
-       {jwtaccesToken === undefined || null ?    "" : <Navbar/>}
+        <Switch>
+        <Route exact path="/login" component={Login}></Route>
+        <>
+          <Navbar/>
         <div className='main-conatiner'>
-          <div className= {`left-right-conatiner ${showtoggleButton ? "light-theme  " : "dark-theme"}`}>
-        {jwtaccesToken === undefined || null ? "" : <div className="left-bar">
-                            <div className='left-link-conatiner'>
-                            {Caterogy.map(eachItem=>(<Leftbar  key={eachItem.uniqueId} leftbarLinks={eachItem} OnclickedLeftbarLink={this.OnclickedLeftbarLink}/>))}
-                            </div>
-                            <div className="leftbar-social-media">
-                            <h4>CONTACT US</h4>
-                            <div className='leftbar-socailicons'>
-                            {Caterogy.map(eachItem=>(<SocialMedia  key={eachItem.uniqueId} leftbarLinks={eachItem} />))}
-                            
-                            </div>
-                            <div className='socail-para'>
-                              <h3>Enjoy! Now you can see your channel and recommdationa</h3>
-                            </div>
-                            </div>
-        </div> }
+             <div className= {`left-right-conatiner ${showtoggleButton ? "light-theme  " : "dark-theme"}`}>
+                    <div className="left-bar">
+                                        <div className='left-link-conatiner'>
+                                        {Caterogy.map(eachItem=>(<Leftbar  key={eachItem.uniqueId} leftbarLinks={eachItem} OnclickedLeftbarLink={this.OnclickedLeftbarLink}/>))}
+                                        </div>
+                                        <div className="leftbar-social-media">
+                                        <h4>CONTACT US</h4>
+                                        <div className='leftbar-socailicons'>
+                                        {Caterogy.map(eachItem=>(<SocialMedia  key={eachItem.uniqueId} leftbarLinks={eachItem} />))}
+                                        
+                                        </div>
+                                        <div className='socail-para'>
+                                          <h3>Enjoy! Now you can see your channel and recommdationa</h3>
+                                        </div>
+                                        </div>
+                    </div> 
                         
         <div className='right-conatiner'>
-        {this.renderRoute()}
+          <Switch>
+                <ProctetedRoute exact  path="/Saved" component={Saved}></ProctetedRoute>
+                <ProctetedRoute exact path="/Gaming" component={Gaming}></ProctetedRoute>
+                <ProctetedRoute exact path="/Trending" component={Trending}></ProctetedRoute>
+                <Route exact path="/Home" component={Home}></Route>
+                <ProctetedRoute exact path="/" component={Home}></ProctetedRoute>
+                <ProctetedRoute exact path="/videos/:id" component={ParticluarVideoDeatils}></ProctetedRoute>
+                <Route  path="/not-found" component={Notfound}></Route>
+                <Redirect to="not-found" />
+          </Switch>
         </div>
         </div>
-    </div>
-    
-    </div>
+        </div>
+        </>
+   </Switch>
+  </div>
     </ToggleContext.Provider>
  </BrowserRouter>
- </div>
+</div>
   )
 }
 }
