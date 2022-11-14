@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+.form-conatiner{
+  box-shadow: -5px 11px 5px 0px rgba(214,210,214,1);
+  padding: 70px 100px;
+}
+input{
+  padding: 10px 30px;
+  margin-bottom: 20px;
+}
+.right-conatiner{
+
+  padding: 70px 100px;
+}
