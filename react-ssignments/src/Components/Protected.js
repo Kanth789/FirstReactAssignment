@@ -5,7 +5,7 @@ import { BrowserRouter,Route ,Switch} from 'react-router-dom';
 const ProctetedRoute = (props) =>{
     const jwtToken = Cookies.get('jwt_token')
     
-    console.log(jwtToken)
+    
     if(jwtToken === undefined)
     {
         return <Redirect to="/login"/>

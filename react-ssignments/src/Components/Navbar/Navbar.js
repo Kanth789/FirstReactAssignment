@@ -90,14 +90,14 @@ const Navbar = (props)=>{
                 <img src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png"/>
             </div>
             <div className="popup-container">
-                    <Popup id="logout-popup"
+                    <Popup 
                         modal
                         trigger={
 
                             
                             <Link to="/login"className="nav-link-logout"> 
                             <div className={`nav-button ${showtoggleButton ? "light-theme  " : "dark-theme"}`}>
-                                <button >Logout</button>
+                                <button  >Logout</button>
                                  
                             </div>
                             

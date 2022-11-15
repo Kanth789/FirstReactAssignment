@@ -104,25 +104,10 @@ toggleSavedvideo =  data => {
   }
 
 
-  renderRoute = () =>{
-    return(
-      <Switch>
-      <Route exact path="/login" component={Login}></Route>
-       <ProctetedRoute exact  path="/Saved" component={Saved}></ProctetedRoute>
-       <ProctetedRoute exact path="/Gaming" component={Gaming}></ProctetedRoute>
-       <ProctetedRoute exact path="/Trending" component={Trending}></ProctetedRoute>
-       <Route exact path="/Home" component={Home}></Route>
-      <ProctetedRoute exact path="/" component={Home}></ProctetedRoute>
-      <ProctetedRoute exact path="/videos/:id" component={ParticluarVideoDeatils}></ProctetedRoute>
-      <Route  path="/not-found" component={Notfound}></Route>
-      <Redirect to="not-found" />
-    </Switch>
-    )
-  }
+  
   render(){
-    const {showtoggleButton,savedData,jwtaccesToken,savedVideos,likedVideos,DislikedVideo} = this.state
+    const {showtoggleButton,savedData,savedVideos,likedVideos,DislikedVideo} = this.state
    
-    console.log(jwtaccesToken,"jwt token")
   return (
     <div className='app'>
     <BrowserRouter>

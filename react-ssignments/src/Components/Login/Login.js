@@ -28,9 +28,8 @@ class Login extends Component {
 
     Cookies.set('jwt_token', jwtToken, {expires: 30})
     history.replace('/')
-    const context = this.context;
-    
-    const layout = context.jwtaccesToken();
+   
+   
     
   }
 
