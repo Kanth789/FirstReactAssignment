@@ -48,9 +48,7 @@ const Caterogy = [
   }
 ]
 
-const getAccessToken =()=>{
-  return Cookies.get('jwt_token')
-}
+
 class  App extends Component {
   state ={
     showtoggleButton: true,

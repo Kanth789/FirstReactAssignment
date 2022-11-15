@@ -8,8 +8,8 @@ import { FiLogOut } from "react-icons/fi";
 import './Navbar.css'
 import { useContext } from "react";
 const Navbar = (props)=>{
-const context = useContext(ToggleContext)
-console.log(context)
+
+
   const onClickLogout = () => {
     Cookies.remove('jwt_token')
     const {history} = props
@@ -103,7 +103,7 @@ console.log(context)
                             
                             <div className={`nav-button-hidden ${showtoggleButton ? "light-theme  " : "dark-theme"}`}>
                             
-                                <FiLogOut  onClick={onClickLogout}  size={40}/>
+                                <FiLogOut   size={40}/>
                                 
                             </div>
                             </Link> 
