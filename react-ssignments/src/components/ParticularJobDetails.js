@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component, useEffect } from "react";
 import {Link} from 'react-router-dom';
 import Cookies from'js-cookie';
 import Header from "./Header";
@@ -10,93 +10,25 @@ import { BiLinkExternal } from "react-icons/bi";
 import { AiFillStar } from "react-icons/ai";
 import { ImLocation } from "react-icons/im";
 import { MdWork } from "react-icons/md";
+import ParticularStore from "../Stores/ParticularStore";
+import {observer} from 'mobx-react';
 
-const apiStatusConstants = {
-    initial: 'INITIAL',
-    success: 'SUCCESS',
-    failure: 'FAILURE',
-    inProgress: 'IN_PROGRESS',
-  }
-class ParticularJobDeatils extends Component{
-    state = {
-          JobDetails:{},
-          similarJobDetails:[],
-          skillsData :[],
-          apiStatus: apiStatusConstants.initial,
-          lifeAtCompnay : []
-    }
-    componentDidMount(){
-        const { match } = this.props
+const  ParticularJobDeatils = observer((props)=>{
+   const ParticularJob = ParticularStore
+    useEffect(()=>{
+        const { match } = props
         const { params } = match
         const { id } = params
-        this.getParticularJob(id)
-    }
-    getFormattedData = data => ({
-        company_logo_url:data.company_logo_url,
-        id:data.id,
-        company_website_url:data.company_website_url,
-        employment_type:data.employment_type,
-        job_description:data.job_description,
-        location:data.location,
-        package_per_annum:data.package_per_annum,
-        rating:data.rating,
-        title:data.title
-      })
-      getLifeatCompany = data => ({
-       
-       description:data.description,
-       image_url:data.image_url
-      })
-      
-    getParticularJob = async(id) =>{
-        
-        const apiUrl = `https://apis.ccbp.in/jobs/${id}`
-        const jwtToken = Cookies.get('jwt_token')
-        const options = {
-            method:"GET",
-            headers:{
-                Authorization : `Bearer ${jwtToken}`,
-            },
-        }
-        const response = await fetch(apiUrl,options)
-        console.log(response)
-        if(response.ok === true)
-        {
-            const data = await response.json()
-            console.log(data)
-            const updatedFullJobs =this.getFormattedData(data.job_details)
-            const updatedsimilarJobDetails = data.similar_jobs.map(eachItem=>({
-                    company_logo_url:eachItem.company_logo_url,
-                    id:eachItem.id,
-                    job_description:eachItem.job_description,
-                    location:eachItem.location,
-                    package_per_annum:eachItem.package_per_annum,
-                    rating:eachItem.rating,
-                    title:eachItem.title
-            }))
-            const UpdatedskillsData = data.job_details.skills.map(
-                eachItem => ({
-                    image_url :eachItem.image_url,
-                    name:eachItem.name
-                })
-              )
-              const UpadtedlifeAtCompnay = this.getLifeatCompany(data.job_details.life_at_company)
-
-            this.setState({lifeAtCompnay:UpadtedlifeAtCompnay,JobDetails:updatedFullJobs,skillsData:UpdatedskillsData,similarJobDetails:updatedsimilarJobDetails,apiStatus:apiStatusConstants.success})
-           
-        }
-        else {
-          this.setState({
-            apiStatus: apiStatusConstants.failure,
-          })
-        }
-    }
-    OnclickedSimilar = (id) =>{
-        this.getParticularJob(id)
+        ParticularJob.getParticularJob(id)
+    },[])
+   
+  
+   const  OnclickedSimilar = (id) =>{
+    ParticularJob.getParticularJob(id)
         
     }
-    renderFullJobDetails = () =>{
-        const{JobDetails,apiStatus,skillsData,similarJobDetails,lifeAtCompnay} = this.state
+    const renderFullJobDetails = () =>{
+        const{JobDetails,apiStatus,skillsData,similarJobDetails,lifeAtCompnay} = ParticularJob
         const{company_website_url,company_logo_url,id,employment_type,job_description,location,package_per_annum,rating,title} = JobDetails
         return(
             <>
@@ -162,22 +94,21 @@ class ParticularJobDeatils extends Component{
             <div className="similar-jobs-conatiner">
                 <h3>Similar Jobs</h3>
                 <div className="similar-job-cards">
-                {similarJobDetails.map(eachItem=>(<SimilarJob similarData={eachItem} key={eachItem.id} OnclickedSimilar={this.OnclickedSimilar}/>))}
+                {similarJobDetails.map(eachItem=>(<SimilarJob similarData={eachItem} key={eachItem.id} OnclickedSimilar={OnclickedSimilar}/>))}
                 </div>
             </div>
             </div>
             </>
         )
     }
-    render()
-    {
+    
         return(
             
         <>
-        {this.renderFullJobDetails()}
+        {renderFullJobDetails()}
         </>
         )
     }
-}
+)
 
 export default ParticularJobDeatils

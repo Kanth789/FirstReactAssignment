@@ -2,6 +2,7 @@ import { AiFillStar } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { ImLocation } from "react-icons/im";
 import { MdWork } from "react-icons/md";
+import {observer} from 'mobx-react';
 import './Alljobs.css';
 const Alljobs =(props)=>{
     const {jobData} = props

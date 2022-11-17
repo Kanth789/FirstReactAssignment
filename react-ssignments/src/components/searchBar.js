@@ -1,4 +1,5 @@
 import { BsSearch } from "react-icons/bs";
+
 const SearchBar = (props)=>{
     const{changeSearchInput,enterSearchInput} = props
     const onEnterSearchInput = event => {

@@ -2,20 +2,19 @@ import {Component} from 'react'
 import Cookies from 'js-cookie'
 import './Login.css';
 import { Redirect } from 'react-router-dom';
+import {observer} from 'mobx-react';
+import LoginFormStore from '../Stores/LoginFormStore';
 class Login extends Component {
-  state = {
-    username: '',
-    password: '',
-    showSubmitError: false,
-    errorMsg: '',
+  constructor(props){
+    super(props);
+    this.loginFormStore = LoginFormStore
   }
-
   onChangeUsername = event => {
-    this.setState({username: event.target.value})
+    this.loginFormStore.setUserName(event.target.value)
   }
 
   onChangePassword = event => {
-    this.setState({password: event.target.value})
+    this.loginFormStore.setPassword (event.target.value)
   }
 
   onSubmitSuccess = jwtToken => {
@@ -26,12 +25,12 @@ class Login extends Component {
   }
 
   onSubmitFailure = errorMsg => {
-    this.setState({showSubmitError: true, errorMsg})
+    this.loginFormStore.setErrorMsg( errorMsg)
   }
 
   submitForm = async event => {
     event.preventDefault()
-    const {username, password} = this.state
+    const {username, password} = this.loginFormStore
     const userDetails = {username, password}
     const url = 'https://apis.ccbp.in/login'
     const options = {
@@ -48,7 +47,7 @@ class Login extends Component {
   }
 
   renderPasswordField = () => {
-    const {password} = this.state
+  const{password} = this.loginFormStore
     return (
       <>
         <label className="input-label" htmlFor="password">
@@ -66,7 +65,7 @@ class Login extends Component {
   }
 
   renderUsernameField = () => {
-    const {username} = this.state
+    const{username} = this.loginFormStore
     return (
       <>
         <label className="input-label" htmlFor="username">
@@ -84,7 +83,7 @@ class Login extends Component {
   }
 
   render() {
-    const {showSubmitError, errorMsg} = this.state
+    const {showSubmitError, errorMsg} = this.loginFormStore
     const jwtToken = Cookies.get('jwt_token')
       if(jwtToken !== undefined)
       {
@@ -112,4 +111,4 @@ class Login extends Component {
   }
 }
 
-export default Login
+export default observer(Login)
