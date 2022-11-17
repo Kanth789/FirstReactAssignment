@@ -1,25 +1,25 @@
-import { makeObservable, runInAction,autorun,observable, action,computed } from "mobx"
+import { makeAutoObservable, runInAction,autorun,observable, action,computed } from "mobx"
 import { v4 as uuid } from 'uuid';
 class UserStore {
     todos=JSON.parse(localStorage.getItem("todoStorage"));
     searchInput=''
     
     constructor(){
-        makeObservable(this,{
-            todos: observable,
-            createTodo:action,
-            deleteTodo:action,
-            toggle:action.bound,
-            searchInput:observable,
-            onSearchInput:action.bound
-        });
+        makeAutoObservable(this ,{
+        todos: observable,
+        createTodo:action,
+        deleteTodo:action,
+        toggle:action.bound,
+        searchInput:observable,
+        onSearchInput:action.bound
+    });
         
         
     }
    
+   
     
-    
-    createTodo=()=>{
+    createTodo(){
         const newList = { 
         id :uuid(),
         name :this.searchInput,
@@ -27,9 +27,9 @@ class UserStore {
         }
       this.todos.push(newList)
     }
-    onSearchInput=(event)=>{
-        this.searchInput = event.target.value
+    onSearchInput(event){
         console.log(this.searchInput)
+        this.searchInput.concat(event.target.value)
 
     }
     deleteTodo(todoId) {
