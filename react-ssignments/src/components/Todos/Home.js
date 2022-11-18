@@ -1,16 +1,28 @@
 import React, {  useState,useEffect } from "react"
-import {observer} from 'mobx-react-lite'
+import {observer} from 'mobx-react'
 
 import UserStore from "../UserStore";
+import Navbar from "./Navbar";
+const Navlist = [
+    {
+        id:'All',
+        Name:"All"
+    },
+    {
+        id:'Active',
+        Name:"Active"
+    },
+    {
+        id:'Completed',
+        Name:"Completed"
+    }
+]
 const Home = observer(()=>{
     const  todoListStore  = UserStore
     
-    
-  
-    
     return(
-        <div>
-            
+        <div>  
+           {Navlist.map(eachItem=>(<Navbar key={eachItem.id} link={eachItem}/>))}
             <h1>todos</h1>
                 <input
                     className="new-todo"
@@ -21,8 +33,6 @@ const Home = observer(()=>{
                    
                 />
                 <button   onClick={() => {
-                    
-                        
                         todoListStore.createTodo(todoListStore.searchInput);
                     
                     }}>Add</button>
