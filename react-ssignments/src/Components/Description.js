@@ -10,6 +10,7 @@ const Description = observer(()=>{
     return(
         <div>
              <h1>Description Component</h1>
+             <h2>{Profile.selectedValue}</h2>
         <p>{Profile.getDesc}</p>
         </div>
     )
