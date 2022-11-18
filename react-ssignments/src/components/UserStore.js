@@ -1,4 +1,4 @@
-import { makeObservable, runInAction,autorun,observable, action,computed } from "mobx"
+import {makeObservable,autorun,observable, action,computed,reaction } from "mobx"
 import { v4 as uuid } from 'uuid';
 class UserStore {
     todos=JSON.parse(localStorage.getItem("todoStorage"));
@@ -20,11 +20,11 @@ class UserStore {
         
     }
 
-   
+  
    
    setFilter=(data)=>{
     this.filter = data
-    console.log(this.filter,"filter set")
+   
    }
     
     createTodo(){
@@ -58,7 +58,7 @@ class UserStore {
         })
       }
       get filterTodos() {
-        console.log(this.filter)
+        
         switch (this.filter) {
           
           case "All":

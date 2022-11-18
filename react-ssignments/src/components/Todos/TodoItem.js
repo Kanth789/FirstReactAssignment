@@ -3,12 +3,12 @@ import {observer} from 'mobx-react-lite'
 import TodoView from "./TodoView";
 import Home from "./Home";
 import UserStore from "../UserStore";
+
 const TodoItem = observer(()=>{ 
     const  todoListStore  = UserStore;
     const onSaveButton = ()=> {
      todoListStore.SaveTodo()  
     }
-    
     return(
         <div>
             <Home/> 
