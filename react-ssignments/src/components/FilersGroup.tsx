@@ -1,4 +1,7 @@
 import React from "react"
+type Checkbox = {
+    checkedBox:boolean
+}
 const FiltersGroup = (props)=>{
     const{jobsFilters,onCheckedApp,checkedBox} = props
     const {name,categoryId,checked} = jobsFilters
@@ -13,7 +16,7 @@ const FiltersGroup = (props)=>{
             <div className="Employee-Type">
             <div className="type1">
             <input type="checkbox" id="employeeType1" name="employee" checked={checkedBox} value={name} onClick={onChecked}></input>
-             <label for="employee">{name}</label>
+             <label >{name}</label>
             </div>
         </div>
         
