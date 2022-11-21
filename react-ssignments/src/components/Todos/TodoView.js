@@ -1,8 +1,9 @@
 import { observer } from "mobx-react-lite";
+import {makeObservable,autorun,observable, action,computed,reaction,toJS } from "mobx"
 import UserStore from "../UserStore";
 const  TodoView = observer(({ todo }) =>{
   const  todoListStore  = UserStore;
-
+  console.log(toJS(todo),"toodo")
     
   return (
     <>
