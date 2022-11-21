@@ -12,7 +12,7 @@ const apiStatusConstants = {
   failure: 'FAILURE',
   inProgress: 'IN_PROGRESS',
 }
-type jobsListData = {
+ type jobsListData = {
   company_logo_url: string;
   id: string;
   employment_type: string;
@@ -24,9 +24,10 @@ type jobsListData = {
 
 }
 type profileDataList = {
+  
   name:string, 
   profile_image_url:string,
-   short_bio:string
+  short_bio:string
 
 }
 type api = {
@@ -35,41 +36,39 @@ type api = {
 }
 
 class jobsListStore {
-  jobsList :jobsListData[];
-  profileData :profileDataList;
-  searchInput :string;
-  activeJobPackage :string;
+  jobsList: jobsListData[] = [];
+  profileData = {} as profileDataList
+  searchInput: string='';
+  activeJobPackage: string='';
   apiStatus = apiStatusConstants.initial;
   apiJobs = apiStatusOfJobs.initial;
-  activeJobType = [];
-  checkedBox:boolean;
+  activeJobType :jobsListStore[]=[];
+  checkedBox:boolean | undefined;
 
 
   constructor() {
     makeAutoObservable(this);
   }
-  setApiStatus(value) {
+  setApiStatus(value:string) {
     this.apiStatus = value;
   }
-  setApiJobs(value) {
+  setApiJobs(value:string) {
     this.apiJobs = value;
   }
-  setJobPackage(data) {
+  setJobPackage(data:string) {
     this.activeJobPackage = data
   }
-  setJobsList(data) {
+  setJobsList(data: jobsListData[]) {
     this.jobsList = data;
 
   }
-  setProfileData(data) {
+  setProfileData(data: profileDataList) {
     this.profileData = data
   }
-  setSearchValue(value) {
+  setSearchValue(value:string) {
     this.searchInput = value;
   }
-  setSalary(value) {
-    this.salary = value;
-  }
+  
   getFullData = async () => {
     console.log("Gte the profile details")
     console.log(this.activeJobType, "activeJOb")
@@ -93,7 +92,7 @@ class jobsListStore {
         console.log(response)
         const data = await response.json()
 
-        const updatedFullJobs = data.jobs.map(eachItem => ({
+        const updatedFullJobs = data.jobs.map((eachItem:jobsListData) => ({
           company_logo_url: eachItem.company_logo_url,
           id: eachItem.id,
           employment_type: eachItem.employment_type,
@@ -139,7 +138,7 @@ class jobsListStore {
     }
   }
 
-  renderProfileDetails = (renderLoadingView, renderFullViewProfile, renderFailureView) => {
+  renderProfileDetails = (renderLoadingView: { (): JSX.Element; (): any; }, renderFullViewProfile: { (): JSX.Element; (): any; }, renderFailureView: { (): JSX.Element; (): any; }) => {
     console.log(this.apiStatus)
     switch (this.apiStatus) {
       case apiStatusConstants.success:
@@ -153,7 +152,7 @@ class jobsListStore {
     }
   }
 
-  renderJobProfiles = (renderLoadingView, lengthOfList, renderJobFailureView) => {
+  renderJobProfiles = (renderLoadingView: { (): JSX.Element; (): any; }, lengthOfList: { (): JSX.Element; (): any; }, renderJobFailureView: { (): JSX.Element; (): any; }) => {
 
     console.log(this.apiJobs)
     switch (this.apiJobs) {

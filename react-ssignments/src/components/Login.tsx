@@ -5,35 +5,36 @@ import { Redirect } from 'react-router-dom';
 import {observer} from 'mobx-react';
 import LoginFormStore from '../Stores/LoginFormStore';
 import React from 'react';
-class Login extends Component {
+import { useHistory, RouterProps } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+
+const  Login = observer(()=> {
 
 
-  constructor(props){
-    super(props);
-    this.loginFormStore = LoginFormStore
-  }
-  onChangeUsername = (event:React.ChangeEvent<HTMLInputElement>) => {
-    this.loginFormStore.setUserName(event.target.value)
-  }
-
-  onChangePassword = (event:React.ChangeEvent<HTMLInputElement>) => {
-    this.loginFormStore.setPassword (event.target.value)
-  }
-
-  onSubmitSuccess = jwtToken => {
-    const {history} = this.props
-
-    Cookies.set('jwt_token', jwtToken, {expires: 30})
-    history.replace('/')
+  const history = useHistory()
+ 
+    const loginFormStore = LoginFormStore
+  
+  const onChangeUsername = (event:React.ChangeEvent<HTMLInputElement>) => {
+    loginFormStore.setUserName(event.target.value)
   }
 
-  onSubmitFailure = (errorMsg:string) => {
-    this.loginFormStore.setErrorMsg( errorMsg)
+  const onChangePassword = (event:React.ChangeEvent<HTMLInputElement>) => {
+    loginFormStore.setPassword (event.target.value)
   }
 
-  submitForm = async event => {
+  const  onSubmitSuccess = (jwtToken: string) => { 
+    Cookies.set('jwt_token', jwtToken)
+   history.replace('/')
+  }
+
+  const onSubmitFailure = (errorMsg:string) => {
+    loginFormStore.setErrorMsg( errorMsg)
+  }
+
+  const submitForm = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    const {username, password} = this.loginFormStore
+    const {username, password} = loginFormStore
     const userDetails = {username, password}
     const url = 'https://apis.ccbp.in/login'
     const options = {
@@ -43,14 +44,15 @@ class Login extends Component {
     const response = await fetch(url, options)
     const data = await response.json()
     if (response.ok === true) {
-      this.onSubmitSuccess(data.jwt_token)
+      onSubmitSuccess(data.jwt_token)
     } else {
-      this.onSubmitFailure(data.error_msg)
+      onSubmitFailure(data.error_msg)
     }
   }
 
-  renderPasswordField = () => {
-  const{password} = this.loginFormStore
+  const renderPasswordField = () => {
+  const{password} = loginFormStore
+  
     return (
       <>
         <label className="input-label" htmlFor="password">
@@ -61,14 +63,14 @@ class Login extends Component {
           id="password"
           className="password-input-filed"
           value={password}
-          onChange={this.onChangePassword}
+          onChange={onChangePassword}
         />
       </>
     )
   }
 
-  renderUsernameField = () => {
-    const{username} = this.loginFormStore
+  const renderUsernameField = () => {
+    const{username} = loginFormStore
     return (
       <>
         <label className="input-label" htmlFor="username">
@@ -79,39 +81,42 @@ class Login extends Component {
           id="username"
           className="username-input-filed"
           value={username}
-          onChange={this.onChangeUsername}
+          onChange={onChangeUsername}
         />
       </>
     )
   }
 
-  render() {
-    const {showSubmitError, errorMsg} = this.loginFormStore
+  
+    const {error, error_msg} = loginFormStore
     const jwtToken = Cookies.get('jwt_token')
       if(jwtToken !== undefined)
       {
         return <Redirect to = "/"/>
       }
+      else{
+        console.log("undefined")
+      }
     return (
       <div className="login-form-container">
         
         
-        <form className="form-container" onSubmit={this.submitForm}>
+        <form className="form-container" onSubmit={submitForm}>
           <img
             src="https://assets.ccbp.in/frontend/react-js/logo-img.png"
             className="login-website-logo-desktop-image"
             alt="website logo"
           />
-          <div className="input-container">{this.renderUsernameField()}</div>
-          <div className="input-container">{this.renderPasswordField()}</div>
+          <div className="input-container">{renderUsernameField()}</div>
+          <div className="input-container">{renderPasswordField()}</div>
           <button type="submit" className="login-button">
             Login
           </button>
-          {showSubmitError && <p className="error-message">*{errorMsg}</p>}
+          {error && <p className="error-message">*{error_msg}</p>}
         </form>
       </div>
     )
   }
-}
 
-export default observer(Login)
+)
+export default withRouter(Login)

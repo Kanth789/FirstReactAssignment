@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import Cookies from 'js-cookie'
 
-const Header = (props)=>{
+const Header = (props: { history: any })=>{
    
   const onClickLogout = () => {
     Cookies.remove('jwt_token')
@@ -12,7 +12,7 @@ const Header = (props)=>{
         <div className="nav-conatiner">
             <div className="nav-bar">
                 <div className="navigations">
-                <Link className="nav-link">
+                <Link className="nav-link" to={""}>
             <div className="nav-bar-logo">
                 <img src="https://assets.ccbp.in/frontend/react-js/logo-img.png" alt="logo"/>
                 

@@ -1,5 +1,14 @@
 import React from "react"
-const JobPackage = (props)=>{
+type jobPackageType ={
+    jobSalary:{
+        name:string,
+        categoryId:string
+    },
+    onCheckedRadioApp:(categoryId:string)=>void
+    
+    
+}
+const JobPackage = (props:jobPackageType)=>{
     const{jobSalary,onCheckedRadioApp} = props
     const {name,categoryId} = jobSalary
 
@@ -11,7 +20,7 @@ const JobPackage = (props)=>{
             <div className="Employee-Type">
             <div className="type1">
             <input type="radio" id="employeeType1" name="employee" value={name} onClick={onChecked}></input>
-             <label for="employee">{name}</label>
+             <label>{name}</label>
             </div>
         </div>
         

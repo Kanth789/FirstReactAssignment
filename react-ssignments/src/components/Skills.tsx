@@ -1,12 +1,19 @@
-const Skills =(props)=>{
-    const {skills} = props
-    const{image_url,name} = skills
+type SkillsTypes = {
+    skills : {
+        image_url:string
+        name:string
+    }
+   
+  }
+const Skills =(props:SkillsTypes)=>{
+    
+    
     return(
 
                 <div className="skill-icons">
                     <div className="icon">
-                        <img src={image_url}/>
-                        <p>{name}</p>
+                        <img src={props.skills.image_url}/>
+                        <p>{props.skills.name}</p>
                     </div>
                 </div>
          

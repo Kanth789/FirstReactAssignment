@@ -7,32 +7,66 @@ const apiStatusConstants = {
   failure: 'FAILURE',
   inProgress: 'IN_PROGRESS',
 }
+type ParticularStoreData = {
+  company_website_url:string,
+  company_logo_url:string,
+  id:string,
+  employment_type:string,
+  job_description:string,
+  location:string,
+  package_per_annum:string,
+  rating:string,
+  title:string
+
+}
+type SimilarDataTypes ={
+  company_logo_url:string,
+  id:string,
+  employment_type:string,
+  job_description:string, 
+  location:string,
+  package_per_annum:string,
+  rating:string, 
+  title:string
+}
+type SkillsTypes = {
+  image_url:string
+  name:string
+}
+type api = {
+  apiStatus:string
+  apiJobs:string
+}
+type lifeAtCompnay = {
+  description:string,
+  image_url:string
+}
 class ParticularStore {
-    JobDetails={};
-    similarJobDetails=[];
-    skillsData =[];
+    JobDetails={} as ParticularStoreData;
+    similarJobDetails:SimilarDataTypes[]=[]
+    skillsData :SkillsTypes[]=[];
     apiStatus=apiStatusConstants.initial;
-    lifeAtCompnay = []
+    lifeAtCompnay : lifeAtCompnay[] =[]
  
   constructor() {
     makeAutoObservable(this);
   }
-  setApiStatus(value) {
+  setApiStatus(value:string) {
     this.apiStatus = value;
   }
-  setskillsData(data) {
+  setskillsData(data:SkillsTypes[]) {
     this.skillsData = data;   
   }
-  setJobDetails(data){
+  setJobDetails(data:ParticularStoreData){
     this.JobDetails = data
   }
-  setlifeAtCompnay(value) {
+  setlifeAtCompnay(value:lifeAtCompnay[]) {
     this.lifeAtCompnay = value;
   }
-  setsimilarJobDetails(value) {
+  setsimilarJobDetails(value:SimilarDataTypes[]) {
     this.similarJobDetails = value;
   }
-  setFormattedData = data => ({
+  setFormattedData = (data:ParticularStoreData) => ({
     company_logo_url:data.company_logo_url,
     id:data.id,
     company_website_url:data.company_website_url,
@@ -43,12 +77,12 @@ class ParticularStore {
     rating:data.rating,
     title:data.title
   })
-  setLifeatCompany = data => ({
+  setLifeatCompany = (data:lifeAtCompnay) => ({
        
     description:data.description,
     image_url:data.image_url
    })
-  getParticularJob = async(id) =>{
+  getParticularJob = async(id: any) =>{
 
     const apiUrl = `https://apis.ccbp.in/jobs/${id}`
     const jwtToken = Cookies.get('jwt_token')
@@ -65,7 +99,7 @@ class ParticularStore {
         const data = await response.json()
         console.log(data)
         const updatedFullJobs =this.setFormattedData(data.job_details)
-        const updatedsimilarJobDetails = data.similar_jobs.map(eachItem=>({
+        const updatedsimilarJobDetails = data.similar_jobs.map((eachItem:ParticularStoreData)=>({
                 company_logo_url:eachItem.company_logo_url,
                 id:eachItem.id,
                 job_description:eachItem.job_description,
@@ -75,14 +109,14 @@ class ParticularStore {
                 title:eachItem.title
         }))
         const UpdatedskillsData = data.job_details.skills.map(
-            eachItem => ({
+            (eachItem:SkillsTypes) => ({
                 image_url :eachItem.image_url,
                 name:eachItem.name
             })
           )
           const UpadtedlifeAtCompnay = this.setLifeatCompany(data.job_details.life_at_company)
 
-        this.setlifeAtCompnay(UpadtedlifeAtCompnay)
+        // this.setlifeAtCompnay(UpadtedlifeAtCompnay)
         this.setJobDetails(updatedFullJobs)
         this.setskillsData(UpdatedskillsData)
         this.setsimilarJobDetails(updatedsimilarJobDetails)

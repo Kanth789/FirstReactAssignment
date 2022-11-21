@@ -13,16 +13,16 @@ class loginFormStore {
   constructor() {
     makeAutoObservable(this);
   }
-  setUserName(value) {
+  setUserName(value:string) {
     this.username = value;
   }
-  setPassword(value) {
+  setPassword(value:string) {
     this.password = value;
   }
-  setError(value) {
+  setError(value:boolean) {
     this.error = value;
   }
-  setErrorMsg(value) {
+  setErrorMsg(value:string) {
     this.error_msg = value;
   }
   

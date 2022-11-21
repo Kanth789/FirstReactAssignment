@@ -1,15 +1,19 @@
 import { BsSearch } from "react-icons/bs";
-
-const SearchBar = (props)=>{
+type SeachbarType ={
+  changeSearchInput:(event:string) =>void
+  enterSearchInput:()=>void
+  searchInput:string
+}
+const SearchBar = (props:SeachbarType)=>{
     const{changeSearchInput,enterSearchInput} = props
-    const onEnterSearchInput = event => {
+    const onEnterSearchInput = (event:React.KeyboardEvent<HTMLInputElement>) => {
         const {enterSearchInput} = props
         if (event.key === 'Enter') {
           enterSearchInput()
         }
       }
     
-      const onChangeSearchInput = event => {
+      const onChangeSearchInput = (event:React.ChangeEvent<HTMLInputElement> )=> {
         const {changeSearchInput} = props
         changeSearchInput(event.target.value)
       }

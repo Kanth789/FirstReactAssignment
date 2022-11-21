@@ -4,21 +4,35 @@ import { ImLocation } from "react-icons/im";
 import { MdWork } from "react-icons/md";
 import {observer} from 'mobx-react';
 import './Alljobs.css';
-const Alljobs =(props)=>{
-    const {jobData} = props
-    const{company_logo_url,id,employment_type,job_description, location,package_per_annum,rating, title} = jobData
+ type jobDataItems = {
+    jobData : {
+        company_logo_url:string,
+        id:string,
+        employment_type:string,
+        job_description:string,
+         location:string,
+         package_per_annum:string,
+         rating:string, 
+         title:string
+    }
+   
+    
+}
+const Alljobs =(props:jobDataItems)=>{
+   
+   
     return(
-        <Link to={`/jobs/${id}`} className="nav-link">
+        <Link to={`/jobs/${props.jobData.id}`} className="nav-link">
         <div className="card">
             <div className="card-img-header">
                 <div className="card-img">
-                    <img src={company_logo_url}/>
+                    <img src={props.jobData.company_logo_url}/>
                 </div>
                 <div className="card-header">
-                    <h4>{title}</h4>
+                    <h4>{props.jobData.title}</h4>
                     <div className="card-header-rating">
                         <AiFillStar color="gold"   size="17px"/>
-                        <p>{rating}</p>
+                        <p>{props.jobData.rating}</p>
                     </div>
                 </div>
             </div>
@@ -26,20 +40,20 @@ const Alljobs =(props)=>{
                 <div className="card-location-work">
                 <div className="location">
                     <ImLocation color="white"   size="17px"/>
-                    <p>{location}</p>
+                    <p>{props.jobData.location}</p>
                 </div>
                 <div className="work">
                     <MdWork color="white"   size="17px"/>
-                    <p>{employment_type}</p>
+                    <p>{props.jobData.employment_type}</p>
                 </div>
                 </div>
                 <div className="card-salary">
-                   <p>{package_per_annum}</p>
+                   <p>{props.jobData.package_per_annum}</p>
                 </div>
             </div>
             <hr></hr>
             <h4>Description</h4>
-            <p>{job_description}</p>
+            <p>{props.jobData.job_description}</p>
         </div>
         </Link>
     )

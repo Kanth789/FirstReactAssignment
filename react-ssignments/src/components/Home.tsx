@@ -8,7 +8,7 @@ const Home = () =>{
   
     return(
         <>
-        <Header/>
+        <Header history={undefined}/>
         <div className="main-conatiner">
         <div className="main">
         <div className="Home-conatiner">

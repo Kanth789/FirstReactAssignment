@@ -12,8 +12,19 @@ import { ImLocation } from "react-icons/im";
 import { MdWork } from "react-icons/md";
 import ParticularStore from "../Stores/ParticularStore";
 import {observer} from 'mobx-react';
-
-const  ParticularJobDeatils = observer((props)=>{
+type ParticularStoreData = {
+    company_website_url:string,
+    company_logo_url:string,
+    id:string,
+    employment_type:string,
+    job_description:string,
+    location:string,
+    package_per_annum:string,
+    rating:string,
+    title:string
+  
+  }
+const  ParticularJobDeatils = observer((props: { match: any; })=>{
    const ParticularJob = ParticularStore
     useEffect(()=>{
         const { match } = props
@@ -23,7 +34,7 @@ const  ParticularJobDeatils = observer((props)=>{
     },[])
    
   
-   const  OnclickedSimilar = (id) =>{
+   const  OnclickedSimilar = (id: any) =>{
     ParticularJob.getParticularJob(id)
         
     }
@@ -32,7 +43,7 @@ const  ParticularJobDeatils = observer((props)=>{
         const{company_website_url,company_logo_url,id,employment_type,job_description,location,package_per_annum,rating,title} = JobDetails
         return(
             <>
-            <Header/>
+            <Header history={undefined}/>
             <div className="job-similar">
             <div className="Job-Details">
                 <div className="card">
@@ -85,8 +96,8 @@ const  ParticularJobDeatils = observer((props)=>{
             <div className="life-at-compny">
                 <h3>Life at Company</h3>
                 <div className="life-at-company-desc">
-                <p>{lifeAtCompnay.description}</p>
-                <img src={lifeAtCompnay.image_url}/>
+                {/* <p>{lifeAtCompnay.description}</p>
+                <img src={lifeAtCompnay.image_url}/> */}
                 </div>
             </div>
         </div>

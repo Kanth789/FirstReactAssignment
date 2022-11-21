@@ -3,7 +3,20 @@ import { AiFillStar } from "react-icons/ai";
 import { ImLocation } from "react-icons/im";
 import { MdWork } from "react-icons/md";
 import './similar.css'
-const SimilarJob = (props) =>{
+type SimilarDataTypes ={
+    similarData : {
+    company_logo_url:string,
+    id:string,
+    employment_type:string,
+    job_description:string, 
+    location:string,
+    package_per_annum:string,
+    rating:string, 
+    title:string
+    }
+    OnclickedSimilar:(id:string)=>void
+  }
+const SimilarJob = (props:SimilarDataTypes) =>{
     const {similarData,OnclickedSimilar} = props
     const{company_logo_url,id,employment_type,job_description, location,package_per_annum,rating, title} = similarData
     const OnclickedSimilarJob = ()=>{
@@ -15,27 +28,27 @@ const SimilarJob = (props) =>{
            
             <div className="similar-card-header">
                 <div className="similar">
-                    <img src={company_logo_url}/>
+                    <img src={props.similarData.company_logo_url}/>
                 </div>
                 <div className="similar-heading">
-                    <h4>{title}</h4>
+                    <h4>{props.similarData.title}</h4>
                     <div className="rating">
                     <AiFillStar color="gold"   size="17px"/>
-                        <p>{rating}</p>
+                        <p>{props.similarData.rating}</p>
                     </div>
                 </div>
             </div>
             <div className="similar-content">
                 <h3>Description</h3>
-                <p>{job_description}</p>
+                <p>{props.similarData.job_description}</p>
                 <div className="similar-icons">
                     <div className="location">
                     <ImLocation color="white"   size="17px"/>
-                        <p>{location}</p>
+                        <p>{props.similarData.location}</p>
                     </div>
                     <div className="work">
                     <MdWork color="white" size="17px"/>
-                        <p>{location}</p>
+                        <p>{props.similarData.location}</p>
                     </div>
                 </div>
             </div>

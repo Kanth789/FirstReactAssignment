@@ -10,8 +10,10 @@ import JobPackage from "./JobPackage";
 import SearchBar from "./searchBar";
 import jobsListStore from "../Stores/jobsListStore";
 import { observer } from 'mobx-react';
+
 import { observable, toJS, runInAction, computed } from "mobx";
 import React from "react";
+
 type Checkbox = {
   checkedBox:boolean
 
@@ -67,7 +69,7 @@ const JobPackages: JobPackageData[] = [
   },
 
 ]
-let updatedjob = [];
+let updatedjob: any[]  =[]
 const JobPage = observer(() => {
   useEffect(() => {
     JobsListStore.getData()
@@ -75,7 +77,7 @@ const JobPage = observer(() => {
   }, [])
   const JobsListStore = jobsListStore
 
-  const onCheckedApp = (categoryId:string, checked) => {
+  const onCheckedApp = (categoryId:string) => {
     const { activeJobType, checkedBox } = JobsListStore
     const CheckId = updatedjob.includes(categoryId) 
     if (!CheckId) {
@@ -97,10 +99,16 @@ const JobPage = observer(() => {
     JobsListStore.getFullData()
   }
   const changeSearchInput = (searchInput:string) => {
-    JobsListStore.setSearchValue({ searchInput })
+    JobsListStore.setSearchValue( searchInput )
   }
-
-
+  type profileDataList = {
+  
+    name:string, 
+    profile_image_url:string,
+    short_bio:string
+  
+  }
+ 
   const renderFullViewProfile = () => {
     const { profileData, apiStatus } = JobsListStore
 
@@ -121,7 +129,7 @@ const JobPage = observer(() => {
 
 
           <div className="jobs-conatiner">
-            <SearchBar changeSearchInput={changeSearchInput} enterSearchInput={enterSearchInput} />
+            <SearchBar changeSearchInput={changeSearchInput} enterSearchInput={enterSearchInput} searchInput={""} />
           </div>
         </div>
       </div>
@@ -159,15 +167,15 @@ const JobPage = observer(() => {
   }
 
   const renderLoadingView = () => (
-    <div className="products-details-loader-container" testid="loader">
+    <div className="products-details-loader-container" >
       <BallTriangle
         height={100}
         width={100}
         radius={5}
         color="#4fa94d"
         ariaLabel="ball-triangle-loading"
-        wrapperClass={{}}
-        wrapperStyle=""
+       
+       
         visible={true}
       />
     </div>
@@ -193,14 +201,14 @@ const JobPage = observer(() => {
   const { activeJobType, checkedBox, apiStatus, apiJobs } = JobsListStore
   return (
     <>
-      <Header />
+      <Header history={undefined} />
       <div className="filters-profile">
         {apiStatus === "SUCCESS" ? renderFullViewProfile() : apiStatus === "FAILURE" ? renderFailureView() : renderLoadingView()}
         <div className="filters-profile-conatiner">
           <div className="filters-conatiner">
             <hr></hr>
             <h2>Type of Employment</h2>
-            {JobTypes.map(eachItem => (<FiltersGroup jobsFilters={eachItem} key={eachItem.categoryId} onCheckedApp={onCheckedApp} checkedBox={checkedBox} />))}
+            {JobTypes.map(eachItem => (<FiltersGroup jobsFilters={eachItem} key={eachItem.categoryId} onCheckedApp={onCheckedApp}  />))}
             <hr></hr>
             <h2>Salary Range</h2>
             {JobPackages.map(eachItem => (<JobPackage jobSalary={eachItem} key={eachItem.categoryId} onCheckedRadioApp={onCheckedRadioApp} />))}
