@@ -2,6 +2,7 @@ import Header from "./Header"
 import {Link, Redirect} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import './Home.css';
+import React from "react";
 const Home = () =>{
    
   

@@ -4,16 +4,19 @@ import './Login.css';
 import { Redirect } from 'react-router-dom';
 import {observer} from 'mobx-react';
 import LoginFormStore from '../Stores/LoginFormStore';
+import React from 'react';
 class Login extends Component {
+
+
   constructor(props){
     super(props);
     this.loginFormStore = LoginFormStore
   }
-  onChangeUsername = event => {
+  onChangeUsername = (event:React.ChangeEvent<HTMLInputElement>) => {
     this.loginFormStore.setUserName(event.target.value)
   }
 
-  onChangePassword = event => {
+  onChangePassword = (event:React.ChangeEvent<HTMLInputElement>) => {
     this.loginFormStore.setPassword (event.target.value)
   }
 
@@ -24,7 +27,7 @@ class Login extends Component {
     history.replace('/')
   }
 
-  onSubmitFailure = errorMsg => {
+  onSubmitFailure = (errorMsg:string) => {
     this.loginFormStore.setErrorMsg( errorMsg)
   }
 

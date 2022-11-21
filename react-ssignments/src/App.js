@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter,Route ,Switch,Redirect} from "react-router-dom" ;
-import Home from './components/Home';
+import Home from './components/Home'
 import Login from './components/Login';
 import JobPage from './components/JobPage';
 import ProctetedRoute from './components/Protected';

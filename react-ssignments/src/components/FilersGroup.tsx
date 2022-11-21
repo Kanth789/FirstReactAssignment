@@ -1,6 +1,8 @@
 import React from "react"
 type Checkbox = {
     checkedBox:boolean
+    onClick: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    categoryId:string
 }
 const FiltersGroup = (props)=>{
     const{jobsFilters,onCheckedApp,checkedBox} = props

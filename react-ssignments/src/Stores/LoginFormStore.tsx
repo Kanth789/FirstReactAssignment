@@ -1,5 +1,10 @@
 import { makeAutoObservable } from "mobx";
-
+type loginForm = {
+  username :string;
+  password :string;
+  error :boolean;
+  error_msg :string;
+}
 class loginFormStore {
   username = "";
   password = "";

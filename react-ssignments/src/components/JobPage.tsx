@@ -14,6 +14,7 @@ import { observable, toJS, runInAction, computed } from "mobx";
 import React from "react";
 type Checkbox = {
   checkedBox:boolean
+
 }
 type JobTypesData = {
   name: string;
@@ -74,7 +75,7 @@ const JobPage = observer(() => {
   }, [])
   const JobsListStore = jobsListStore
 
-  const onCheckedApp = (categoryId, checked) => {
+  const onCheckedApp = (categoryId:string, checked) => {
     const { activeJobType, checkedBox } = JobsListStore
     const CheckId = updatedjob.includes(categoryId) 
     if (!CheckId) {
@@ -88,14 +89,14 @@ const JobPage = observer(() => {
     JobsListStore.getFullData()
 
   }
-  const onCheckedRadioApp = (categoryId) => {
+  const onCheckedRadioApp = (categoryId:string) => {
     JobsListStore.activeJobPackage = categoryId
     JobsListStore.getFullData()
   }
   const enterSearchInput = () => {
     JobsListStore.getFullData()
   }
-  const changeSearchInput = searchInput => {
+  const changeSearchInput = (searchInput:string) => {
     JobsListStore.setSearchValue({ searchInput })
   }
 
