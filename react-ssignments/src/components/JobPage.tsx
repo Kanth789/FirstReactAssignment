@@ -35,6 +35,10 @@ import { observable, toJS, runInAction, computed } from "mobx";
           },
           
         ]
+type JobPacakagesProps = {
+  name:string,
+  categoryId:string
+}
         const JobPackages = [
           {
             name: '10 LPA and above',

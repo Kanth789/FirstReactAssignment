@@ -12,6 +12,7 @@ const apiStatusConstants = {
   failure: 'FAILURE',
   inProgress: 'IN_PROGRESS',
 }
+
 class jobsListStore {
   jobsList = [];
   profileData=[];
