@@ -7,6 +7,7 @@ import UserStore from "../UserStore";
 const Navbar = observer((props)=>{
     const{link} = props
     const{id,Name} = link
+    console.log(link)
     const  todoListStore  = UserStore
     const OnclickedButton = ()=>{
         console.log("button clciked")
