@@ -1,3 +1,5 @@
+import React from "react"
+
 type SkillsTypes = {
     skills : {
         image_url:string

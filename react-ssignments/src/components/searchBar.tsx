@@ -1,3 +1,4 @@
+import React from "react";
 import { BsSearch } from "react-icons/bs";
 type SeachbarType ={
   changeSearchInput:(event:string) =>void

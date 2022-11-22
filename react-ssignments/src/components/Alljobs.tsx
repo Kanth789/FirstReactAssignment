@@ -4,6 +4,7 @@ import { ImLocation } from "react-icons/im";
 import { MdWork } from "react-icons/md";
 import {observer} from 'mobx-react';
 import './Alljobs.css';
+import React from "react";
  type jobDataItems = {
     jobData : {
         company_logo_url:string,

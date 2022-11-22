@@ -12,6 +12,7 @@ import { ImLocation } from "react-icons/im";
 import { MdWork } from "react-icons/md";
 import ParticularStore from "../Stores/ParticularStore";
 import {observer} from 'mobx-react';
+import React from "react";
 type ParticularStoreData = {
     company_website_url:string,
     company_logo_url:string,
