@@ -29,14 +29,7 @@ const Header = (props: { history: any })=>{
             </div>
             </Link>
             <div className="nav-links">
-            <div>
-                   
-                   <select  onClick={(event)=> i18n.changeLanguage((event.target as HTMLInputElement).value)}>
-                   {Object.keys(lngs).map((lng)=>(
-                      <option value={lng}>{lngs[lng as keyof typeof lngs].nativeName}</option>
-                   
-                  ))} </select>
-              </div>
+            
             <Link to="/"className="nav-link">
                  
                 <div className="links">
@@ -48,6 +41,14 @@ const Header = (props: { history: any })=>{
                 {t('Home-nav-2')}
                 </div>
                 </Link>
+                <div>
+                   
+                   <select  onClick={(event)=> i18n.changeLanguage((event.target as HTMLInputElement).value)}>
+                   {Object.keys(lngs).map((lng)=>(
+                      <option value={lng}>{lngs[lng as keyof typeof lngs].nativeName}</option>
+                   
+                  ))} </select>
+              </div>
             </div>
             <div className="nav-button">
                 <Link to="/login"className="nav-link"> 
