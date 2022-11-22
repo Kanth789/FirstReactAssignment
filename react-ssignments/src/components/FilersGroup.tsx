@@ -1,5 +1,5 @@
 import React from "react"
-
+import {useTranslation,Trans} from 'react-i18next'
 type jobsFiltersType = {
     onCheckedApp:(categoryId:string)=>void,
     jobsFilters:{
@@ -9,8 +9,7 @@ type jobsFiltersType = {
     }
 }
 const FiltersGroup = (props:jobsFiltersType)=>{
-   
-
+    const {t} = useTranslation()
     const onChecked = ()=>{
         props.onCheckedApp(props.jobsFilters.categoryId)
     }

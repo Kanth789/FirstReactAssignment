@@ -1,0 +1,51 @@
+{
+    "heading":"Find The Job That Fits Your Life",
+    "Home-para":"Millions of people are searching for jobs,salary information, company reviews.Find the job that fits your abilities and potential",
+    "Home-button":"Find Jobs",
+    "Home-nav-1":"Home",
+    "Home-nav-2":"Jobs",
+    "logout-button":"Logout",
+    "JobTypes": [
+        {
+          "name": "Full Time",
+          "categoryId": "FULLTIME",
+          "checked": false
+        },
+        {
+          "name": "Part Time",
+          "categoryId": "PARTTIME",
+          "checked": false
+        },
+        {
+          "name": "Freelance",
+          "categoryId": "FREELANCE",
+          "checked": false
+        },
+        {
+          "name": "Internship",
+          "categoryId": "INTERNSHIP",
+          "checked": false
+        }
+      
+      ],
+      "JobPackages"  :  [
+        {
+          "name":"10 LPA and above",
+          "categoryId": "1000000"
+        },
+        {
+          "name": "20 LPA and above",
+          "categoryId": "2000000"
+        },
+        {
+          "name": "30 LPA and above",
+          "categoryId": "3000000"
+        },
+        {
+          "name": "40 LPA and above",
+          "categoryId": "4000000"
+        }
+      
+      ]
+
+}

@@ -10,7 +10,7 @@ import JobPackage from "./JobPackage";
 import SearchBar from "./searchBar";
 import jobsListStore from "../Stores/jobsListStore";
 import { observer } from 'mobx-react';
-
+import {useTranslation,Trans} from 'react-i18next'
 import { observable, toJS, runInAction, computed } from "mobx";
 import React from "react";
 
@@ -23,54 +23,17 @@ type JobTypesData = {
   categoryId: string
   checked: boolean
 }
-const JobTypes: JobTypesData[] = [
-  {
-    name: 'Full Time',
-    categoryId: 'FULLTIME',
-    checked: false
-  },
-  {
-    name: 'Part Time',
-    categoryId: 'PARTTIME',
-    checked: false
-  },
-  {
-    name: 'Freelance',
-    categoryId: 'FREELANCE',
-    checked: false
-  },
-  {
-    name: 'Internship',
-    categoryId: 'INTERNSHIP',
-    checked: false
-  },
 
-]
 type JobPackageData = {
   name: string;
   categoryId: string
 }
-const JobPackages: JobPackageData[] = [
-  {
-    name: '10 LPA and above',
-    categoryId: '1000000',
-  },
-  {
-    name: '20 LPA and above',
-    categoryId: '2000000',
-  },
-  {
-    name: '30 LPA and above',
-    categoryId: '3000000',
-  },
-  {
-    name: '40 LPA and above',
-    categoryId: '4000000',
-  },
 
-]
 let updatedjob: any[]  =[]
 const JobPage = observer(() => {
+  const {t} = useTranslation()
+  const JobTypes: JobTypesData[] = t('JobTypes',{returnObjects:true})
+  const JobPackages :JobPackageData[] = t('JobPackages',{returnObjects:true})
   useEffect(() => {
     JobsListStore.getData()
     JobsListStore.getFullData()
@@ -208,7 +171,7 @@ const JobPage = observer(() => {
           <div className="filters-conatiner">
             <hr></hr>
             <h2>Type of Employment</h2>
-            {JobTypes.map(eachItem => (<FiltersGroup jobsFilters={eachItem} key={eachItem.categoryId} onCheckedApp={onCheckedApp}  />))}
+            {JobTypes.map(eachItem => (<FiltersGroup jobsFilters={eachItem} key={eachItem.categoryId} onCheckedApp={onCheckedApp}/>))}
             <hr></hr>
             <h2>Salary Range</h2>
             {JobPackages.map(eachItem => (<JobPackage jobSalary={eachItem} key={eachItem.categoryId} onCheckedRadioApp={onCheckedRadioApp} />))}

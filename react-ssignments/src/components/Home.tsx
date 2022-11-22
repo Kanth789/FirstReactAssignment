@@ -3,8 +3,9 @@ import {Link, Redirect} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import './Home.css';
 import React from "react";
+import {useTranslation,Trans} from 'react-i18next'
 const Home = () =>{
-   
+    const {t} = useTranslation()
   
     return(
         <>
@@ -14,14 +15,14 @@ const Home = () =>{
         <div className="Home-conatiner">
             <div className="Home-content">
                 <div className="heading">
-                <h1>Find The Job That Fits Your Life</h1>
+                <h1>{t('heading')}</h1>
                 </div>
                 <div className="Home-para">
-                    <p>Millions of people are searching for jobs,salary information, company reviews.Find the job that fits your abilities and potential</p>
+                    <p>{t('Home-para')}</p>
                 </div>
                 <div>
                     <Link to="/jobs" className="nav-link">
-                    <button>Find Jobs</button>
+                    <button>{t('Home-button')}</button>
                     </Link>
                 </div>
             </div>
