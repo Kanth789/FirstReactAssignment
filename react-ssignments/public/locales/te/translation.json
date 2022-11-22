@@ -1,0 +1,20 @@
+{ 
+    "title":"చేయవలసిన పనుల జాబితా",
+    "button-Name":"జోడించు",
+    "button-save":"సేవ్",
+    "button-delete":"తొలగించు",
+    "Navlist" : [
+    {
+        "id":"All",
+        "Name":"అన్నీ"
+    },
+    {
+        "id":"Active",
+        "Name":"చురుకుగా"
+    },
+    {
+        "id":"Completed",
+        "Name":"పూర్తయింది"
+    }
+   ] 
+}

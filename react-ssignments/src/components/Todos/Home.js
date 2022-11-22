@@ -1,29 +1,32 @@
 import React, {  useState,useEffect } from "react"
 import {observer} from 'mobx-react'
-
+import i18n from "i18next";
 import UserStore from "../UserStore";
+import {useTranslation,Trans} from 'react-i18next'
 import Navbar from "./Navbar";
-const Navlist = [
-    {
-        id:'All',
-        Name:"All"
+
+const lngs = {
+    en:{
+      nativeName:'English'
     },
-    {
-        id:'Active',
-        Name:"Active"
-    },
-    {
-        id:'Completed',
-        Name:"Completed"
+    te:{
+      nativeName:'Telugu'
     }
-]
+  };
 const Home = observer(()=>{
     const  todoListStore  = UserStore
-    
+    const {t} = useTranslation()
+    const Navlist = t('Navlist',{returnObjects:true})
     return(
+
         <div>  
+             <div>
+        {Object.keys(lngs).map((lng)=>(
+          <button type='submit' key={lng} onClick={()=> i18n.changeLanguage(lng)} disabled={i18n.reslovedLanguage === lng}>{lngs[lng].nativeName}</button>
+        ))}
+      </div>
            {Navlist.map(eachItem=>(<Navbar key={eachItem.id} link={eachItem}/>))}
-            <h1>todos</h1>
+           <Trans i18nKey="title"></Trans>
                 <input
                     className="new-todo"
                     placeholder="enter todo"
@@ -35,7 +38,7 @@ const Home = observer(()=>{
                 <button   onClick={() => {
                         todoListStore.createTodo(todoListStore.searchInput);
                     
-                    }}>Add</button>
+                    }}>{t('button-Name')}</button>
            
         </div>
     )

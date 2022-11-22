@@ -1,0 +1,20 @@
+{ 
+    "title":"Todo list",
+    "button-Name":"Add",
+    "button-save":"Save",
+    "button-delete":"Delete",
+    "Navlist" : [
+    {
+        "id":"All",
+        "Name":"All"
+    },
+    {
+        "id":"Active",
+        "Name":"Active"
+    },
+    {
+        "id":"Completed",
+        "Name":"Completed"
+    }
+   ] 
+}
