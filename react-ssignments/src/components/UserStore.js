@@ -27,7 +27,7 @@ class UserStore {
    
    }
     
-    createTodo(){
+    createTodo=()=>{
         const newList = { 
         id :uuid(),
         name :this.searchInput,
@@ -41,11 +41,11 @@ class UserStore {
         this.searchInput = event.target.value
 
     }
-    deleteTodo(todoId) {
+    deleteTodo=(todoId)=> {
         const todoIndex = this.todos.findIndex(({ id }) => id === todoId);
         this.todos.splice(todoIndex, 1);
       }
-    SaveTodo(){
+    SaveTodo=()=>{
         localStorage.setItem("todoStorage", JSON.stringify(this.todos));
     }
      
@@ -57,7 +57,7 @@ class UserStore {
             return eachItem
         })
       }
-      get filterTodos() {
+      get filterTodos(){
         
         switch (this.filter) {
           

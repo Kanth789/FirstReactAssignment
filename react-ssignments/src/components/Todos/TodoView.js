@@ -15,7 +15,7 @@ const  TodoView = inject("todoListStore")(observer(({ todoListStore,todo }) =>{
           className="toggle"
           type="checkbox"
           onChange={todoListStore.toggle}
-          id={todo.id}
+    
           checked={todo.isChecked}
         />
         <label>{todo.name}</label>

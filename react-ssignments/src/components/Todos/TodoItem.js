@@ -12,19 +12,19 @@ const TodoItem = (observer(()=>{
      todoListStore.SaveTodo()  
     }
     return(
-      <Provider todoListStore={UserStore}>
+      
       
         <div>
             <Home/> 
         <ul className="todo-list">
           
           {Array.isArray(todoListStore.filterTodos) && todoListStore.filterTodos.map((todo) => (
-            <TodoView todo={todo} key={todo.id} />
+           <Provider todoListStore={UserStore}><TodoView todo={todo} key={todo.id} /></Provider> 
             ))}
         </ul>
         <button onClick={onSaveButton}>{t('button-save')}</button>
         </div>
-            </Provider>
+            
         
     )
 }))
