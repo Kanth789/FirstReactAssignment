@@ -4,6 +4,7 @@ import Navbar from './components/Todos/Navbar';
 import TodoItem from './components/Todos/TodoItem';
 import TodoView from './components/Todos/TodoView';
 import App from "./App"
+import { get } from 'mobx';
 test("test the title of page",()=>{
     render(<App/>);
     const linkElement = screen.getByText(/Todo/i);
@@ -15,7 +16,15 @@ render(<Home/>);
     expect(inputName).toBeTruthy();
 });
 
-
+test("Get the type of Input",()=>{
+    render(<Home/>)
+    const Type = screen.getAllByPlaceholderText("Add a new todo");
+   const FireValue = fireEvent.change(Type,{target:{value:get(Type.value)}});
+   console.log(FireValue,"console")
+   const linkElement = screen.getByText(FireValue);
+   expect(linkElement).toBeInTheDocument();
+  
+});
 describe("Test the todoview compoennt",()=>{
     test("render the button",async ()=>{
         render(<Home/>);
