@@ -3,8 +3,11 @@ import './App.css';
 import TodoItem from './components/Todos/TodoItem';
 function App() {
   return (
-   
-    <TodoItem/>
+    
+    <>
+    <h1>Todo</h1>
+     <TodoItem/>
+    </>
     
     
   );
