@@ -12,10 +12,9 @@ const Navbar = observer((props:MyProps)=>{
    
     const  todoListStore  = UserStore
     const OnclickedButton = ()=>{
-        console.log("button clciked")
         todoListStore.setFilter(props.link.id)
     }
-    autorun(() => console.log(todoListStore.filter,"Autorun"))
+    // autorun(() => console.log(todoListStore.filter,"Autorun"))
     return(
         <div>
             <nav>

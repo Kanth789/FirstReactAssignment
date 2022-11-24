@@ -1,9 +1,21 @@
 import { observer } from "mobx-react-lite";
 import UserStore from "../UserStore";
-const  TodoView = observer(({ todo }) =>{
-  const  todoListStore  = UserStore;
-
-    
+import { inject, Provider } from "mobx-react";
+import {useTranslation,Trans} from 'react-i18next'
+type MyProps = {
+  todo:{
+      id:string;
+      name:string;
+      isChecked:boolean
+  }
+};
+const  TodoView = inject("todoListStore")(observer((props:MyProps ) =>{
+ 
+  const store = UserStore
+  const {t} = useTranslation() 
+  const OnchangedClick = (event:React.ChangeEvent<HTMLInputElement>)=>{
+    store.toggle(event.target.value)
+  }
   return (
     <>
     <li>
@@ -11,17 +23,17 @@ const  TodoView = observer(({ todo }) =>{
         <input
           className="toggle"
           type="checkbox"
-          onChange={todoListStore.toggle}
-          id={todo.id}
-          checked={todo.isChecked}
+          onChange={OnchangedClick}
+          id={props.todo.id}
+          checked={props.todo.isChecked}
         />
-        <label>{todo.name}</label>
-        <button  onClick={() => todoListStore.deleteTodo(todo.id)}>Delete</button>
+        <label>{props.todo.name}</label>
+        <button  onClick={() => store.deleteTodo(props.todo.id)}>{t('button-delete')}</button>
       </div>
       
     </li>
     </>
   );
 }
-)
+))
 export default TodoView;

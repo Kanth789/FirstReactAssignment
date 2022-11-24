@@ -1,0 +1,2 @@
+export const getLocalStoreItem= (todoStorage) => JSON.parse(localStorage.getItem(todoStorage));
+export const setLocalStoreItem = (todoStorage,todos) => localStorage.setItem(todoStorage,JSON.stringify(todos))

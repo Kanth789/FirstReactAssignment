@@ -1,49 +1,52 @@
 import React, {  useState,useEffect } from "react"
 import {observer} from 'mobx-react'
-
+import i18n from "i18next";
 import UserStore from "../UserStore";
+import {useTranslation,Trans} from 'react-i18next'
 import Navbar from "./Navbar";
-
-const Navlist = [
-    {
-        id:'All',
-        Name:"All"
+import { Provider } from "mobx-react";
+const lngs = {
+    en:{
+      nativeName:'English'
     },
-    {
-        id:'Active',
-        Name:"Active"
-    },
-    {
-        id:'Completed',
-        Name:"Completed"
+    te:{
+      nativeName:'Telugu'
     }
-]
-
-type link ={
-    id:string;
-    Name:string
-}
+  };
 const Home = observer(()=>{
     const  todoListStore  = UserStore
-   
+    const {t} = useTranslation()
+    const Navlist = t('Navlist',{returnObjects:true})
+    const Onchanged = (event:React.ChangeEvent<HTMLInputElement>)=>{
+      todoListStore.onSearchInput(event.target.value)
+      console.log(todoListStore.searchInput)
+    }
     return(
-        <div>  
-           {Navlist.map(eachItem=>(<Navbar key={eachItem.id} link={eachItem}/>))}
-            <h1>todos</h1>
+      <div>  
+             <div>
+        {Object.keys(lngs).map((lng)=>(
+          <button type='submit' key={lng} onClick={()=> i18n.changeLanguage(lng)} disabled={i18n.resolvedLanguage === lng}>{lngs[lng as keyof typeof lngs].nativeName}</button>
+        ))}
+      </div>
+      
+          
+           {Array.isArray(Navlist) &&Navlist.map(eachItem=>(<Provider todoListStore={UserStore}><Navbar key={eachItem.id} link={eachItem}/></Provider>))}
+           <Trans i18nKey="title"></Trans>
                 <input
+                   type="text"
                     className="new-todo"
-                    placeholder="enter todo"
-                  
+                    placeholder="Add a new todo"
                     value={todoListStore.searchInput}
-                    onChange={todoListStore.onSearchInput}
+                    onChange={Onchanged}
                    
                 />
                 <button   onClick={() => {
                         todoListStore.createTodo();
-                    
-                    }}>Add</button>
+                        console.log(todoListStore.todos,"created todo")
+                    }}>{t('button-Name')}</button>
            
         </div>
+       
     )
 })
 export default Home

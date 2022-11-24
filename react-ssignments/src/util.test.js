@@ -7,7 +7,10 @@ import UserStore from './components/UserStore';
 import App from "./App";
 import { get } from 'mobx';
 import React from 'react';
-
+import getLocalStoreItem from './uitl'
+jest.mock('./uitl', ()=>{
+    return {getLocalStoreItem:()=>[],setLocalStoreItem:()=>[]}
+})
 console.log(UserStore.todos)
 test("test the title of page",()=>{
     render(<App/>);
@@ -20,15 +23,7 @@ render(<Home/>);
     expect(inputName).toBeTruthy();
 });
 
-// test("Get the type of Input",()=>{
-//     render(<Home/>)
-//     const Type = screen.getAllByPlaceholderText("Add a new todo");
-//    const FireValue = fireEvent.change(Type,{target:{value:get(Type.value)}});
-//    console.log(FireValue,"console")
-//    const linkElement = screen.getByText(FireValue);
-//    expect(linkElement).toBeInTheDocument();
-  
-// });
+
 describe("Test the todoview compoennt",()=>{
     test("render the button",async ()=>{
         render(<Home/>);
@@ -52,17 +47,29 @@ describe("Test the todoview compoennt",()=>{
     test("render save button",()=>{
       UserStore.SaveTodo()
     })
-    test('render creader todo',()=>{
-        UserStore.onSearchInput("Hello")
-        expect(UserStore.searchInput).toBe("Hello")
-    })
+   
     test("create todo",()=>{
         console.log(UserStore.todos)
         UserStore.createTodo()
         expect(UserStore.todos.length).toBe(1)
     })
-    test("Delete Todo",()=>{
-        UserStore.deleteTodo()
-    })
     
+    test("creatdsf",()=>{
+        UserStore.toggle(UserStore.todos[0].id)
+        expect(UserStore.todos[0].isChecked).toBe(true)
+    })
+    test("deleteTodo",()=>{
+        UserStore.deleteTodo(UserStore.todos[0].id)
+        expect(UserStore.todos.length).toBe(0)
+    })
 });
+
+
+
+test("get",()=>{
+UserStore.createTodo()
+UserStore.createTodo()
+UserStore.createTodo()
+expect(UserStore.filterTodos).toStrictEqual(UserStore.todos.filter(eachItem=>(eachItem.isChecked === true)))
+
+})
