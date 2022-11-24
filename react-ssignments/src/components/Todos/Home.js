@@ -17,6 +17,9 @@ const Home = observer(()=>{
     const  todoListStore  = UserStore
     const {t} = useTranslation()
     const Navlist = t('Navlist',{returnObjects:true})
+    const Onchanged = (event)=>{
+      todoListStore.onSearchInput(event.target.value)
+    }
     return(
       <div>  
              <div>
@@ -33,7 +36,7 @@ const Home = observer(()=>{
                     className="new-todo"
                     placeholder="Add a new todo"
                     value={todoListStore.searchInput}
-                    onChange={todoListStore.onSearchInput}
+                    onChange={Onchanged}
                    
                 />
                 <button   onClick={() => {
