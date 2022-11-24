@@ -6,6 +6,7 @@ import TodoView from './components/Todos/TodoView';
 import UserStore from './components/UserStore';
 import App from "./App";
 import { get } from 'mobx';
+import React from 'react';
 
 console.log(UserStore.todos)
 test("test the title of page",()=>{

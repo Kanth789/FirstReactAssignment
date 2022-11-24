@@ -1,52 +1,63 @@
-import {makeAutoObservable,autorun,observable, action,computed,reaction } from "mobx"
+import {makeObservable,autorun,observable, action,computed,reaction } from "mobx"
+import React from "react";
 import { v4 as uuid } from 'uuid';
+type UserElemenet = {
+  id:string;
+  name:string;
+  isChecked:boolean
+}
+
+
 class UserStore {
-    todos=[];
+    todos: UserElemenet[] =JSON.parse(localStorage.getItem("todoStorage")as string);
     searchInput=''
     filter="All"
     constructor(){
-     
-        makeAutoObservable(this );
-        if(JSON.parse(localStorage.getItem("todoStorage")!== null))
-        {
-           this.todos = JSON.parse(localStorage.getItem("todoStorage"))
-        }
-           
+        makeObservable(this ,{
+        todos: observable,
+        createTodo:action,
+        deleteTodo:action,
+        toggle:action.bound,
+        searchInput:observable,
+        filter:observable,
+        onSearchInput:action.bound,
+        filterTodos:computed,
+        setFilter:action
+    });
+        
+        
     }
-    
+
   
    
-   setFilter=(data)=>{
+   setFilter=(data:string)=>{
     this.filter = data
    
    }
     
-    createTodo=()=>{
+    createTodo(){
         const newList = { 
         id :uuid(),
         name :this.searchInput,
         isChecked:false,
         }
-      console.log(this.todos)
-
       this.todos.push(newList)
-      
-     
+      this.searchInput=""
     }
-    onSearchInput=(data)=>{
-        this.searchInput = data
+    onSearchInput=(event:React.ChangeEvent<HTMLInputElement>)=>{
         console.log(this.searchInput)
+        this.searchInput = event.target.value
 
     }
-    deleteTodo=(todoId)=> {
+    deleteTodo(todoId:string) {
         const todoIndex = this.todos.findIndex(({ id }) => id === todoId);
         this.todos.splice(todoIndex, 1);
       }
-    SaveTodo=()=>{
+    SaveTodo(){
         localStorage.setItem("todoStorage", JSON.stringify(this.todos));
     }
      
-    toggle=(event)=> {
+    toggle=(event:React.ChangeEvent<HTMLInputElement>)=> {
        this.todos= this.todos.map(eachItem=>{
             if(eachItem.id===event.target.id){
                 return {...eachItem, isChecked: !eachItem.isChecked}
@@ -54,7 +65,8 @@ class UserStore {
             return eachItem
         })
       }
-      get filterTodos(){
+
+      get filterTodos() {
         
         switch (this.filter) {
           
