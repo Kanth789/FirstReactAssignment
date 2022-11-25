@@ -16,6 +16,22 @@ import JobTypes from "../util"
 import user from "@testing-library/user-event"
 import { Provider } from "mobx-react";
 import { idText } from "typescript";
+const updatedFullJobs = {
+  company_logo_url:"https://assets.ccbp.in/frontend/react-js/jobby-app/netflix-img.pn",
+  id:"2b40029d-e5a5-48cc-84a6-b6e12d25625d",
+  employment_type:"Freelance",
+  job_description:"The Experimentation Platform team builds internal tools with a big impact across the company. We are looking to add a UI engineer to our team to continue to improve our experiment", 
+  location:"Delhi",
+  package_per_annum:"10LPA",
+  rating:4, 
+  title:"Frontend Engineer"
+}
+global.fetch = jest.fn(()=>{
+  Promise.resolve({
+    json:()=>Promise.resolve(updatedFullJobs)
+  })
+})
+
 
 test("login page details",()=>{
     render(<App/>)
@@ -57,12 +73,7 @@ describe("Navbar describe",()=>{
         expect(screen.getAllByRole('option').length).toBe(2)
     })
    
-    it("On click Job Page Button",()=>{
-      render(<Router><Home /></Router>)
-      fireEvent.click(screen.getByTestId("FindJobs"))
-      render(<Router><FiltersGroup jobsFilters={{categoryId : "FULLTIME",checked: false ,name:"Full Time"}}/></Router>);
-      expect(screen.getByTestId("employeeType1")).toBeTruthy()
-    })
+    
     it("user name and passsword",()=>{
      render(<Router><Login /></Router>)
      LoginFormStore.setUserName("Kiran")
@@ -77,29 +88,19 @@ describe("Navbar describe",()=>{
     
 })
 
-// test('should allow user to change ', () => {
-//   const clickLogout = jest.fn()
-//   const clicked = jest.fn()
-//   render(<Router><Header onClickLogout={clickLogout} onChange={clicked}/></Router>)
-//   const clickLogoutButton = screen.getAllByRole('option',{nativeName: 'English'})
-//   userEvent.change(clickLogoutButton[0]);
-//   expect(clickLogout).toHaveBeenCalledTimes(0)
-// })
+ 
 
-  test('render filter list ',()=>{
-    render(<Router><Home/></Router>);
-    const heading = screen.getByTestId("FindJobs")
-    userEvent.click(heading);
-    const view = render(<Router><FiltersGroup jobsFilters={{categoryId : "FULLTIME",checked: false ,name:"Full Time"}}/></Router>);
-    const headingJobs = screen.getByTestId("employeeType1")
-    expect(headingJobs).toBeTruthy()
-  })
-  
 test('render Job List ',()=>{
     const store = jobsListStore;
     render(<BrowserRouter><JobPage  jobsListStore= {jobsListStore}/></BrowserRouter>);
-    expect(store.getData).toBeCalledWith(1)
-    const employee = screen.getByText("Frontend Engineer");
-    expect(employee).toBeInTheDocument()
-
+    expect(fetch).toHaveBeenCalledTimes(2)
+    expect(fetch).toHaveBeenCalledWith(`https://apis.ccbp.in/jobs?employment_type=&minimum_package=&search=`,{"headers": {"Authorization": "Bearer undefined"}, "method": "GET"})
+     
 })
+
+test('render search Bar Component',()=>{
+  const store = jobsListStore
+  store.setSearchValue("kiran")
+  expect(store.searchInput).toBe("kiran")
+})
+

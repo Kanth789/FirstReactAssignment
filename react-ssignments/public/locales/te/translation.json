@@ -5,46 +5,13 @@
     "Home-nav-1":"హోమ్",
     "Home-nav-2":"ఉద్యోగాలు",
     "logout-button":"లాగ్అవుట్",
-    "JobTypes": [
-        {
-          "name": "పూర్తి సమయం",
-          "categoryId": "FULLTIME",
-          "checked": false
-        },
-        {
-          "name": "పార్ట్ టైమ్",
-          "categoryId": "PARTTIME",
-          "checked": false
-        },
-        {
-          "name": "ఫ్రీలాన్స్",
-          "categoryId": "FREELANCE",
-          "checked": false
-        },
-        {
-          "name": "ఇంటర్న్",
-          "categoryId": "INTERNSHIP",
-          "checked": false
-        }
-      
-      ],
-      "JobPackages"  :  [
-        {
-          "name":"10 లక్షలు మరియు అంతకంటే ఎక్కువ",
-          "categoryId": "1000000"
-        },
-        {
-          "name": "20 లక్షలు మరియు అంతకంటే ఎక్కువ",
-          "categoryId": "2000000"
-        },
-        {
-          "name": "30 లక్షలు మరియు అంతకంటే ఎక్కువ ",
-          "categoryId": "3000000"
-        },
-        {
-          "name": "40 లక్షలు మరియు అంతకంటే ఎక్కువ ",
-          "categoryId": "4000000"
-        }
-      
-      ]
+    "Fullname": "పూర్తి సమయం",
+    "Partname": "పార్ట్ టైమ్",
+    "Freelancename": "ఫ్రీలాన్స్",
+    "Internshipname": "ఇంటర్న్",
+    "10name":"10 లక్షలు మరియు అంతకంటే ఎక్కువ",
+    "20name": "20 లక్షలు మరియు అంతకంటే ఎక్కువ",
+    "30name": "30 లక్షలు మరియు అంతకంటే ఎక్కువ ",
+    "40name": "40 లక్షలు మరియు అంతకంటే ఎక్కువ "
+         
 }

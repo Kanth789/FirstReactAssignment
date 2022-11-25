@@ -46,10 +46,10 @@ const Header = (props: { history: any })=>{
                 </Link>
                 <div>
                    
-                   <select id="cars"  onChange={(event)=> i18n.changeLanguage(event.target.value)}>
+                   <select data-testid="car" onChange={(event)=> i18n.changeLanguage(event.target.value)}>
                    {Object.keys(lngs).map((lng)=>(
                      
-                      <option key={lng} value={lng} data-testid="car" >{lngs[lng as keyof typeof lngs].nativeName}</option>
+                      <option key={lng} value={lng}  >{lngs[lng as keyof typeof lngs].nativeName}</option>
                    
                   ))} </select>
               </div>

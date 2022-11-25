@@ -13,6 +13,7 @@ import { observer, Provider } from 'mobx-react';
 import {useTranslation,Trans} from 'react-i18next'
 import { observable, toJS, runInAction, computed } from "mobx";
 import React from "react";
+import { t } from "i18next";
 
 type Checkbox = {
   checkedBox:boolean
@@ -29,31 +30,74 @@ type JobPackageData = {
   categoryId: string
 }
 
+
 let updatedjob: any[]  =[]
 const JobPage = observer(() => {
   const {t} = useTranslation()
-  const JobTypes: JobTypesData[] = t('JobTypes',{returnObjects:true})
-  const JobPackages :JobPackageData[] = t('JobPackages',{returnObjects:true})
+  const JobTypes :JobTypesData[] =[
+    {
+      name: t('Fullname'),
+      categoryId: "FULLTIME",
+      checked: false
+    },
+    {
+      name:t('Partname'),
+      categoryId: "PARTTIME",
+      checked: false
+    },
+    {
+      name: t('Freelancename'),
+      categoryId: "FREELANCE",
+      checked: false
+    },
+    {
+      name: t("Internshipname"),
+      categoryId: "INTERNSHIP",
+      checked: false
+    }
+  
+  ]
+  const  JobPackages :JobPackageData[] =  [
+    {
+      name:t('10name'),
+      categoryId: "1000000"
+    },
+    {
+      name: t('20name'),
+      categoryId: "2000000"
+    },
+    {
+      name: t('30name'),
+      categoryId: "3000000"
+    },
+    {
+      name: t('40name'),
+      categoryId: "4000000"
+    }
+  
+  ]
+  
   useEffect(() => {
     JobsListStore.getData()
     JobsListStore.getFullData()
   }, [])
   const JobsListStore = jobsListStore
 
-  const onCheckedApp = (categoryId:string) => {
-    const { activeJobType, checkedBox } = JobsListStore
-    const CheckId = updatedjob.includes(categoryId) 
-    if (!CheckId) {
-      updatedjob.push(categoryId)
-    }
-    else {
-      updatedjob = updatedjob.filter((item) => item !== categoryId)
-    }
-    console.log(updatedjob)
-    JobsListStore.activeJobType = updatedjob
-    JobsListStore.getFullData()
+  // const onCheckedApp = (categoryId:string) => {
+  //   const { activeJobType, checkedBox } = JobsListStore
+  //   const CheckId = updatedjob.includes(categoryId) 
+  //   if (!CheckId) {
+  //     updatedjob.push(categoryId)
+  //   }
+  //   else {
+  //     updatedjob = updatedjob.filter((item) => item !== categoryId)
+  //   }
+  //   console.log(updatedjob)
+  //   JobsListStore.activeJobType = updatedjob
+  //   JobsListStore.getFullData()
 
-  }
+  // }
+
   const onCheckedRadioApp = (categoryId:string) => {
     JobsListStore.activeJobPackage = categoryId
     JobsListStore.getFullData()
@@ -171,7 +215,7 @@ const JobPage = observer(() => {
           <div className="filters-conatiner">
             <hr></hr>
             <h2>Type of Employment</h2>
-            {JobTypes.map(eachItem => (<FiltersGroup jobsFilters={eachItem} key={eachItem.categoryId} onCheckedApp={onCheckedApp}/>))}
+            {JobTypes.map(eachItem => (<FiltersGroup jobsFilters={eachItem} key={eachItem.categoryId} />))}
             <hr></hr>
             <h2>Salary Range</h2>
             {JobPackages.map(eachItem => (<JobPackage jobSalary={eachItem} key={eachItem.categoryId} onCheckedRadioApp={onCheckedRadioApp} />))}

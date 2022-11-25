@@ -44,7 +44,7 @@ class jobsListStore {
   apiJobs = apiStatusOfJobs.initial;
   activeJobType :jobsListStore[]=[];
   checkedBox:boolean | undefined;
-
+  updatedjob: any[]  =[]
 
   constructor() {
     makeAutoObservable(this);
@@ -169,7 +169,19 @@ class jobsListStore {
         return null
     }
   }
+   onCheckedApp = (categoryId:string) => {
+    const CheckId = this.updatedjob.includes(categoryId) 
+    if (!CheckId) {
+      this.updatedjob.push(categoryId)
+    }
+    else {
+      this.updatedjob = this.updatedjob.filter((item) => item !== categoryId)
+    }
+    console.log(this.updatedjob)
+    this.activeJobType = this.updatedjob
+    this.getFullData()
 
+  }
 
 }
 

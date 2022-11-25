@@ -5,47 +5,14 @@
     "Home-nav-1":"Home",
     "Home-nav-2":"Jobs",
     "logout-button":"Logout",
-    "JobTypes": [
-        {
-          "name": "Full Time",
-          "categoryId": "FULLTIME",
-          "checked": false
-        },
-        {
-          "name": "Part Time",
-          "categoryId": "PARTTIME",
-          "checked": false
-        },
-        {
-          "name": "Freelance",
-          "categoryId": "FREELANCE",
-          "checked": false
-        },
-        {
-          "name": "Internship",
-          "categoryId": "INTERNSHIP",
-          "checked": false
-        }
-      
-      ],
-      "JobPackages"  :  [
-        {
-          "name":"10 LPA and above",
-          "categoryId": "1000000"
-        },
-        {
-          "name": "20 LPA and above",
-          "categoryId": "2000000"
-        },
-        {
-          "name": "30 LPA and above",
-          "categoryId": "3000000"
-        },
-        {
-          "name": "40 LPA and above",
-          "categoryId": "4000000"
-        }
-      
-      ]
+    "Fullname": "Full Time",
+    "Partname": "Part Time",
+    "Freelancename": "Freelance",
+    "Internshipname": "Internship",
+    "10name":"10 LPA and above",
+    "20name": "20 LPA and above",
+    "30name": "30 LPA and above",
+    "40name": "40 LPA and above"
+        
 
 }
