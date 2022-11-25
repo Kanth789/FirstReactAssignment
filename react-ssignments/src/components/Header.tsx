@@ -3,6 +3,7 @@ import Cookies from 'js-cookie'
 import React from "react"
 import {useTranslation,Trans} from 'react-i18next'
 import i18n from "i18next";
+
 const lngs = {
     en:{
       nativeName:'English'
@@ -13,10 +14,12 @@ const lngs = {
   };
 const Header = (props: { history: any })=>{
     const {t} = useTranslation()
+  
   const onClickLogout = () => {
     Cookies.remove('jwt_token')
     const {history} = props
     history.replace('/login')
+    
   }
     return(
         <div className="nav-conatiner">
@@ -43,9 +46,10 @@ const Header = (props: { history: any })=>{
                 </Link>
                 <div>
                    
-                   <select  onClick={(event)=> i18n.changeLanguage((event.target as HTMLInputElement).value)}>
+                   <select id="cars"  onChange={(event)=> i18n.changeLanguage(event.target.value)}>
                    {Object.keys(lngs).map((lng)=>(
-                      <option value={lng}>{lngs[lng as keyof typeof lngs].nativeName}</option>
+                     
+                      <option key={lng} value={lng} data-testid="car" >{lngs[lng as keyof typeof lngs].nativeName}</option>
                    
                   ))} </select>
               </div>

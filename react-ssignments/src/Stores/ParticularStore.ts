@@ -93,11 +93,11 @@ class ParticularStore {
         },
     }
     const response = await fetch(apiUrl,options)
-    console.log(response)
+  
     if(response.ok === true)
     {
         const data = await response.json()
-        console.log(data)
+      
         const updatedFullJobs =this.setFormattedData(data.job_details)
         const updatedsimilarJobDetails = data.similar_jobs.map((eachItem:ParticularStoreData)=>({
                 company_logo_url:eachItem.company_logo_url,

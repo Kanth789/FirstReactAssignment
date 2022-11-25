@@ -26,6 +26,8 @@ const  Login = observer(()=> {
   const  onSubmitSuccess = (jwtToken: string) => { 
     Cookies.set('jwt_token', jwtToken)
    history.replace('/')
+   loginFormStore.setUserName("")
+   loginFormStore.setPassword("")
   }
 
   const onSubmitFailure = (errorMsg:string) => {
@@ -64,6 +66,7 @@ const  Login = observer(()=> {
           className="password-input-filed"
           value={password}
           onChange={onChangePassword}
+          placeholder="Password"
         />
       </>
     )
@@ -82,6 +85,7 @@ const  Login = observer(()=> {
           className="username-input-filed"
           value={username}
           onChange={onChangeUsername}
+          placeholder="Username"
         />
       </>
     )

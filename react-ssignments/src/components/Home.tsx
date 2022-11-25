@@ -15,14 +15,14 @@ const Home = () =>{
         <div className="Home-conatiner">
             <div className="Home-content">
                 <div className="heading">
-                <h1>{t('heading')}</h1>
+                <h1 id="heading">{t('heading')}</h1>
                 </div>
                 <div className="Home-para">
                     <p>{t('Home-para')}</p>
                 </div>
                 <div>
                     <Link to="/jobs" className="nav-link">
-                    <button>{t('Home-button')}</button>
+                    <button data-testid="FindJobs">{t('Home-button')}</button>
                     </Link>
                 </div>
             </div>

@@ -9,7 +9,7 @@ import FiltersGroup from "./FilersGroup";
 import JobPackage from "./JobPackage";
 import SearchBar from "./searchBar";
 import jobsListStore from "../Stores/jobsListStore";
-import { observer } from 'mobx-react';
+import { observer, Provider } from 'mobx-react';
 import {useTranslation,Trans} from 'react-i18next'
 import { observable, toJS, runInAction, computed } from "mobx";
 import React from "react";
@@ -160,7 +160,7 @@ const JobPage = observer(() => {
     </div>
   )
 
-  console.log(JobsListStore.renderProfileDetails(renderLoadingView, renderFullViewProfile, renderFailureView), "RENDER")
+  
   const { activeJobType, checkedBox, apiStatus, apiJobs } = JobsListStore
   return (
     <>

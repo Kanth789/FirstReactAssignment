@@ -91,7 +91,7 @@ class jobsListStore {
       if (response.ok === true) {
         console.log(response)
         const data = await response.json()
-
+        console.log(data)
         const updatedFullJobs = data.jobs.map((eachItem:jobsListData) => ({
           company_logo_url: eachItem.company_logo_url,
           id: eachItem.id,

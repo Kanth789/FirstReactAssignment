@@ -13,11 +13,11 @@ const FiltersGroup = (props:jobsFiltersType)=>{
     const onChecked = ()=>{
         props.onCheckedApp(props.jobsFilters.categoryId)
     }
-    
+   
    const renderJobTypes = () =>{
    
         return(
-            <div className="Employee-Type">
+            <div className="Employee-Type"  data-testid="employeeType1" >
             <div className="type1">
             <input type="checkbox" id="employeeType1" name="employee"  value={props.jobsFilters.name} onClick={onChecked}></input>
              <label >{props.jobsFilters.name}</label>
