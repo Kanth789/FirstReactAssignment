@@ -56,7 +56,7 @@ const Header = (props: { history: any })=>{
             </div>
             <div className="nav-button">
                 <Link to="/login"className="nav-link"> 
-                <button onClick={onClickLogout}>{t('logout-button')}</button>
+                <button id="logOut" onClick={onClickLogout}>{t('logout-button')}</button>
                 </Link>
             </div>
             </div>

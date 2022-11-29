@@ -164,7 +164,7 @@ const JobPage = observer(() => {
   const renderFullJobsList = () => {
     const { jobsList, apiStatus } = JobsListStore
     return (
-      <div>
+      <div className="ALlJobsList">
         {JobsListStore.jobsList.map(eachItem => {
           return <Alljobs jobData={eachItem} key={eachItem.id} />
         }

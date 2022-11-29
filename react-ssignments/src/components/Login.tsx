@@ -30,9 +30,7 @@ const  Login = observer(()=> {
    loginFormStore.setPassword("")
   }
 
-  const onSubmitFailure = (errorMsg:string) => {
-    loginFormStore.setErrorMsg( errorMsg)
-  }
+  
 
   const submitForm = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -48,7 +46,7 @@ const  Login = observer(()=> {
     if (response.ok === true) {
       onSubmitSuccess(data.jwt_token)
     } else {
-      onSubmitFailure(data.error_msg)
+      loginFormStore.setErrorMsg(data.error_msg)
     }
   }
 
@@ -92,7 +90,7 @@ const  Login = observer(()=> {
   }
 
   
-    const {error, error_msg} = loginFormStore
+    
     const jwtToken = Cookies.get('jwt_token')
       if(jwtToken !== undefined)
       {
@@ -101,6 +99,8 @@ const  Login = observer(()=> {
       else{
         console.log("undefined")
       }
+      console.log(loginFormStore.error)
+      console.log(loginFormStore.error_msg)
     return (
       <div className="login-form-container">
         
@@ -116,7 +116,7 @@ const  Login = observer(()=> {
           <button type="submit" className="login-button">
             Login
           </button>
-          {error && <p className="error-message">*{error_msg}</p>}
+          { loginFormStore.error === false ?  <p className="error-message">{ loginFormStore.error_msg}</p> : ""}
         </form>
       </div>
     )
