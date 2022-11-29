@@ -1,7 +1,7 @@
 import { cleanup } from "@testing-library/react"
 import Login from "../fixtures/login"
 
-
+describe("testing",()=>{
   it('login with empty',()=>{
     cy.visit('http://localhost:3000/login')
     cy.intercept("POST","http://localhost:3000/login",Login("invalid-username"))
@@ -43,6 +43,8 @@ import Login from "../fixtures/login"
     cy.get('#logOut').click()
    
   })
+})
+  
 
   Cypress.on('uncaught:exception', (err, runnable) => {
     return false;
