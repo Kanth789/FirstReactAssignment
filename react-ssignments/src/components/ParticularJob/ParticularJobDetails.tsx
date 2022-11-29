@@ -1,18 +1,22 @@
 import { Component, useEffect } from "react";
 import {Link} from 'react-router-dom';
 import Cookies from'js-cookie';
-import Header from "./Header";
 import { TailSpin } from 'react-loader-spinner';
-import SimilarJob from "./SimilarJob";
-import Skills from "./Skills";
-import './Particular.css';
 import { BiLinkExternal } from "react-icons/bi";
 import { AiFillStar } from "react-icons/ai";
 import { ImLocation } from "react-icons/im";
 import { MdWork } from "react-icons/md";
-import ParticularStore from "../Stores/ParticularStore";
 import {observer} from 'mobx-react';
 import React from "react";
+
+import './Particular.css';
+
+import ParticularStore from "../../Stores/ParticularStore";
+import SimilarJob from "../SmiliarJob/SimilarJob";
+import Skills from "../Skills";
+import Header from "../Header";
+
+
 type ParticularStoreData = {
     company_website_url:string,
     company_logo_url:string,

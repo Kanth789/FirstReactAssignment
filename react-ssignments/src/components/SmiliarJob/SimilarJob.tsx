@@ -2,8 +2,12 @@ import { Link } from "react-router-dom";
 import { AiFillStar } from "react-icons/ai";
 import { ImLocation } from "react-icons/im";
 import { MdWork } from "react-icons/md";
-import './similar.css'
 import React from "react";
+
+
+import './Similar.css'
+
+
 type SimilarDataTypes ={
     similarData : {
     company_logo_url:string,

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ImLocation } from "react-icons/im";
 import { MdWork } from "react-icons/md";
 import {observer} from 'mobx-react';
+
 import './Alljobs.css';
 import React from "react";
  type jobDataItems = {

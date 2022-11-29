@@ -1,6 +1,6 @@
 
 import { BrowserRouter } from "react-router-dom"
-import SimilarJob from "../components/SimilarJob"
+import SimilarJob from "./SimilarJob"
 import { render, screen } from '@testing-library/react';
 const similarData = {
     company_logo_url:"https://assets.ccbp.in/frontend/react-js/jobby-app/netflix-img.pn",

@@ -1,9 +1,15 @@
-import Header from "./Header"
+import {useTranslation,Trans} from 'react-i18next'
 import {Link, Redirect} from 'react-router-dom'
 import Cookies from 'js-cookie'
-import './Home.css';
 import React from "react";
-import {useTranslation,Trans} from 'react-i18next'
+
+
+import './Home.css';
+
+
+import Header from '../Header';
+
+
 const Home = () =>{
     const {t} = useTranslation()
   

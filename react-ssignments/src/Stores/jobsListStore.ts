@@ -12,7 +12,7 @@ const apiStatusConstants = {
   failure: 'FAILURE',
   inProgress: 'IN_PROGRESS',
 }
- type jobsListData = {
+type jobsListData = {
   company_logo_url: string;
   id: string;
   employment_type: string;
@@ -20,42 +20,42 @@ const apiStatusConstants = {
   location: string;
   package_per_annum: string;
   rating: string;
-  title:string;
+  title: string;
 
 }
 type profileDataList = {
-  
-  name:string, 
-  profile_image_url:string,
-  short_bio:string
+
+  name: string,
+  profile_image_url: string,
+  short_bio: string
 
 }
 type api = {
-  apiStatus:string
-  apiJobs:string
+  apiStatus: string
+  apiJobs: string
 }
 
 class jobsListStore {
   jobsList: jobsListData[] = [];
   profileData = {} as profileDataList
-  searchInput: string='';
-  activeJobPackage: string='';
+  searchInput: string = '';
+  activeJobPackage: string = '';
   apiStatus = apiStatusConstants.initial;
   apiJobs = apiStatusOfJobs.initial;
-  activeJobType :jobsListStore[]=[];
-  checkedBox:boolean | undefined;
-  updatedjob: any[]  =[]
+  activeJobType: jobsListStore[] = [];
+  checkedBox: boolean | undefined;
+  updatedjob: any[] = []
 
   constructor() {
     makeAutoObservable(this);
   }
-  setApiStatus(value:string) {
+  setApiStatus(value: string) {
     this.apiStatus = value;
   }
-  setApiJobs(value:string) {
+  setApiJobs(value: string) {
     this.apiJobs = value;
   }
-  setJobPackage(data:string) {
+  setJobPackage(data: string) {
     this.activeJobPackage = data
   }
   setJobsList(data: jobsListData[]) {
@@ -65,8 +65,9 @@ class jobsListStore {
   setProfileData(data: profileDataList) {
     this.profileData = data
   }
-  setSearchValue(value:string) {
+  setSearchValue(value: string) {
     this.searchInput = value;
+   
   }
   
   getFullData = async () => {
@@ -92,7 +93,7 @@ class jobsListStore {
         console.log(response)
         const data = await response.json()
         console.log(data)
-        const updatedFullJobs = data.jobs.map((eachItem:jobsListData) => ({
+        const updatedFullJobs = data.jobs.map((eachItem: jobsListData) => ({
           company_logo_url: eachItem.company_logo_url,
           id: eachItem.id,
           employment_type: eachItem.employment_type,
@@ -138,39 +139,9 @@ class jobsListStore {
     }
   }
 
-  renderProfileDetails = (renderLoadingView: { (): JSX.Element; (): any; }, renderFullViewProfile: { (): JSX.Element; (): any; }, renderFailureView: { (): JSX.Element; (): any; }) => {
-    console.log(this.apiStatus)
-    switch (this.apiStatus) {
-      case apiStatusConstants.success:
-        return renderFullViewProfile()
-      case apiStatusConstants.failure:
-        return renderFailureView()
-      case apiStatusConstants.inProgress:
-        return renderLoadingView()
-      default:
-        return null
-    }
-  }
 
-  renderJobProfiles = (renderLoadingView: { (): JSX.Element; (): any; }, lengthOfList: { (): JSX.Element; (): any; }, renderJobFailureView: { (): JSX.Element; (): any; }) => {
-
-    console.log(this.apiJobs)
-    switch (this.apiJobs) {
-
-      case apiStatusOfJobs.success:
-
-        return lengthOfList()
-      case apiStatusOfJobs.failure:
-
-        return renderJobFailureView()
-      case apiStatusOfJobs.inProgress:
-        return renderLoadingView()
-      default:
-        return null
-    }
-  }
-   onCheckedApp = (categoryId:string) => {
-    const CheckId = this.updatedjob.includes(categoryId) 
+  onCheckedApp = (categoryId: string) => {
+    const CheckId = this.updatedjob.includes(categoryId)
     if (!CheckId) {
       this.updatedjob.push(categoryId)
     }
@@ -188,3 +159,37 @@ class jobsListStore {
 
 
 export default new jobsListStore();
+
+
+
+  // renderProfileDetails = (renderLoadingView: { (): JSX.Element; (): any; }, renderFullViewProfile: { (): JSX.Element; (): any; }, renderFailureView: { (): JSX.Element; (): any; }) => {
+  //   console.log(this.apiStatus)
+  //   switch (this.apiStatus) {
+  //     case apiStatusConstants.success:
+  //       return renderFullViewProfile()
+  //     case apiStatusConstants.failure:
+  //       return renderFailureView()
+  //     case apiStatusConstants.inProgress:
+  //       return renderLoadingView()
+  //     default:
+  //       return null
+  //   }
+  // }
+
+  // renderJobProfiles = (renderLoadingView: { (): JSX.Element; (): any; }, lengthOfList: { (): JSX.Element; (): any; }, renderJobFailureView: { (): JSX.Element; (): any; }) => {
+
+  //   console.log(this.apiJobs)
+  //   switch (this.apiJobs) {
+
+  //     case apiStatusOfJobs.success:
+
+  //       return lengthOfList()
+  //     case apiStatusOfJobs.failure:
+
+  //       return renderJobFailureView()
+  //     case apiStatusOfJobs.inProgress:
+  //       return renderLoadingView()
+  //     default:
+  //       return null
+  //   }
+  // }

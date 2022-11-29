@@ -9,9 +9,9 @@ import Header from "../components/Header";
 import { BrowserRouter as Router } from 'react-router-dom';
 import Home from "../components/Home";
 import FiltersGroup from "../components/FilersGroup";
-import Alljobs from "../components/Alljobs";
+import Alljobs from "../components/AllJobs/Alljobs";
 import jobsListStore from "../Stores/jobsListStore";
-import JobPage from "../components/JobPage";
+import JobPage from "../components/JobsPage/JobPage";
 import JobTypes from "../util"
 import user from "@testing-library/user-event"
 import { Provider } from "mobx-react";

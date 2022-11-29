@@ -1,7 +1,7 @@
 import { BrowserRouter } from "react-router-dom"
 
 import { render, screen } from '@testing-library/react';
-import Alljobs from "../components/Alljobs";
+import Alljobs from "./Alljobs";
 const AlljobData = {
     company_logo_url:"https://assets.ccbp.in/frontend/react-js/jobby-app/netflix-img.pn",
     id:"2b40029d-e5a5-48cc-84a6-b6e12d25625d",

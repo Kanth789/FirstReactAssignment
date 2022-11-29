@@ -2,18 +2,22 @@ import { Component, useEffect } from "react";
 import Cookies from 'js-cookie';
 import { Link } from "react-router-dom";
 import { BallTriangle } from 'react-loader-spinner';
-import './JobPage.css';
-import Header from "./Header";
-import Alljobs from "./Alljobs";
-import FiltersGroup from "./FilersGroup";
-import JobPackage from "./JobPackage";
-import SearchBar from "./searchBar";
-import jobsListStore from "../Stores/jobsListStore";
 import { observer, Provider } from 'mobx-react';
 import {useTranslation,Trans} from 'react-i18next'
 import { observable, toJS, runInAction, computed } from "mobx";
 import React from "react";
 import { t } from "i18next";
+
+
+import './JobPage.css';
+
+
+import Header from "../Header";
+import Alljobs from "../AllJobs/Alljobs";
+import FiltersGroup from "../FilersGroup";
+import JobPackage from "../JobPackage";
+import SearchBar from "../SearchBar";
+import jobsListStore from "../../Stores/jobsListStore";
 
 type Checkbox = {
   checkedBox:boolean
@@ -31,9 +35,13 @@ type JobPackageData = {
 }
 
 
-let updatedjob: any[]  =[]
+// let updatedjob: any[]  =[]
 const JobPage = observer(() => {
   const {t} = useTranslation()
+  useEffect(() => {
+    JobsListStore.getData()
+    JobsListStore.getFullData()
+  }, [])
   const JobTypes :JobTypesData[] =[
     {
       name: t('Fullname'),
@@ -77,26 +85,7 @@ const JobPage = observer(() => {
   
   ]
   
-  useEffect(() => {
-    JobsListStore.getData()
-    JobsListStore.getFullData()
-  }, [])
   const JobsListStore = jobsListStore
-
-  // const onCheckedApp = (categoryId:string) => {
-  //   const { activeJobType, checkedBox } = JobsListStore
-  //   const CheckId = updatedjob.includes(categoryId) 
-  //   if (!CheckId) {
-  //     updatedjob.push(categoryId)
-  //   }
-  //   else {
-  //     updatedjob = updatedjob.filter((item) => item !== categoryId)
-  //   }
-  //   console.log(updatedjob)
-  //   JobsListStore.activeJobType = updatedjob
-  //   JobsListStore.getFullData()
-
-  // }
 
   const onCheckedRadioApp = (categoryId:string) => {
     JobsListStore.activeJobPackage = categoryId
@@ -136,7 +125,7 @@ const JobPage = observer(() => {
 
 
           <div className="jobs-conatiner">
-            <SearchBar changeSearchInput={changeSearchInput} enterSearchInput={enterSearchInput} searchInput={""} />
+            <SearchBar changeSearchInput={changeSearchInput} enterSearchInput={enterSearchInput} searchInput={JobsListStore.searchInput} />
           </div>
         </div>
       </div>
@@ -230,3 +219,22 @@ const JobPage = observer(() => {
 }
 )
 export default JobPage
+
+
+
+
+// let updatedjob: any[]  =[]
+// const onCheckedApp = (categoryId:string) => {
+  //   const { activeJobType, checkedBox } = JobsListStore
+  //   const CheckId = updatedjob.includes(categoryId) 
+  //   if (!CheckId) {
+  //     updatedjob.push(categoryId)
+  //   }
+  //   else {
+  //     updatedjob = updatedjob.filter((item) => item !== categoryId)
+  //   }
+  //   console.log(updatedjob)
+  //   JobsListStore.activeJobType = updatedjob
+  //   JobsListStore.getFullData()
+
+  // }
