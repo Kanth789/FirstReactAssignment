@@ -1,6 +1,7 @@
 import React from "react"
 import {useTranslation,Trans} from 'react-i18next'
-import jobsListStore from "../../Stores/jobsListStore"
+import jobsListStore from "../../../Stores/jobsListStore"
+
 
 type jobsFiltersType = {
    

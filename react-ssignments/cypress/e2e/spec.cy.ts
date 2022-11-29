@@ -16,7 +16,14 @@ import Login from "../fixtures/login"
     cy.get('.login-button').click()
     cy.get('.error-message').contains('Username or password is invalid')
   })
-
+  it('login with empty',()=>{
+    cy.visit('http://localhost:3000/login')
+    cy.intercept("POST","http://localhost:3000/login",Login("invalid-username"))
+    cy.get('#username').type('rahul1')
+    cy.get('#password').type('rahul@2021')
+    cy.get('.login-button').click()
+    cy.get('.error-message').contains('invalid UserName')
+  })
   it('login with empty',()=>{
     cy.visit('http://localhost:3000/login')
     cy.intercept("POST","http://localhost:3000/login",Login("invalid-username"))
@@ -46,10 +53,7 @@ import Login from "../fixtures/login"
 
   
 
-  Cypress.on('uncaught:exception', (err, runnable) => {
-    return false;
-  });
- 
+  
   
   
 

@@ -6,9 +6,7 @@ import React from "react";
 
 import './Home.css';
 
-
-import Header from '../Header';
-
+import Header from '../Header/Header';
 
 const Home = () =>{
     const {t} = useTranslation()

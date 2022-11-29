@@ -1,6 +1,6 @@
 import LoginFormStore from "../Stores/LoginFormStore";
 import { fireEvent, getByText, screen,render } from '@testing-library/react';
-import Login from "../components/Login";
+import Login from "../Common/Login";
 import App from '../App'
 import { use } from "i18next";
 import userEvent from "@testing-library/user-event";

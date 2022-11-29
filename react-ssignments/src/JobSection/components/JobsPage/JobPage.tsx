@@ -12,12 +12,13 @@ import { t } from "i18next";
 import './JobPage.css';
 
 
-import Header from "../Header";
+import Header from "../../../Common/Header/Header";
 import Alljobs from "../AllJobs/Alljobs";
 import FiltersGroup from "./FilersGroup";
 import JobPackage from "./JobPackage";
 import SearchBar from "./SearchBar";
-import jobsListStore from "../../Stores/jobsListStore";
+import jobsListStore from "../../../Stores/jobsListStore";
+
 
 type Checkbox = {
   checkedBox:boolean

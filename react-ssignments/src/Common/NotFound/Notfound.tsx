@@ -2,7 +2,7 @@ import React from "react";
 
 import './Notfound.css';
 
-import Header from "../Header";
+import Header from "../Header/Header";
 
 export const Notfound = () => {
   return (

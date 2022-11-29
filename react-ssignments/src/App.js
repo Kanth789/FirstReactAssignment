@@ -3,12 +3,12 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 import './App.css';
 
-import Home from './components/Home/Home';
-import Login from './components/Login/Login';
-import JobPage from './components/JobsPage/JobPage';
-import ProctetedRoute from './components/Protected';
-import ParticularJobDeatils from './components/ParticularJob/ParticularJobDetails';
-import { Notfound } from './components/NotFound/Notfound';
+import Home from './Common/Home/Home';
+import Login from './Common/Login/Login';
+import JobPage from './JobSection/components/JobsPage/JobPage';
+import ProctetedRoute from './Common/Protected';
+import ParticularJobDeatils from './JobSection/components/ParticularJob/ParticularJobDetails';
+import { Notfound } from './Common/NotFound/Notfound';
 function App() {
   return (
     <BrowserRouter>
