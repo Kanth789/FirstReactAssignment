@@ -13,7 +13,7 @@ import './Particular.css';
 
 import ParticularStore from "../../Stores/ParticularStore";
 import SimilarJob from "../SmiliarJob/SimilarJob";
-import Skills from "../Skills";
+import Skills from "./Skills";
 import Header from "../Header";
 
 

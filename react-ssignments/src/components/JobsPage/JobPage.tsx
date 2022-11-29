@@ -14,9 +14,9 @@ import './JobPage.css';
 
 import Header from "../Header";
 import Alljobs from "../AllJobs/Alljobs";
-import FiltersGroup from "../FilersGroup";
-import JobPackage from "../JobPackage";
-import SearchBar from "../SearchBar";
+import FiltersGroup from "./FilersGroup";
+import JobPackage from "./JobPackage";
+import SearchBar from "./SearchBar";
 import jobsListStore from "../../Stores/jobsListStore";
 
 type Checkbox = {
