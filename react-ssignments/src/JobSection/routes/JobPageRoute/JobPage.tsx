@@ -2,7 +2,7 @@ import { Component, useEffect } from "react";
 import Cookies from 'js-cookie';
 import { Link } from "react-router-dom";
 import { BallTriangle } from 'react-loader-spinner';
-import { observer, Provider } from 'mobx-react';
+import { inject, observer, Provider } from 'mobx-react';
 import {useTranslation,Trans} from 'react-i18next'
 import { observable, toJS, runInAction, computed } from "mobx";
 import React from "react";
@@ -13,11 +13,14 @@ import './JobPage.css';
 
 
 import Header from "../../../Common/Header/Header";
-import Alljobs from "../AllJobs/Alljobs";
-import FiltersGroup from "./FilersGroup";
-import JobPackage from "./JobPackage";
-import SearchBar from "./SearchBar";
-import jobsListStore from "../../../Stores/jobsListStore";
+import Alljobs from "../../components/AllJobs/Alljobs";
+import FiltersGroup from "../../components/JobsPage/FilersGroup";
+import JobPackage from "../../components/JobsPage/JobPackage";
+import SearchBar from "../../components/JobsPage/SearchBar";
+import jobsListStore from "../../Stores/jobsListStore";
+import ProfileService from "../../Serivce";
+
+
 
 
 type Checkbox = {
@@ -37,11 +40,12 @@ type JobPackageData = {
 
 
 // let updatedjob: any[]  =[]
-const JobPage = observer(() => {
+const JobPage = inject("Jobvalue")(observer((props:any) => {
+  const {Jobvalue} = props
   const {t} = useTranslation()
   useEffect(() => {
-    JobsListStore.getData()
-    JobsListStore.getFullData()
+    Jobvalue.getData()
+    Jobvalue.getFullData()
   }, [])
   const JobTypes :JobTypesData[] =[
     {
@@ -85,18 +89,18 @@ const JobPage = observer(() => {
     }
   
   ]
-  
-  const JobsListStore = jobsListStore
+
+ 
 
   const onCheckedRadioApp = (categoryId:string) => {
-    JobsListStore.activeJobPackage = categoryId
-    JobsListStore.getFullData()
+    Jobvalue.activeJobPackage = categoryId
+    Jobvalue.getFullData()
   }
   const enterSearchInput = () => {
-    JobsListStore.getFullData()
+    Jobvalue.getFullData()
   }
   const changeSearchInput = (searchInput:string) => {
-    JobsListStore.setSearchValue( searchInput )
+    Jobvalue.setSearchValue( searchInput )
   }
   type profileDataList = {
   
@@ -107,9 +111,10 @@ const JobPage = observer(() => {
   }
  
   const renderFullViewProfile = () => {
-    const { profileData, apiStatus } = JobsListStore
+    const { profileData, apiStatus } = Jobvalue
 
     const { name, profile_image_url, short_bio } = profileData
+    console.log(profileData,"Profile View")
     return (
       <div className="profile-job-conatiners">
 
@@ -126,7 +131,7 @@ const JobPage = observer(() => {
 
 
           <div className="jobs-conatiner">
-            <SearchBar changeSearchInput={changeSearchInput} enterSearchInput={enterSearchInput} searchInput={JobsListStore.searchInput} />
+            <SearchBar changeSearchInput={changeSearchInput} enterSearchInput={enterSearchInput} searchInput={Jobvalue.searchInput} />
           </div>
         </div>
       </div>
@@ -135,7 +140,7 @@ const JobPage = observer(() => {
 
   const lengthOfList = () => {
 
-    const { jobsList } = JobsListStore
+    const { jobsList } = Jobvalue
 
     if (jobsList.length > 0) {
       return renderFullJobsList()
@@ -152,10 +157,10 @@ const JobPage = observer(() => {
     )
   }
   const renderFullJobsList = () => {
-    const { jobsList, apiStatus } = JobsListStore
+    const { jobsList, apiStatus } = Jobvalue
     return (
       <div className="ALlJobsList">
-        {JobsListStore.jobsList.map(eachItem => {
+        {Jobvalue.jobsList.map((eachItem: { id: any; company_logo_url: string; employment_type: string; job_description: string; location: string; package_per_annum: string; rating: string; title: string; }) => {
           return <Alljobs jobData={eachItem} key={eachItem.id} />
         }
         )}
@@ -178,7 +183,7 @@ const JobPage = observer(() => {
     </div>
   )
   const ClickedButton = () => {
-    JobsListStore.getData()
+    Jobvalue.getData()
   }
   const renderFailureView = () => (
     <div className="product-details-error-view-container">
@@ -195,12 +200,12 @@ const JobPage = observer(() => {
   )
 
   
-  const { activeJobType, checkedBox, apiStatus, apiJobs } = JobsListStore
+  const {apiStatus, apiJobs } = Jobvalue
   return (
     <>
       <Header history={undefined} />
       <div className="filters-profile">
-        {apiStatus === "SUCCESS" ? renderFullViewProfile() : apiStatus === "FAILURE" ? renderFailureView() : renderLoadingView()}
+        {apiStatus === "SUCCESS" ? renderFullViewProfile() : apiJobs === "FAILURE" ? renderFailureView() : renderLoadingView()}
         <div className="filters-profile-conatiner">
           <div className="filters-conatiner">
             <hr></hr>
@@ -211,14 +216,14 @@ const JobPage = observer(() => {
             {JobPackages.map(eachItem => (<JobPackage jobSalary={eachItem} key={eachItem.categoryId} onCheckedRadioApp={onCheckedRadioApp} />))}
           </div>
           <div className="profile-card">
-            {apiJobs === "SUCCESS" ? lengthOfList() : apiStatus === "FAILURE" ? renderJobFailureView() : renderLoadingView()}
+            {apiStatus === "SUCCESS" ? lengthOfList() : apiStatus === "FAILURE" ? renderJobFailureView() : renderLoadingView()}
           </div>
         </div>
       </div>
     </>
   )
 }
-)
+))
 export default JobPage
 
 

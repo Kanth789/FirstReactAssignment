@@ -1,7 +1,7 @@
 import React from "react"
 import {useTranslation,Trans} from 'react-i18next'
-import jobsListStore from "../../../Stores/jobsListStore"
-
+import jobsListStore from "../../Stores/jobsListStore"
+import { inject, observer, Provider } from 'mobx-react';
 
 type jobsFiltersType = {
    
@@ -11,11 +11,10 @@ type jobsFiltersType = {
         checked:boolean
     }
 }
-const FiltersGroup = (props:jobsFiltersType)=>{
-    const store = jobsListStore
+const FiltersGroup = inject("Jobvalue")(observer((props:jobsFiltersType)=>{
     const {t} = useTranslation()
     const onChecked = ()=>{
-        store.onCheckedApp(props.jobsFilters.categoryId)
+        Jobvalue.onCheckedApp(props.jobsFilters.categoryId)
     }
    
    const renderJobTypes = () =>{
@@ -39,5 +38,5 @@ const FiltersGroup = (props:jobsFiltersType)=>{
         
        
     )
-}
+}))
 export default FiltersGroup

@@ -8,7 +8,7 @@ import React from 'react';
 
 import './Login.css';
 
-import LoginFormStore from '../../Stores/LoginFormStore';
+import LoginFormStore from '../../JobSection/Stores/LoginFormStore';
 
 
 const Login = observer(() => {

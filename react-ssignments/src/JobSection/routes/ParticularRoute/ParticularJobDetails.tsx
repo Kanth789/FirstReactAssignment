@@ -12,10 +12,10 @@ import React from "react";
 import './Particular.css';
 
 
-import SimilarJob from "../SmiliarJob/SimilarJob";
-import Skills from "./Skills";
+import SimilarJob from "../../components/SmiliarJob/SimilarJob";
+import Skills from "../../components/ParticularJob/Skills";
 import Header from "../../../Common/Header/Header";
-import ParticularStore from "../../../Stores/ParticularStore";
+import ParticularStore from "../../Stores/ParticularStore";
 
 
 type ParticularStoreData = {

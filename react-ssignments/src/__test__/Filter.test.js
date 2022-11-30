@@ -1,21 +1,12 @@
-import LoginFormStore from "../Stores/LoginFormStore";
+import LoginFormStore from "../JobSection/Stores/LoginFormStore";
 import { fireEvent, getByText, screen,render } from '@testing-library/react';
-import Login from "../Common/Login";
-import App from '../App'
-import { use } from "i18next";
 import userEvent from "@testing-library/user-event";
 import { BrowserRouter } from "react-router-dom";
-import Header from "../components/Header";
 import { BrowserRouter as Router } from 'react-router-dom';
-import Home from "../components/Home";
-import FiltersGroup from "../components/FilersGroup";
-import Alljobs from "../components/AllJobs/Alljobs";
-import jobsListStore from "../Stores/jobsListStore";
-import JobPage from "../components/JobsPage/JobPage";
-import JobTypes from "../util"
-import user from "@testing-library/user-event"
-import { Provider } from "mobx-react";
-import { idText } from "typescript";
+import Home from "../Common/Home/Home";
+import FiltersGroup from "../JobSection/components/JobsPage/FilersGroup";
+import jobsListStore from "../JobSection/Stores/jobsListStore";
+
 const updatedFullJobs = {
     company_logo_url:"https://assets.ccbp.in/frontend/react-js/jobby-app/netflix-img.pn",
     id:"2b40029d-e5a5-48cc-84a6-b6e12d25625d",
@@ -67,3 +58,4 @@ test('filtesrs',()=>{
     expect(store.updatedjob.length).toBe(1);
     
 })
+

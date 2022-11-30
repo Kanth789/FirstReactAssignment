@@ -1,17 +1,13 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable,toJS } from "mobx";
 import Cookies from "js-cookie";
-const apiStatusOfJobs = {
-  initial: 'INITIAL',
-  success: 'SUCCESS',
-  failure: 'FAILURE',
-  inProgress: 'IN_PROGRESS',
-}
-const apiStatusConstants = {
-  initial: 'INITIAL',
-  success: 'SUCCESS',
-  failure: 'FAILURE',
-  inProgress: 'IN_PROGRESS',
-}
+import mockGetJobs from "../Serivce/util.api";
+import ApiStatusConstants from "../constants/ProfileStatus";
+import ApiStatusOfJobs from "../constants/StatusJob";
+import ProfileService from "../Serivce";
+import BidonSuccess from "../utils/BidonSuccess";
+import Profile from "./model";
+
+
 type jobsListData = {
   company_logo_url: string;
   id: string;
@@ -23,12 +19,12 @@ type jobsListData = {
   title: string;
 
 }
-type profileDataList = {
-
+export type profileDataList = {
+  profile_details: any;
   name: string,
   profile_image_url: string,
   short_bio: string
-
+  
 }
 type api = {
   apiStatus: string
@@ -36,18 +32,24 @@ type api = {
 }
 
 class jobsListStore {
+ 
   jobsList: jobsListData[] = [];
-  profileData = {} as profileDataList
+  profileData = {} as Profile
   searchInput: string = '';
   activeJobPackage: string = '';
-  apiStatus = apiStatusConstants.initial;
-  apiJobs = apiStatusOfJobs.initial;
+  apiStatus = ApiStatusConstants.initial;
+  apiJobs = ApiStatusOfJobs.initial;
   activeJobType: jobsListStore[] = [];
   checkedBox: boolean | undefined;
   updatedjob: any[] = []
+  isJestRuning: any
+  
+  profileService: ProfileService;
 
-  constructor() {
-    makeAutoObservable(this);
+
+  constructor(profileService:ProfileService) {
+    makeAutoObservable(this)
+    this.profileService =profileService
   }
   setApiStatus(value: string) {
     this.apiStatus = value;
@@ -75,7 +77,7 @@ class jobsListStore {
     console.log(this.activeJobType, "activeJOb")
     console.log(this.activeJobPackage, "activeJobPackage")
     console.log(this.searchInput, "searchInput")
-    this.setApiStatus(apiStatusConstants.inProgress)
+    this.setApiStatus(ApiStatusConstants.inProgress)
 
 
     const apiUrl = `https://apis.ccbp.in/jobs?employment_type=${this.activeJobType.join()}&minimum_package=${this.activeJobPackage}&search=${this.searchInput}`
@@ -104,42 +106,32 @@ class jobsListStore {
           title: eachItem.title
         }))
         this.setJobsList(updatedFullJobs)
-        this.setApiStatus(apiStatusConstants.success)
+        this.setApiStatus(ApiStatusConstants.success)
 
       }
     }
     catch {
-      this.setApiStatus(apiStatusConstants.failure)
+      this.setApiStatus(ApiStatusConstants.failure)
     }
   }
-  getData = async () => {
-    console.log("Gte the profile details")
-    const apiUrl = "https://apis.ccbp.in/profile"
-    const jwtToken = Cookies.get('jwt_token')
-    const options = {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${jwtToken}`,
-      },
-    }
-    try {
-      const response = await fetch(apiUrl, options)
-      if (response.ok === true) {
-        const data = await response.json()
-
-        const UpdatedProfileData = data.profile_details
-
-        this.setProfileData(UpdatedProfileData)
-        this.setApiJobs(apiStatusOfJobs.success)
-
-      }
-    }
-    catch {
-      this.setApiJobs(apiStatusOfJobs.success)
-    }
+ 
+  async getData (){
+      const jwtToken = Cookies.get('jwt_token')
+     const response = this.profileService.getProfile(jwtToken as string)
+      BidonSuccess(response,this.onSuccess,this.onFailure)  
+  } 
+  onSuccess = (responseData : profileDataList)=>{
+    console.log(responseData,"sdjldhhsdlka")
+    const updatedData = new Profile(responseData)
+    console.log(updatedData,"sdjldhhsdlka")
+    this.setApiJobs(ApiStatusOfJobs.success)
+    this.profileData =updatedData 
+   
   }
 
-
+  onFailure = ()=>{
+    this.setApiJobs(ApiStatusOfJobs.failure)
+  }
   onCheckedApp = (categoryId: string) => {
     const CheckId = this.updatedjob.includes(categoryId)
     if (!CheckId) {
@@ -158,38 +150,7 @@ class jobsListStore {
 
 
 
-export default new jobsListStore();
+export default jobsListStore;
 
 
 
-  // renderProfileDetails = (renderLoadingView: { (): JSX.Element; (): any; }, renderFullViewProfile: { (): JSX.Element; (): any; }, renderFailureView: { (): JSX.Element; (): any; }) => {
-  //   console.log(this.apiStatus)
-  //   switch (this.apiStatus) {
-  //     case apiStatusConstants.success:
-  //       return renderFullViewProfile()
-  //     case apiStatusConstants.failure:
-  //       return renderFailureView()
-  //     case apiStatusConstants.inProgress:
-  //       return renderLoadingView()
-  //     default:
-  //       return null
-  //   }
-  // }
-
-  // renderJobProfiles = (renderLoadingView: { (): JSX.Element; (): any; }, lengthOfList: { (): JSX.Element; (): any; }, renderJobFailureView: { (): JSX.Element; (): any; }) => {
-
-  //   console.log(this.apiJobs)
-  //   switch (this.apiJobs) {
-
-  //     case apiStatusOfJobs.success:
-
-  //       return lengthOfList()
-  //     case apiStatusOfJobs.failure:
-
-  //       return renderJobFailureView()
-  //     case apiStatusOfJobs.inProgress:
-  //       return renderLoadingView()
-  //     default:
-  //       return null
-  //   }
-  // }

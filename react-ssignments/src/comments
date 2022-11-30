@@ -1,0 +1,96 @@
+
+// import Cookies from "js-cookie";
+
+//  const mockGetJobs = async() => {
+//   const url = 'https://apis.ccbp.in/profile'
+//   const jwtToken = Cookies.get('jwt_token')
+//   const options = {
+//       method: 'GET',
+//       headers: { Authorization: `Bearer ${jwtToken}` }
+//   }
+//   const response = await fetch(url, options)
+//   const data = await response.json()
+ 
+//  return data.profile_details
+
+// }
+
+
+// export default mockGetJobs
+
+
+
+
+ // getData = async () => {
+  //   console.log("Gte the profile details")
+  //   const apiUrl = "https://apis.ccbp.in/profile"
+  //   const jwtToken = Cookies.get('jwt_token')
+  //   const options = {
+  //     method: "GET",
+  //     headers: {
+  //       Authorization: `Bearer ${jwtToken}`,
+  //     },
+  //   }
+  //   try {
+  //     const response = await fetch(apiUrl, options)
+  //     if (response.ok === true) {
+  //       const data = await response.json()
+
+  //       const UpdatedProfileData = data.profile_details
+
+  //       this.setProfileData(UpdatedProfileData)
+  //       this.setApiJobs(ApiStatusOfJobs.success)
+
+  //     }
+  //   }
+  //   catch {
+  //     this.setApiJobs(ApiStatusOfJobs.success)
+  //   }
+  // }
+
+
+
+
+    // renderProfileDetails = (renderLoadingView: { (): JSX.Element; (): any; }, renderFullViewProfile: { (): JSX.Element; (): any; }, renderFailureView: { (): JSX.Element; (): any; }) => {
+  //   console.log(this.apiStatus)
+  //   switch (this.apiStatus) {
+  //     case ApiStatusConstants.success:
+  //       return renderFullViewProfile()
+  //     case ApiStatusConstants.failure:
+  //       return renderFailureView()
+  //     case ApiStatusConstants.inProgress:
+  //       return renderLoadingView()
+  //     default:
+  //       return null
+  //   }
+  // }
+
+  // renderJobProfiles = (renderLoadingView: { (): JSX.Element; (): any; }, lengthOfList: { (): JSX.Element; (): any; }, renderJobFailureView: { (): JSX.Element; (): any; }) => {
+
+  //   console.log(this.apiJobs)
+  //   switch (this.apiJobs) {
+
+  //     case ApiStatusOfJobs.success:
+
+  //       return lengthOfList()
+  //     case ApiStatusOfJobs.failure:
+
+  //       return renderJobFailureView()
+  //     case ApiStatusOfJobs.inProgress:
+  //       return renderLoadingView()
+  //     default:
+  //       return null
+  //   }
+  // }
+
+
+  // getData =async () => {
+  //   const data = await mockGetJobs()
+  //   const updatedData  = {
+  //       name: data.name,
+  //       profile_image_url: data.profile_image_url,
+  //       short_bio: data.short_bio
+  //   }
+  //    this.profileData = updatedData 
+     
+  // }

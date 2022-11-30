@@ -1,12 +1,7 @@
 import { makeAutoObservable } from "mobx";
 import Cookies from "js-cookie";
+import ApiStatusConstants from "../constants/ProfileStatus";
 
-const apiStatusConstants = {
-  initial: 'INITIAL',
-  success: 'SUCCESS',
-  failure: 'FAILURE',
-  inProgress: 'IN_PROGRESS',
-}
 type ParticularStoreData = {
   company_website_url:string,
   company_logo_url:string,
@@ -45,7 +40,7 @@ class ParticularStore {
     JobDetails={} as ParticularStoreData;
     similarJobDetails:SimilarDataTypes[]=[]
     skillsData :SkillsTypes[]=[];
-    apiStatus=apiStatusConstants.initial;
+    apiStatus=ApiStatusConstants.initial;
     lifeAtCompnay : lifeAtCompnay[] =[]
  
   constructor() {
@@ -120,11 +115,11 @@ class ParticularStore {
         this.setJobDetails(updatedFullJobs)
         this.setskillsData(UpdatedskillsData)
         this.setsimilarJobDetails(updatedsimilarJobDetails)
-        this.setApiStatus(apiStatusConstants.success)
+        this.setApiStatus(ApiStatusConstants.success)
        
     }
     else {
-        this.setApiStatus(apiStatusConstants.failure)
+        this.setApiStatus(ApiStatusConstants.failure)
     }
 }
  
