@@ -74,13 +74,15 @@
 }
 @media screen and (max-width:576px) {
     .reactplayer{
-        width: 350px !important;
+        width: 380px !important;
         height: 250px !important;
        
     }
     .particular-video-header-desc{
-        width: 500px;
-        height: 320px;
+        
+            width: 380px;
+            height: 320px;
+        
     }
     .Particular-video-heading h2{
         font-size: 18px;
@@ -92,8 +94,12 @@
         width: 350px;
     }
     .Particular-video-para p{
-        font-size: 18px;
+        font-size: 15px;
     }
+    .Particular-video-logo img {
+        width: 45px;
+        margin-right: 10px;
+    }   
 }
 @media screen and (max-width:1180px) and (min-width:992px) {
     .reactplayer{

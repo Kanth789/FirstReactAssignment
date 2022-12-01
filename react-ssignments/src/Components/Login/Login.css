@@ -58,5 +58,12 @@
   }
 
   @media screen and (max-width:576px) {
-    
+    form {
+      width: 300px;
+      background-color: #fff;
+      padding: 60px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 5px -3px 26px 8px rgb(209 205 209);
+  }
   }
