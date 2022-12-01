@@ -139,8 +139,9 @@
 .home-banner-icon img{
     width: 200px;
 }
-.home-banner-header{
+.home-banner-header h2{
     font-size: 22px;
+    margin-top: 4px;
 }
 .banner-button{
     padding: 10px 20px;
@@ -227,6 +228,18 @@
     .socail-para h3{
         font-size: 16px;
         padding-bottom: 15px;
+    }
+    .home-banner-header h2{
+        margin: 0px;
+        font-size: 22px;
+    }
+    .banner-button{
+        margin-top: 12px;
+    }
+    .search-input {
+        
+        width: 80%;
+    
     }
 }
 @media screen and (max-width: 992px) {
