@@ -61,9 +61,18 @@
     form {
       width: 300px;
       background-color: #fff;
-      padding: 60px;
+      padding: 50px;
       display: flex;
       flex-direction: column;
       box-shadow: 5px -3px 26px 8px rgb(209 205 209);
+  }
+  .password-input-filed ,.username-input-filed{
+    padding: 18px 22px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    border: 1px solid #cbd2d9 ;
+    margin-top: 10px;
+    background-color: #e6f6ff;
+    font-size:22px;
   }
   }
