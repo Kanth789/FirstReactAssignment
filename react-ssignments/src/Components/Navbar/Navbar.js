@@ -89,7 +89,7 @@ const Navbar = (props)=>{
             <div className="profile-img">
                 <img src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png"/>
             </div>
-            <div className="popup-container">
+            
                     <Popup 
                         modal
                         trigger={
@@ -97,13 +97,13 @@ const Navbar = (props)=>{
                             
                             <Link to="/login"className="nav-link-logout"> 
                             <div className={`nav-button ${showtoggleButton ? "light-theme  " : "dark-theme"}`}>
-                                <button  >Logout</button>
+                                <button  onClick={onClickLogout}  >Logout</button>
                                  
                             </div>
                             
                             <div className={`nav-button-hidden ${showtoggleButton ? "light-theme  " : "dark-theme"}`}>
                             
-                                <FiLogOut   size={40}/>
+                                <FiLogOut  onClick={onClickLogout}   size={40}/>
                                 
                             </div>
                             </Link> 
@@ -140,7 +140,7 @@ const Navbar = (props)=>{
             
             </div>
             </div>
-            </div>
+           
        
                 )
         }
