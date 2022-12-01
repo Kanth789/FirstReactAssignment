@@ -6,6 +6,8 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import Home from "../Common/Home/Home";
 import FiltersGroup from "../JobSection/components/JobsPage/FilersGroup";
 import jobsListStore from "../JobSection/Stores/jobsListStore";
+import ProfileApi from "../JobSection/Serivce/index.api";
+const JobsListStore = new jobsListStore()
 
 const updatedFullJobs = {
     company_logo_url:"https://assets.ccbp.in/frontend/react-js/jobby-app/netflix-img.pn",
@@ -26,7 +28,7 @@ const updatedFullJobs = {
 test("On click Job Page Button",()=>{
     render(<Router><Home /></Router>)
     fireEvent.click(screen.getByTestId("FindJobs"))
-    render(<Router><FiltersGroup jobsFilters={{categoryId : "FULLTIME",checked: false ,name:"Full Time"}}/></Router>);
+    render(<Router><FiltersGroup Jobvalue={JobsListStore} jobsFilters={{categoryId : "FULLTIME",checked: false ,name:"Full Time"}}/></Router>);
     expect(screen.getByTestId("employeeType1")).toBeTruthy()
   })
 
@@ -34,28 +36,27 @@ test("On click Job Page Button",()=>{
     render(<Router><Home/></Router>);
     const heading = screen.getByTestId("FindJobs")
     userEvent.click(heading);
-    const view = render(<Router><FiltersGroup jobsFilters={{categoryId : "FULLTIME",checked: false ,name:"Full Time"}}/></Router>);
+    const view = render(<Router><FiltersGroup Jobvalue={JobsListStore} jobsFilters={{categoryId : "FULLTIME",checked: false ,name:"Full Time"}}/></Router>);
     const headingJobs = screen.getByTestId("employeeType1")
     expect(headingJobs).toBeTruthy()
   })
 
 test('filters',()=>{
-    const store = jobsListStore
-    render(<Router><FiltersGroup jobsFilters={{categoryId : "FULLTIME",checked: false ,name:"Full Time"}}/></Router>);
-    store.setJobPackage("1000000")
-    expect(store.activeJobPackage).toBe("1000000");
+   
+    render(<Router><FiltersGroup Jobvalue={JobsListStore} jobsFilters={{categoryId : "FULLTIME",checked: false ,name:"Full Time"}}/></Router>);
+    JobsListStore.setJobPackage("1000000")
+    expect(JobsListStore.activeJobPackage).toBe("1000000");
 })
 
 test('filtesrs',()=>{
-    const store = jobsListStore
-    render(<BrowserRouter><FiltersGroup jobsFilters={{categoryId : "FULLTIME",checked: false ,name:"Full Time"}}/></BrowserRouter>)
-    store.updatedjob=[];
+    render(<BrowserRouter><FiltersGroup Jobvalue={JobsListStore} jobsFilters={{categoryId : "FULLTIME",checked: false ,name:"Full Time"}}/></BrowserRouter>)
+    JobsListStore.updatedjob=[];
     const employee = screen.getByTestId("employeeType1");
     fireEvent.click(employee);
-    store.onCheckedApp("PartTime")
-    expect(store.updatedjob[0]).toBe("PartTime")
+    JobsListStore.onCheckedApp("PartTime")
+    expect(JobsListStore.updatedjob[0]).toBe("PartTime")
     fireEvent.click(employee)
-    expect(store.updatedjob.length).toBe(1);
+    expect(JobsListStore.updatedjob.length).toBe(1);
     
 })
 

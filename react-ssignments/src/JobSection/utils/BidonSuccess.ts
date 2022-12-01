@@ -4,6 +4,7 @@ const BidonSuccess  = (
     onFailure:(err:any)=>void
 )=>{
     response.then((data)=>{
+        console.log(data,"bid")
         onSuccess(data)
     })
     .catch((err)=>{

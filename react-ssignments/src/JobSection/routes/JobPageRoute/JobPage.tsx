@@ -114,7 +114,7 @@ const JobPage = inject("Jobvalue")(observer((props:any) => {
     const { profileData, apiStatus } = Jobvalue
 
     const { name, profile_image_url, short_bio } = profileData
-    console.log(profileData,"Profile View")
+   
     return (
       <div className="profile-job-conatiners">
 
@@ -201,11 +201,12 @@ const JobPage = inject("Jobvalue")(observer((props:any) => {
 
   
   const {apiStatus, apiJobs } = Jobvalue
+  console.log(apiStatus)
   return (
     <>
       <Header history={undefined} />
       <div className="filters-profile">
-        {apiStatus === "SUCCESS" ? renderFullViewProfile() : apiJobs === "FAILURE" ? renderFailureView() : renderLoadingView()}
+        {apiStatus === "SUCCESS" ? renderFullViewProfile() : apiStatus === "FAILURE" ? renderFailureView() : renderLoadingView()}
         <div className="filters-profile-conatiner">
           <div className="filters-conatiner">
             <hr></hr>
@@ -216,7 +217,7 @@ const JobPage = inject("Jobvalue")(observer((props:any) => {
             {JobPackages.map(eachItem => (<JobPackage jobSalary={eachItem} key={eachItem.categoryId} onCheckedRadioApp={onCheckedRadioApp} />))}
           </div>
           <div className="profile-card">
-            {apiStatus === "SUCCESS" ? lengthOfList() : apiStatus === "FAILURE" ? renderJobFailureView() : renderLoadingView()}
+            {apiJobs === "SUCCESS" ? lengthOfList() : apiJobs === "FAILURE" ? renderJobFailureView() : renderLoadingView()}
           </div>
         </div>
       </div>

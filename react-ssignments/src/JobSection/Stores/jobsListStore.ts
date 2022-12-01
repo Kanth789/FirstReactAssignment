@@ -1,6 +1,6 @@
 import { makeAutoObservable,toJS } from "mobx";
 import Cookies from "js-cookie";
-import mockGetJobs from "../Serivce/util.api";
+import mockGetJobs from "../Serivce/index.api";
 import ApiStatusConstants from "../constants/ProfileStatus";
 import ApiStatusOfJobs from "../constants/StatusJob";
 import ProfileService from "../Serivce";
@@ -42,7 +42,7 @@ class jobsListStore {
   activeJobType: jobsListStore[] = [];
   checkedBox: boolean | undefined;
   updatedjob: any[] = []
-  isJestRuning: any
+ 
   
   profileService: ProfileService;
 
@@ -77,7 +77,7 @@ class jobsListStore {
     console.log(this.activeJobType, "activeJOb")
     console.log(this.activeJobPackage, "activeJobPackage")
     console.log(this.searchInput, "searchInput")
-    this.setApiStatus(ApiStatusConstants.inProgress)
+    this.setApiJobs(ApiStatusConstants.inProgress)
 
 
     const apiUrl = `https://apis.ccbp.in/jobs?employment_type=${this.activeJobType.join()}&minimum_package=${this.activeJobPackage}&search=${this.searchInput}`
@@ -106,31 +106,32 @@ class jobsListStore {
           title: eachItem.title
         }))
         this.setJobsList(updatedFullJobs)
-        this.setApiStatus(ApiStatusConstants.success)
+        this.setApiJobs(ApiStatusOfJobs.success)
 
       }
     }
     catch {
-      this.setApiStatus(ApiStatusConstants.failure)
+      this.setApiJobs(ApiStatusOfJobs.failure)
     }
   }
  
   async getData (){
       const jwtToken = Cookies.get('jwt_token')
-     const response = this.profileService.getProfile(jwtToken as string)
+     const response = this.profileService.getProfile()
+     console.log(response,"store")
       BidonSuccess(response,this.onSuccess,this.onFailure)  
   } 
   onSuccess = (responseData : profileDataList)=>{
     console.log(responseData,"sdjldhhsdlka")
     const updatedData = new Profile(responseData)
     console.log(updatedData,"sdjldhhsdlka")
-    this.setApiJobs(ApiStatusOfJobs.success)
+    this.setApiStatus(ApiStatusConstants.success)
     this.profileData =updatedData 
    
   }
 
   onFailure = ()=>{
-    this.setApiJobs(ApiStatusOfJobs.failure)
+    this.setApiStatus(ApiStatusConstants.failure)
   }
   onCheckedApp = (categoryId: string) => {
     const CheckId = this.updatedjob.includes(categoryId)

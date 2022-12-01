@@ -9,7 +9,11 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import Home from "../Common/Home/Home";
 import jobsListStore from "../JobSection/Stores/jobsListStore";
 import JobPage from "../JobSection/routes/JobPageRoute/JobPage";
+import ProfileFixture from "../JobSection/Serivce/index.fixture";
+import { Provider } from "mobx-react";
 
+
+const JobsListStore = new jobsListStore()
 
 
 
@@ -91,26 +95,25 @@ describe("Navbar describe",()=>{
  
 
 test('render Job List ',()=>{
-    const store = jobsListStore;
-    render(<BrowserRouter><JobPage  jobsListStore= {jobsListStore}/></BrowserRouter>);
-    expect(fetch).toHaveBeenCalledTimes(2)
+   
+    render(<BrowserRouter ><Provider Jobvalue={JobsListStore} ><JobPage /></Provider></BrowserRouter>);
+    expect(fetch).toHaveBeenCalledTimes(1)
     expect(fetch).toHaveBeenCalledWith(`https://apis.ccbp.in/jobs?employment_type=&minimum_package=&search=`,{"headers": {"Authorization": "Bearer undefined"}, "method": "GET"})
      
 })
 
 test('render search Bar Component',()=>{
-  const store = jobsListStore
-  store.setSearchValue("kiran")
-  expect(store.searchInput).toBe("kiran")
+  JobsListStore.setSearchValue("kiran")
+  expect(JobsListStore.searchInput).toBe("kiran")
 })
 
 
 test("profile Data",()=>{
-  jest.spyOn(jobsListStore,'getData')
+  jest.spyOn(JobsListStore,'getData')
   render(
-    <BrowserRouter><JobPage /></BrowserRouter>
+    <BrowserRouter><Provider Jobvalue={JobsListStore} ><JobPage /></Provider></BrowserRouter>
   )
-  expect(jobsListStore.getData).toBeCalledTimes(1);
-  waitFor(()=> {const profileTitle = screen.findByText("Rahul Attluri");
+  expect(JobsListStore.getData).toBeCalledTimes(1);
+  waitFor(()=> {const profileTitle = screen.findByText("Kiran");
  expect(profileTitle).toBeInTheDocument()})
 });

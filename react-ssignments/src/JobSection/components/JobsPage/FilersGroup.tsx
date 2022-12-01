@@ -11,10 +11,10 @@ type jobsFiltersType = {
         checked:boolean
     }
 }
-const FiltersGroup = inject("Jobvalue")(observer((props:jobsFiltersType)=>{
+const FiltersGroup = inject("Jobvalue")(observer((props:any)=>{
     const {t} = useTranslation()
     const onChecked = ()=>{
-        Jobvalue.onCheckedApp(props.jobsFilters.categoryId)
+        props.Jobvalue.onCheckedApp(props.jobsFilters.categoryId)
     }
    
    const renderJobTypes = () =>{

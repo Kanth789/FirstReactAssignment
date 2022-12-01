@@ -6,7 +6,8 @@ import profileJson from '../fixtures/getProfile.json'
 
 
 class ProfileFixture  implements ProfileService{
-    getProfile (token: string) : Promise<profileDataList>{
+    getProfile () : Promise<profileDataList>{
+        console.log(profileJson,"ghvvvvvvvvvvvvvvvh")
         return resloveTime(profileJson)
     }
 }
