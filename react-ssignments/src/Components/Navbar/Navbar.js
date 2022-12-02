@@ -6,6 +6,10 @@ import {GiHamburgerMenu} from "react-icons/gi";
 import { TiDeleteOutline } from "react-icons/ti";
 import { FiLogOut } from "react-icons/fi";
 import './Navbar.css'
+import {AiOutlineHome}  from "react-icons/ai";
+import {AiOutlineFire} from "react-icons/ai";
+import { SiYoutubegaming } from "react-icons/si";
+import { MdPlaylistAdd } from "react-icons/md";
 import { useContext } from "react";
 const Navbar = (props)=>{
 
@@ -62,22 +66,22 @@ const Navbar = (props)=>{
                         <div className="links">
                             <Link  to = "/" className="nav-link">
                             <div className="link"  onClick={() => close()}>
-                                Home
+                             <><AiOutlineHome size={25} color="red" /> Home</>
                             </div>
                             </Link>
                             <Link to ="/Saved" className="nav-link">
                             <div className="link"  onClick={() => close()}>
-                            Saved
+                            <AiOutlineFire size={25} color="red"/>Saved
                             </div>
                             </Link>
                             <Link to ="/Gaming" className="nav-link">
                             <div className="link"  onClick={() => close()}>
-                            Gaming
+                            <SiYoutubegaming size={25} color="red" />Gaming
                             </div>
                             </Link>
                             <Link to ="/Trending" className="nav-link">
                             <div className="link"  onClick={() => close()}>
-                            Trending
+                            <MdPlaylistAdd size={25} color="red"/>Trending
                             </div>
                             </Link>
                         </div>

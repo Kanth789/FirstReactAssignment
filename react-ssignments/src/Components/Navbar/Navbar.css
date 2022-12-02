@@ -75,6 +75,8 @@
 .link {
     font-size: 26px;
     padding: 10px 20px;
+    display: flex;
+    align-items: center;
 }
 .link:hover{
     color: blue;
