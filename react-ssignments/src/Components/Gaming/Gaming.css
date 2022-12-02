@@ -52,6 +52,9 @@
     .Game-card{
         min-width: 0px;
     }
+    .Game-card-content{
+        min-width: 110px;
+    }
 }
 
 @media screen and (max-width:512px) {
@@ -70,6 +73,6 @@
         padding: 10px 27px;
     }
     .Game-card-img img{
-        width: 100px;
+        width: 150px;
     }
 }

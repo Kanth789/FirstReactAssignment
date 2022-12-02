@@ -90,4 +90,8 @@
     .empty-view-conatiner {
         width: 349px;
     }
+    .saved-card-video-img img {
+        width: 160px;
+        height: 110px;
+    }
 }
