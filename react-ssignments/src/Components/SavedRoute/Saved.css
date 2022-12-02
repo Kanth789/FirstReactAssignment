@@ -94,4 +94,7 @@
         width: 160px;
         height: 110px;
     }
+    .saved-card-header h2{
+        font-size: 18px;
+    }
 }
