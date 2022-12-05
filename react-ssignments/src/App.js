@@ -15,7 +15,7 @@ import ParticularJobDeatils from './JobSection/routes/ParticularRoute/Particular
 import ProfileFixture from './JobSection/Serivce/index.fixture';
 
 function App() {
- const JobsListStore = new jobsListStore(new ProfileApi())
+ const JobsListStore = new jobsListStore(new ProfileFixture())
   return (
     <Provider Jobvalue={JobsListStore}>
     <BrowserRouter>

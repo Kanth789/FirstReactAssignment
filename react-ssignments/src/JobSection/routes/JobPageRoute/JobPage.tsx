@@ -122,7 +122,7 @@ const JobPage = inject("Jobvalue")(observer((props:any) => {
           <div className="profile-conatiner">
             <div className="logo">
               <img src={profile_image_url} />
-              <h3>{name}</h3>
+              <h3 data-testid="name-profile">{name}</h3>
             </div>
             <div className="profile-content">
               <p>{short_bio}</p>

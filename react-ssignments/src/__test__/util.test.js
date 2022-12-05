@@ -108,12 +108,11 @@ test('render search Bar Component',()=>{
 })
 
 
-test("profile Data",()=>{
+test("profile Data",async()=>{
   jest.spyOn(JobsListStore,'getData')
   render(
     <BrowserRouter><Provider Jobvalue={JobsListStore} ><JobPage /></Provider></BrowserRouter>
   )
   expect(JobsListStore.getData).toBeCalledTimes(1);
-  waitFor(()=> {const profileTitle = screen.findByText("Kiran");
- expect(profileTitle).toBeInTheDocument()})
+  expect(screen.getByTestId("name-profile")).toBe("Kiran Kanth Reddy")
 });
